@@ -9,9 +9,9 @@ const { current = '' } = Astro.props;
   <!-- Top-Trust-Bar -->
   <div class="trust-bar hidden md:block">
     <div class="container-rd flex items-center justify-between gap-6 py-1.5 text-[0.72rem]">
-      <span class="trust-bar-item">
-        <span class="dot-glow"></span>
-        <em class="not-italic">Seit 1909 · 115 Jahre Tradition</em>
+      <span class="trust-bar-item" id="open-status">
+        <span class="dot-glow" data-status="loading"></span>
+        <em class="not-italic" data-status-text>Seit 1909 · 115 Jahre Tradition</em>
       </span>
 
       <div class="flex items-center gap-6">
@@ -89,20 +89,45 @@ const { current = '' } = Astro.props;
     font-weight: 700;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: rgb(var(--rgb-brand-soft));
+    color: rgb(255 255 255 / 0.85);
   }
   .dot-glow {
     display: inline-block;
-    width: 6px; height: 6px;
+    width: 7px; height: 7px;
     border-radius: 999px;
-    background: rgb(var(--rgb-brand));
+    background: rgb(214 32 39);
     box-shadow: 0 0 0 0 rgb(214 32 39 / 0.55);
     animation: glow-dot 2.2s ease-out infinite;
+  }
+  /* Live-Open-Status: grün geöffnet / amber kurz vor Schluss / grau geschlossen */
+  .dot-glow[data-status="open"] {
+    background: rgb(46 184 95);
+    box-shadow: 0 0 0 0 rgb(46 184 95 / 0.55);
+    animation-name: glow-dot-open;
+  }
+  .dot-glow[data-status="closing"] {
+    background: rgb(225 165 60);
+    box-shadow: 0 0 0 0 rgb(225 165 60 / 0.55);
+    animation-name: glow-dot-amber;
+  }
+  .dot-glow[data-status="closed"] {
+    background: rgb(150 150 150);
+    animation: none;
   }
   @keyframes glow-dot {
     0%   { box-shadow: 0 0 0 0 rgb(214 32 39 / 0.55); }
     70%  { box-shadow: 0 0 0 7px rgb(214 32 39 / 0); }
     100% { box-shadow: 0 0 0 0 rgb(214 32 39 / 0); }
+  }
+  @keyframes glow-dot-open {
+    0%   { box-shadow: 0 0 0 0 rgb(46 184 95 / 0.55); }
+    70%  { box-shadow: 0 0 0 7px rgb(46 184 95 / 0); }
+    100% { box-shadow: 0 0 0 0 rgb(46 184 95 / 0); }
+  }
+  @keyframes glow-dot-amber {
+    0%   { box-shadow: 0 0 0 0 rgb(225 165 60 / 0.55); }
+    70%  { box-shadow: 0 0 0 7px rgb(225 165 60 / 0); }
+    100% { box-shadow: 0 0 0 0 rgb(225 165 60 / 0); }
   }
   @media (prefers-reduced-motion: reduce) {
     .dot-glow { animation: none; }
@@ -237,6 +262,45 @@ const { current = '' } = Astro.props;
 </style>
 
 <script is:inline>
+  // Live-Open-Status: Mo-Fr 07:00-18:00 · Sa 07:00-13:00 · So zu
+  (function () {
+    var statusEl = document.querySelector('#open-status [data-status-text]');
+    var dotEl = document.querySelector('#open-status [data-status]');
+    if (!statusEl || !dotEl) return;
+    function update() {
+      var now = new Date();
+      var day = now.getDay(); // 0=So, 1-5=Mo-Fr, 6=Sa
+      var hour = now.getHours();
+      var min = now.getMinutes();
+      var time = hour * 60 + min;
+      var open, close;
+      if (day === 0) { open = -1; close = -1; }
+      else if (day === 6) { open = 7*60; close = 13*60; }
+      else { open = 7*60; close = 18*60; }
+      var status, label;
+      if (open < 0 || time < open) {
+        status = 'closed';
+        if (day === 0) label = 'Sonntag geschlossen · Mo ab 07:00 Uhr';
+        else label = 'Heute ab ' + String(Math.floor(open/60)).padStart(2,'0') + ':00 Uhr';
+      } else if (time >= close) {
+        status = 'closed';
+        var nextDay = (day + 1) % 7;
+        var nextHour = nextDay === 0 ? 7 : 7;
+        label = (day === 5 || day === 6) ? 'Geschlossen · Mo ab 07:00 Uhr' : 'Geschlossen · Morgen ab 07:00 Uhr';
+      } else if (close - time <= 60) {
+        status = 'closing';
+        label = 'Heute noch geöffnet · bis ' + String(Math.floor(close/60)).padStart(2,'0') + ':00 Uhr';
+      } else {
+        status = 'open';
+        label = 'Jetzt geöffnet · bis ' + String(Math.floor(close/60)).padStart(2,'0') + ':00 Uhr';
+      }
+      dotEl.setAttribute('data-status', status);
+      statusEl.textContent = label;
+    }
+    update();
+    setInterval(update, 60000);
+  })();
+
   (function () {
     var header = document.getElementById('site-header');
     var toggle = document.getElementById('menu-toggle');
