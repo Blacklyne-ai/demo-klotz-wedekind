@@ -1,0 +1,411 @@
+---
+import { site, fullNav, legalNav, telLink, mailLink } from '../data/site';
+import Icon from './Icon.astro';
+import Logo from './Logo.astro';
+const year = new Date().getFullYear();
+const gf = site.geschaeftsfuehrung;
+---
+
+<footer class="site-footer">
+  <div class="site-footer-topline"></div>
+
+  <div class="container-rd relative">
+    <div class="site-footer-grid">
+
+      <!-- Brand column -->
+      <div class="site-footer-brand">
+        <a href="/" class="inline-flex mb-5" aria-label={site.name}>
+          <Logo variant="light" size="md" />
+        </a>
+        <p class="text-white/70 text-[0.95rem] leading-relaxed mb-5 max-w-md">
+          {site.subtitle} Gegründet 1909. Drei Generationen Familie Wedekind. GTÜ-Stützpunkt mit 20 m Lackieranlage.
+        </p>
+
+        <!-- Geschaeftsfuehrung-Card -->
+        <div class="footer-gf-card">
+          <span class="footer-gf-icon">
+            <Icon name="Users" size={22} strokeWidth={2} />
+          </span>
+          <span class="footer-gf-content">
+            <span class="footer-gf-label">Geschäftsführung · 3. Generation</span>
+            <strong class="footer-gf-name">Jörg Wedekind · Anja Mädel</strong>
+            <span class="footer-gf-slogan">Damit Ihr Fuhrpark nicht still steht.</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- Kontakt -->
+      <div class="site-footer-col">
+        <h3 class="site-footer-h">Kontakt</h3>
+        <ul class="site-footer-contact">
+          <li>
+            <a href={telLink} class="footer-contact-row">
+              <span class="footer-contact-icon"><Icon name="Phone" size={16} strokeWidth={2} /></span>
+              <span>
+                <span class="footer-contact-label">Zentrale</span>
+                <span class="footer-contact-value">{site.phoneDisplay}</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href={mailLink} class="footer-contact-row">
+              <span class="footer-contact-icon"><Icon name="Mail" size={16} strokeWidth={2} /></span>
+              <span>
+                <span class="footer-contact-label">E-Mail</span>
+                <span class="footer-contact-value-sm">{site.email}</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href={site.googleDirectionsUrl} target="_blank" rel="noopener" class="footer-contact-row">
+              <span class="footer-contact-icon"><Icon name="Navigation" size={16} strokeWidth={2} /></span>
+              <span>
+                <span class="footer-contact-label">Route</span>
+                <span class="footer-contact-value">Stenzelring 9</span>
+              </span>
+            </a>
+          </li>
+        </ul>
+
+        <div class="footer-address">
+          <span class="footer-contact-icon"><Icon name="MapPin" size={16} strokeWidth={2} /></span>
+          <address class="not-italic text-[0.92rem] text-white/75 leading-relaxed">
+            {site.legalName}<br />
+            {site.address.street}<br />
+            {site.address.postcode} {site.address.city}<br />
+            <span class="text-white/45 text-sm">{site.address.district}</span>
+          </address>
+        </div>
+      </div>
+
+      <!-- Öffnungszeiten -->
+      <div class="site-footer-col">
+        <h3 class="site-footer-h">Öffnungszeiten</h3>
+        <div class="footer-hours-card">
+          <div class="footer-hours-block">
+            <span class="footer-hours-block-label">Werkstatt · Service</span>
+            {site.hours.map((h) => (
+              <div class="footer-hours-row">
+                <span>{h.day}</span><span>{h.open} - {h.close}</span>
+              </div>
+            ))}
+          </div>
+          <div class="footer-hours-note">
+            <span class="footer-hours-note-dot"></span>
+            <span>{site.hoursNote}</span>
+          </div>
+        </div>
+
+        <h3 class="site-footer-h mt-8">Heritage</h3>
+        <ul class="site-footer-nav">
+          <li><a href="/ueber-uns"><span class="site-footer-nav-bullet"></span>Seit 1909 · 3 Generationen</a></li>
+          <li><a href="/ueber-uns"><span class="site-footer-nav-bullet"></span>Gegründet von Hermann Klotz</a></li>
+          <li><a href="/leistungen/lackiererei"><span class="site-footer-nav-bullet"></span>20 m Lackieranlage</a></li>
+        </ul>
+      </div>
+
+      <!-- Navigation -->
+      <div class="site-footer-col">
+        <h3 class="site-footer-h">Navigation</h3>
+        <ul class="site-footer-nav">
+          {fullNav.map((item) => (
+            <li>
+              <a href={item.href}>
+                <span class="site-footer-nav-bullet"></span>
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom -->
+    <div class="site-footer-bottom">
+      <p class="site-footer-copy">
+        &copy; {year} {site.legalName} &middot; {site.address.district}
+      </p>
+      <div class="site-footer-legal">
+        {legalNav.map((i) => (
+          <a href={i.href} target={i.external ? '_blank' : undefined} rel={i.external ? 'noopener' : undefined}>{i.label}</a>
+        ))}
+      </div>
+      <p class="site-footer-demo">Demo-Konzeptseite von Blacklyne</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    position: relative;
+    background:
+      radial-gradient(ellipse 80% 50% at 50% 0%, rgb(214 32 39 / 0.10), transparent 60%),
+      linear-gradient(180deg, rgb(var(--rgb-anthracite)) 0%, rgb(var(--rgb-anthracite-deep)) 100%);
+    color: rgb(255 255 255 / 0.78);
+    padding: clamp(3.5rem, 6vw, 5rem) 0 1.5rem;
+    overflow: hidden;
+  }
+  .site-footer::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgb(255 255 255 / 0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(255 255 255 / 0.02) 1px, transparent 1px);
+    background-size: 64px 64px;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+  }
+  .site-footer > * { position: relative; }
+
+  .site-footer-topline {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgb(214 32 39 / 0.6), rgb(184 146 74 / 0.4), transparent);
+  }
+
+  .site-footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+  @media (min-width: 640px)  { .site-footer-grid { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1024px) { .site-footer-grid { grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 3rem; } }
+
+  .site-footer-h {
+    font-family: var(--font-headline);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: rgb(255 255 255 / 0.85);
+    line-height: 1;
+    margin: 0 0 1.5rem;
+    padding: 0 0 0.55rem;
+    position: relative;
+  }
+  .site-footer-h::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 34px;
+    height: 2px;
+    background: rgb(var(--rgb-brand));
+    border-radius: 1px;
+  }
+
+  /* Geschaeftsfuehrung-Card */
+  .footer-gf-card {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.75rem 1.1rem 0.75rem 0.85rem;
+    background:
+      linear-gradient(135deg, rgb(255 255 255 / 0.05) 0%, rgb(214 32 39 / 0.10) 100%);
+    border: 1px solid rgb(214 32 39 / 0.32);
+    border-radius: 14px;
+    transition: transform 0.25s ease, border-color 0.25s ease;
+    max-width: 100%;
+  }
+  .footer-gf-card:hover {
+    transform: translateY(-2px);
+    border-color: rgb(214 32 39 / 0.55);
+  }
+  .footer-gf-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, rgb(214 32 39 / 0.25), rgb(184 146 74 / 0.18));
+    color: #fff;
+    display: inline-flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .footer-gf-content {
+    display: inline-flex; flex-direction: column;
+    line-height: 1.2;
+  }
+  .footer-gf-label {
+    font-family: var(--font-sans);
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgb(var(--rgb-accent));
+    margin-bottom: 0.2rem;
+  }
+  .footer-gf-name {
+    font-family: var(--font-headline);
+    font-size: 1rem;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -0.008em;
+  }
+  .footer-gf-slogan {
+    font-size: 0.74rem;
+    color: rgb(255 255 255 / 0.6);
+    font-style: italic;
+    margin-top: 3px;
+  }
+
+  /* Kontakt-Column */
+  .site-footer-contact { list-style: none; padding: 0; margin: 0 0 1.5rem; display: flex; flex-direction: column; gap: 0.5rem; }
+  .footer-contact-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.55rem 0.7rem;
+    margin: 0 -0.7rem;
+    border-radius: 10px;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+  .footer-contact-row:hover {
+    background: rgb(214 32 39 / 0.1);
+    transform: translateX(2px);
+  }
+  .footer-contact-icon {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    background: rgb(214 32 39 / 0.18);
+    color: rgb(var(--rgb-brand-soft));
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .footer-contact-label {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgb(255 255 255 / 0.5);
+    margin-bottom: 1px;
+  }
+  .footer-contact-value {
+    display: block;
+    font-family: var(--font-headline);
+    font-weight: 800;
+    font-size: 1rem;
+    color: #fff;
+    line-height: 1.1;
+    letter-spacing: -0.008em;
+  }
+  .footer-contact-value-sm {
+    display: block;
+    font-weight: 600;
+    font-size: 0.82rem;
+    color: rgb(255 255 255 / 0.85);
+    line-height: 1.2;
+    word-break: break-all;
+  }
+  .footer-address {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgb(255 255 255 / 0.08);
+  }
+
+  /* Öffnungszeiten */
+  .footer-hours-card {
+    background:
+      linear-gradient(135deg, rgb(214 32 39 / 0.10) 0%, rgb(214 32 39 / 0.02) 100%);
+    border: 1px solid rgb(214 32 39 / 0.22);
+    border-radius: 12px;
+    padding: 1.1rem 1.25rem;
+    display: flex; flex-direction: column; gap: 1rem;
+  }
+  .footer-hours-block-label {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgb(var(--rgb-accent));
+    margin-bottom: 0.4rem;
+  }
+  .footer-hours-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.86rem;
+    padding: 0.18rem 0;
+    color: rgb(255 255 255 / 0.82);
+    font-weight: 500;
+  }
+  .footer-hours-row span:first-child {
+    color: rgb(255 255 255 / 0.55);
+  }
+  .footer-hours-note {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding-top: 0.85rem;
+    border-top: 1px solid rgb(214 32 39 / 0.16);
+    font-size: 0.82rem;
+    color: rgb(255 255 255 / 0.78);
+  }
+  .footer-hours-note-dot {
+    width: 6px; height: 6px;
+    border-radius: 999px;
+    background: rgb(var(--rgb-accent));
+    box-shadow: 0 0 8px rgb(184 146 74 / 0.6);
+    flex-shrink: 0;
+  }
+
+  /* Navigation */
+  .site-footer-nav { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.4rem; }
+  .site-footer-nav a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgb(255 255 255 / 0.72);
+    font-size: 0.92rem;
+    padding: 0.3rem 0;
+    transition: color 0.2s ease, gap 0.25s ease;
+  }
+  .site-footer-nav a:hover {
+    color: rgb(var(--rgb-brand-soft));
+    gap: 0.7rem;
+  }
+  .site-footer-nav-bullet {
+    width: 4px;
+    height: 4px;
+    border-radius: 999px;
+    background: rgb(214 32 39 / 0.55);
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+  .site-footer-nav a:hover .site-footer-nav-bullet {
+    background: rgb(var(--rgb-accent));
+    transform: scale(1.5);
+  }
+
+  /* Bottom */
+  .site-footer-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgb(255 255 255 / 0.08);
+    font-size: 0.78rem;
+    color: rgb(255 255 255 / 0.5);
+  }
+  .site-footer-copy { margin: 0; }
+  .site-footer-legal { display: flex; flex-wrap: wrap; gap: 1.25rem; }
+  .site-footer-legal a {
+    color: rgb(255 255 255 / 0.65);
+    transition: color 0.2s ease;
+  }
+  .site-footer-legal a:hover { color: rgb(var(--rgb-brand-soft)); }
+  .site-footer-demo {
+    margin: 0;
+    color: rgb(255 255 255 / 0.35);
+    font-style: italic;
+  }
+</style>

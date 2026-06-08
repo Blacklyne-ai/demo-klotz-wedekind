@@ -1,0 +1,148 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import { site, telLink, mailLink } from '../data/site';
+---
+
+<Layout
+  title={`Impressum - ${site.name}`}
+  description="Impressum der Klotz + Wedekind Karosserie- und Nutzfahrzeugtechnik GmbH, Hamburg-Wilhelmsburg."
+  current="impressum"
+  noindex={false}
+>
+
+  <section class="subpage-hero ink-grid">
+    <div class="container-rd relative pt-32 md:pt-36 pb-10 md:pb-14">
+      <div class="max-w-3xl">
+        <span class="eyebrow eyebrow-light">Rechtliches</span>
+        <h1 class="heading-display mt-4 text-balance" style="color:#fff">Impressum</h1>
+        <p class="lead-on-dark mt-5 text-pretty">
+          Angaben gemäß § 5 TMG für {site.legalName}.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-narrow">
+      <article class="legal-doc">
+        <h2 class="legal-h2">Angaben gemäß § 5 TMG</h2>
+        <p>
+          <strong>{site.legalName}</strong><br />
+          {site.address.street}<br />
+          {site.address.postcode} {site.address.city}<br />
+          Deutschland
+        </p>
+
+        <h3 class="legal-h3">Vertreten durch</h3>
+        <p>
+          Jörg Wedekind (Werkstattleitung &amp; Vertrieb)<br />
+          Anja Mädel (Geschäftsführung &amp; Buchhaltung)
+        </p>
+
+        <h3 class="legal-h3">Kontakt</h3>
+        <p>
+          Telefon: <a href={telLink}>{site.phoneDisplay}</a><br />
+          Fax: {site.fax}<br />
+          E-Mail: <a href={mailLink}>{site.email}</a>
+        </p>
+
+        <h3 class="legal-h3">Registereintrag</h3>
+        <p>
+          Eintragung im Handelsregister<br />
+          Registergericht: Amtsgericht Hamburg<br />
+          Registernummer: HRB 40838
+        </p>
+
+        <h3 class="legal-h3">Umsatzsteuer-ID</h3>
+        <p>
+          Umsatzsteuer-Identifikationsnummer gemäß § 27a Umsatzsteuergesetz:<br />
+          {site.legal.ustId}
+        </p>
+
+        <h3 class="legal-h3">Steuernummer</h3>
+        <p>{site.legal.steuerNr}</p>
+
+        <h3 class="legal-h3">Datenschutzbeauftragter</h3>
+        <p>{site.legal.dsb}</p>
+
+        <h2 class="legal-h2 mt-12">Haftung für Inhalte</h2>
+        <p>
+          Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den
+          allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch
+          nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach
+          Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.
+        </p>
+        <p>
+          Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen
+          Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt
+          der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden entsprechender
+          Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.
+        </p>
+
+        <h2 class="legal-h2">Haftung für Links</h2>
+        <p>
+          Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss
+          haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte
+          der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.
+          Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft.
+        </p>
+
+        <h2 class="legal-h2">Urheberrecht</h2>
+        <p>
+          Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem
+          deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der
+          Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des
+          jeweiligen Autors bzw. Erstellers.
+        </p>
+
+        <hr class="legal-hr" />
+        <p class="text-muted text-sm">
+          Demo-Konzeptseite erstellt von Blacklyne. Inhaltliche Verantwortung trägt {site.legalName}.
+        </p>
+      </article>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .legal-doc {
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+    background: linear-gradient(135deg, #fff 0%, rgb(var(--rgb-paper)) 100%);
+    border: 1px solid rgb(var(--rgb-line));
+    border-radius: var(--r-lg);
+    color: rgb(var(--rgb-ink-soft));
+    line-height: 1.7;
+  }
+  .legal-h2 {
+    font-family: var(--font-headline);
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: rgb(var(--rgb-ink));
+    letter-spacing: -0.014em;
+    margin: 2rem 0 0.75rem;
+  }
+  .legal-h2:first-child { margin-top: 0; }
+  .legal-h3 {
+    font-family: var(--font-headline);
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: rgb(var(--rgb-ink));
+    letter-spacing: -0.01em;
+    margin: 1.5rem 0 0.5rem;
+  }
+  .legal-doc p { margin: 0.65rem 0; }
+  .legal-doc a {
+    color: rgb(var(--rgb-brand-deep));
+    text-decoration: underline;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
+  }
+  .legal-doc a:hover { color: rgb(var(--rgb-brand)); }
+  .legal-hr {
+    border: 0;
+    border-top: 1px solid rgb(var(--rgb-line));
+    margin: 2.5rem 0 1.5rem;
+  }
+</style>

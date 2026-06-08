@@ -1,0 +1,276 @@
+---
+import { nav, fullNav, telLink, site } from '../data/site';
+import Icon from './Icon.astro';
+import Logo from './Logo.astro';
+const { current = '' } = Astro.props;
+---
+
+<header id="site-header" class="fixed top-0 left-0 right-0 z-50">
+  <!-- Top-Trust-Bar -->
+  <div class="trust-bar hidden md:block">
+    <div class="container-rd flex items-center justify-between gap-6 py-1.5 text-[0.72rem]">
+      <span class="trust-bar-item">
+        <span class="dot-glow"></span>
+        <em class="not-italic">Seit 1909 · 115 Jahre Tradition</em>
+      </span>
+
+      <div class="flex items-center gap-6">
+        <span class="trust-bar-item">
+          <Icon name="MapPin" size={11} strokeWidth={2.2} />
+          <span>{site.address.street}, {site.address.district}</span>
+        </span>
+        <span class="trust-bar-item">
+          <Icon name="Clock" size={11} strokeWidth={2.2} />
+          <span>Mo-Fr 07:00 - 18:00 · Sa 07:00 - 13:00</span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Glas-Pillen-Nav -->
+  <div class="container-rd pt-3 md:pt-4">
+    <div
+      id="nav-shell"
+      class="flex items-center justify-between gap-3 pl-2.5 pr-2 md:pl-4 md:pr-3 py-1 md:py-2 transition-all duration-300"
+    >
+      <a href="/" class="flex-shrink-0 header-logo" aria-label={`${site.name} - Startseite`}>
+        <Logo variant="dark" size="md" />
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-0.5" aria-label="Hauptnavigation">
+        {nav.map((item) => (
+          <a href={item.href} class={`nav-pill ${current === item.current ? 'active' : ''}`}>
+            {item.label}
+          </a>
+        ))}
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <a href={telLink} class="btn-call hidden md:inline-flex" aria-label={`Jetzt anrufen: ${site.phoneDisplay}`}>
+          <span class="btn-call-icon" aria-hidden="true">
+            <Icon name="Phone" size={14} strokeWidth={2.4} />
+          </span>
+          <span class="text-[0.92rem] font-bold whitespace-nowrap">Jetzt anrufen</span>
+        </a>
+        <button id="menu-toggle" class="lg:hidden burger-btn text-ink" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-menu">
+          <span class="hamburger" aria-hidden="true"><span></span><span></span><span></span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="hidden lg:hidden mt-2 mx-4 rounded-2xl overflow-hidden" style="background: rgb(var(--rgb-paper) / 0.98); backdrop-filter: blur(20px); border: 1px solid rgb(var(--rgb-line));">
+    <nav class="flex flex-col p-4" aria-label="Mobile Navigation">
+      {fullNav.map((item) => (
+        <a href={item.href} class={`py-3 px-2 border-b border-line nav-link ${current === item.current ? 'active' : ''}`}>{item.label}</a>
+      ))}
+      <a href={telLink} class="btn btn-primary mt-4">
+        <Icon name="Phone" size={15} strokeWidth={2.2} />
+        {site.phoneDisplay}
+      </a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .trust-bar {
+    background: rgb(var(--rgb-anthracite-deep));
+    color: rgb(255 255 255 / 0.72);
+    border-bottom: 1px solid rgb(255 255 255 / 0.05);
+  }
+  .trust-bar-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .trust-bar-item em {
+    font-family: var(--font-sans);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgb(var(--rgb-brand-soft));
+  }
+  .dot-glow {
+    display: inline-block;
+    width: 6px; height: 6px;
+    border-radius: 999px;
+    background: rgb(var(--rgb-brand));
+    box-shadow: 0 0 0 0 rgb(214 32 39 / 0.55);
+    animation: glow-dot 2.2s ease-out infinite;
+  }
+  @keyframes glow-dot {
+    0%   { box-shadow: 0 0 0 0 rgb(214 32 39 / 0.55); }
+    70%  { box-shadow: 0 0 0 7px rgb(214 32 39 / 0); }
+    100% { box-shadow: 0 0 0 0 rgb(214 32 39 / 0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .dot-glow { animation: none; }
+  }
+
+  #nav-shell {
+    background:
+      linear-gradient(135deg, rgb(var(--rgb-paper) / 0.92) 0%, rgb(var(--rgb-paper-50) / 0.85) 100%);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgb(var(--rgb-line) / 0.5);
+    border-radius: 999px;
+    box-shadow:
+      0 1px 2px rgb(23 23 23 / 0.04),
+      0 12px 38px -10px rgb(23 23 23 / 0.14),
+      inset 0 1px 0 0 rgb(255 255 255 / 0.7),
+      inset 0 -1px 0 0 rgb(214 32 39 / 0.05);
+  }
+  #site-header.is-scrolled #nav-shell {
+    background:
+      linear-gradient(135deg, rgb(var(--rgb-paper) / 0.96) 0%, rgb(var(--rgb-paper-50) / 0.93) 100%);
+    box-shadow:
+      0 1px 2px rgb(23 23 23 / 0.06),
+      0 16px 44px -12px rgb(23 23 23 / 0.2),
+      inset 0 1px 0 0 rgb(255 255 255 / 0.8),
+      inset 0 -1px 0 0 rgb(214 32 39 / 0.08);
+  }
+
+  :global(.nav-pill) {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: rgb(var(--rgb-ink) / 0.78);
+    font-weight: 600;
+    font-size: 0.88rem;
+    padding: 0.6rem 1rem;
+    border-radius: 999px;
+    transition: color 0.2s ease, background 0.25s ease, transform 0.2s ease;
+    overflow: hidden;
+  }
+  :global(.nav-pill::before) {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgb(var(--rgb-brand) / 0.14), rgb(var(--rgb-accent) / 0.08));
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    border-radius: inherit;
+  }
+  :global(.nav-pill:hover::before) { opacity: 1; }
+  :global(.nav-pill:hover) { color: rgb(var(--rgb-ink)); }
+  :global(.nav-pill.active) {
+    color: #fff;
+    background: linear-gradient(135deg, rgb(var(--rgb-brand)) 0%, rgb(var(--rgb-brand-deep)) 100%);
+    box-shadow:
+      0 4px 14px -4px rgb(255 57 27 / 0.55),
+      inset 0 1px 0 0 rgb(255 255 255 / 0.25);
+  }
+  :global(.nav-pill.active::before) { display: none; }
+
+  .btn-call {
+    position: relative;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.42rem 0.95rem 0.42rem 0.42rem;
+    background: linear-gradient(135deg, rgb(var(--rgb-brand)) 0%, rgb(var(--rgb-brand-deep)) 100%);
+    color: #fff;
+    border-radius: 999px;
+    box-shadow:
+      0 4px 14px -4px rgb(214 32 39 / 0.5),
+      inset 0 1px 0 0 rgb(255 255 255 / 0.22);
+    transition: transform 0.2s ease, box-shadow 0.25s ease, filter 0.2s ease;
+    overflow: hidden;
+  }
+  .btn-call::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(115deg, transparent 30%, rgb(255 255 255 / 0.2) 50%, transparent 70%);
+    transform: translateX(-100%);
+    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+  }
+  .btn-call:hover {
+    transform: translateY(-1px);
+    box-shadow:
+      0 10px 22px -6px rgb(214 32 39 / 0.6),
+      inset 0 1px 0 0 rgb(255 255 255 / 0.25);
+    filter: saturate(1.08);
+  }
+  .btn-call:hover::before { transform: translateX(100%); }
+  .btn-call-icon {
+    position: relative;
+    width: 26px; height: 26px;
+    border-radius: 999px;
+    background: rgb(255 255 255 / 0.2);
+    display: inline-flex; align-items: center; justify-content: center;
+    z-index: 1;
+  }
+  .btn-call > span:last-child { position: relative; z-index: 1; }
+
+  /* Mobile-Logo schmaler, damit die Pille kompakt bleibt (Memory: mobile_header_pill) */
+  .header-logo :global(.brand-logo-img) {
+    height: 30px !important;
+  }
+  @media (min-width: 768px) {
+    .header-logo :global(.brand-logo-img) {
+      height: 42px !important;
+    }
+  }
+
+  /* Burger-Button kompakt, mittig in der Pille */
+  .burger-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    border-radius: 999px;
+    transition: background 0.2s ease;
+  }
+  .burger-btn:hover { background: rgb(var(--rgb-brand) / 0.08); }
+  @media (min-width: 768px) {
+    .burger-btn { width: 40px; height: 40px; }
+  }
+
+  .hamburger { display: inline-flex; flex-direction: column; justify-content: center; gap: 5px; width: 20px; height: 20px; }
+  .hamburger span { display: block; width: 20px; height: 1.5px; background: rgb(var(--rgb-ink)); border-radius: 2px; transition: transform 0.3s ease, opacity 0.2s ease; transform-origin: center; }
+  .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+</style>
+
+<script is:inline>
+  (function () {
+    var header = document.getElementById('site-header');
+    var toggle = document.getElementById('menu-toggle');
+    var menu = document.getElementById('mobile-menu');
+    var burger = toggle ? toggle.querySelector('.hamburger') : null;
+
+    function isOpen() { return menu && !menu.classList.contains('hidden'); }
+    function setOpen(open) {
+      if (!menu) return;
+      menu.classList.toggle('hidden', !open);
+      if (burger) burger.classList.toggle('open', open);
+      if (toggle) {
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        toggle.setAttribute('aria-label', open ? 'Menue schließen' : 'Menue öffnen');
+      }
+      document.body.style.overflow = open ? 'hidden' : '';
+    }
+
+    if (toggle) toggle.addEventListener('click', function (e) { e.stopPropagation(); setOpen(!isOpen()); });
+    if (menu) menu.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { setOpen(false); }); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && isOpen()) setOpen(false); });
+    document.addEventListener('click', function (e) { if (isOpen() && header && !header.contains(e.target)) setOpen(false); });
+    window.addEventListener('resize', function () { if (window.innerWidth >= 1024 && isOpen()) setOpen(false); });
+
+    var ticking = false;
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () {
+        if (header) header.classList.toggle('is-scrolled', window.scrollY > 20);
+        ticking = false;
+      });
+    }
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  })();
+</script>

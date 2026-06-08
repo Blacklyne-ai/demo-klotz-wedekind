@@ -1,0 +1,124 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { site, mailLink } from '../data/site';
+---
+
+<Layout
+  title={`Datenschutz - ${site.name}`}
+  description="Datenschutzerklärung der Klotz + Wedekind Karosserie- und Nutzfahrzeugtechnik GmbH."
+  current="datenschutz"
+>
+
+  <section class="subpage-hero ink-grid">
+    <div class="container-rd relative pt-32 md:pt-36 pb-10 md:pb-14">
+      <div class="max-w-3xl">
+        <span class="eyebrow eyebrow-light">Rechtliches</span>
+        <h1 class="heading-display mt-4 text-balance" style="color:#fff">Datenschutz</h1>
+        <p class="lead-on-dark mt-5 text-pretty">
+          Informationen zur Verarbeitung personenbezogener Daten auf dieser Website.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-narrow">
+      <article class="legal-doc">
+        <h2 class="legal-h2">1. Verantwortlicher</h2>
+        <p>
+          <strong>{site.legalName}</strong><br />
+          {site.address.street}, {site.address.postcode} {site.address.city}<br />
+          Telefon: {site.phoneDisplay}<br />
+          E-Mail: <a href={mailLink}>{site.email}</a>
+        </p>
+
+        <h2 class="legal-h2">2. Datenschutzbeauftragter</h2>
+        <p>{site.legal.dsb}</p>
+
+        <h2 class="legal-h2">3. Verarbeitete Daten beim Besuch dieser Website</h2>
+        <p>
+          Beim Aufruf dieser Website werden durch den Browser automatisch Informationen an den Server
+          dieser Website gesendet und temporär in einem sogenannten Logfile gespeichert: IP-Adresse,
+          Datum und Uhrzeit der Anfrage, Inhalt der Anforderung (konkrete Seite), Browsertyp und
+          Betriebssystem sowie Referrer-URL.
+        </p>
+        <p>
+          Die Verarbeitung erfolgt zur Wahrung unserer berechtigten Interessen an einer funktional und
+          sicher bereitgestellten Website (Art. 6 Abs. 1 lit. f DSGVO).
+        </p>
+
+        <h2 class="legal-h2">4. Cookies</h2>
+        <p>
+          Diese Website verwendet ausschließlich technisch notwendige Cookies. Es findet keine
+          Verarbeitung von Nutzerprofilen oder Tracking statt. Lediglich der Status des Cookie-Hinweises
+          wird lokal in Ihrem Browser gespeichert.
+        </p>
+
+        <h2 class="legal-h2">5. Kontaktaufnahme per E-Mail oder Telefon</h2>
+        <p>
+          Wenn Sie uns per E-Mail oder Telefon kontaktieren, werden die von Ihnen mitgeteilten Daten
+          (Name, Telefonnummer, E-Mail-Adresse, Anliegen) zur Bearbeitung Ihrer Anfrage und etwaiger
+          Folgemaßnahmen gespeichert. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b und f DSGVO.
+        </p>
+
+        <h2 class="legal-h2">6. Google Maps</h2>
+        <p>
+          Wir nutzen Google Maps zur Darstellung unseres Standorts. Beim Aufruf der Karte werden
+          Verbindungsdaten an Google übertragen. Anbieter ist Google Ireland Limited, Gordon House,
+          Barrow Street, Dublin 4, Irland.
+        </p>
+
+        <h2 class="legal-h2">7. Ihre Rechte</h2>
+        <p>
+          Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung,
+          Datenübertragbarkeit und Widerspruch. Außerdem steht Ihnen ein Beschwerderecht bei einer
+          Datenschutzaufsichtsbehörde zu - zuständig ist der Hamburgische Beauftragte für Datenschutz
+          und Informationsfreiheit.
+        </p>
+
+        <h2 class="legal-h2">8. SSL/TLS-Verschlüsselung</h2>
+        <p>
+          Diese Website nutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte
+          eine SSL- bzw. TLS-Verschlüsselung. Sie erkennen eine verschlüsselte Verbindung an der „https://"
+          in der Adresszeile Ihres Browsers.
+        </p>
+
+        <hr class="legal-hr" />
+        <p class="text-muted text-sm">Stand: {new Date().getFullYear()}.</p>
+      </article>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .legal-doc {
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+    background: linear-gradient(135deg, #fff 0%, rgb(var(--rgb-paper)) 100%);
+    border: 1px solid rgb(var(--rgb-line));
+    border-radius: var(--r-lg);
+    color: rgb(var(--rgb-ink-soft));
+    line-height: 1.7;
+  }
+  .legal-h2 {
+    font-family: var(--font-headline);
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: rgb(var(--rgb-ink));
+    letter-spacing: -0.014em;
+    margin: 2rem 0 0.65rem;
+  }
+  .legal-h2:first-child { margin-top: 0; }
+  .legal-doc p { margin: 0.55rem 0; }
+  .legal-doc a {
+    color: rgb(var(--rgb-brand-deep));
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .legal-doc a:hover { color: rgb(var(--rgb-brand)); }
+  .legal-hr {
+    border: 0;
+    border-top: 1px solid rgb(var(--rgb-line));
+    margin: 2rem 0 1.25rem;
+  }
+</style>

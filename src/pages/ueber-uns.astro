@@ -1,0 +1,331 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import { site, telLink, mailLink } from '../data/site';
+---
+
+<Layout
+  title={`Über uns - ${site.name} seit 1909`}
+  description="Klotz + Wedekind: Gegründet 1909 von Hermann Klotz als Stellmacherei. Heute in dritter Generation der Familie Wedekind. 115 Jahre Heritage in Hamburg-Wilhelmsburg."
+  current="ueber-uns"
+>
+
+  <!-- Hero -->
+  <section class="subpage-hero ink-grid">
+    <div class="container-rd relative pt-32 md:pt-40 pb-12 md:pb-16">
+      <div class="grid lg:grid-cols-[1.05fr_0.95fr] gap-10 items-center">
+        <div>
+          <span class="eyebrow eyebrow-light">115 Jahre · 3 Generationen · seit 1909</span>
+          <h1 class="heading-display mt-4 text-balance" style="color:#fff">
+            Alles
+            <span class="accent-brand"> aus einer Hand …</span>
+          </h1>
+          <p class="lead-on-dark mt-5 max-w-2xl text-pretty">
+            Einen Fuhrpark immer perfekt am Laufen zu halten, fordert oft viel Zeit und Kapazitäten.
+            Klotz + Wedekind sorgt mit seinem umfassenden Angebot für Ihre Entlastung.
+          </p>
+        </div>
+
+        <div class="ueber-image-frame">
+          <img
+            src="/images/oldtimer-lkw.jpg"
+            alt="Klotz + Wedekind - Heritage seit 1909"
+            width="800" height="900"
+            loading="eager"
+            decoding="async"
+          />
+          <div class="ueber-image-vignette"></div>
+          <div class="ueber-image-badge">
+            <span class="ueber-image-badge-year">1909</span>
+            <span class="ueber-image-badge-label">Gegründet von Hermann Klotz</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vorteil + Vision -->
+  <section class="section">
+    <div class="container-rd">
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-12">
+        <article class="prose-card">
+          <span class="eyebrow">Der Vorteil</span>
+          <h2 class="heading-lg mt-4">Ein Ansprechpartner. <span class="accent-brand">Alle Bereiche.</span></h2>
+          <p class="lead mt-5">
+            Selbstverständlich haben wir für jeden unserer Tätigkeitsbereiche, ob Karosserie- und Fahrzeugbau,
+            Mechatronik oder Diagnostik einen kompetenten Spezialisten. SIE haben jedoch nur einen
+            Ansprechpartner: Klotz + Wedekind kümmert sich um Ihre Belange in allen Bereichen.
+          </p>
+        </article>
+
+        <article class="prose-card">
+          <span class="eyebrow">Unsere Vision</span>
+          <h2 class="heading-lg mt-4">Ein professioneller <span class="accent-brand">Partner.</span></h2>
+          <p class="lead mt-5">
+            Unseren Kunden immer ein professioneller Partner zu sein. Unser Bestreben ist es, durch
+            kompetenten Service unseren Kunden die Arbeit zu erleichtern und sicher zu stellen, dass der
+            Fuhrpark nicht still steht.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Heritage-Timeline -->
+  <section class="section section-paper-deep">
+    <div class="container-rd">
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <span class="eyebrow">Unsere Geschichte</span>
+        <h2 class="heading-xl mt-4 text-balance">
+          Von der Stellmacherei zur
+          <span class="accent-brand"> Nutzfahrzeugtechnik.</span>
+        </h2>
+        <p class="lead mt-5 text-pretty">
+          Drei Generationen Familie Wedekind. Vom Kutschen-Reparateur in Veddel zum modernen
+          Karosserie- und Nutzfahrzeugtechnik-Betrieb am Stenzelring.
+        </p>
+      </div>
+
+      <ol class="ueber-timeline">
+        {site.heritage.map((h) => (
+          <li class="ueber-timeline-item">
+            <span class="ueber-timeline-year">{h.year}</span>
+            <div class="ueber-timeline-body">
+              <strong class="ueber-timeline-title">{h.title}</strong>
+              <p class="ueber-timeline-text">{h.body}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- Geschaeftsfuehrung -->
+  <section class="section">
+    <div class="container-rd">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="eyebrow">Geschäftsführung · 3. Generation</span>
+        <h2 class="heading-xl mt-4 text-balance">
+          Familie Wedekind.
+          <span class="accent-brand"> Heute.</span>
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        {site.geschaeftsfuehrung.map((gf) => (
+          <article class="gf-card">
+            <span class="gf-card-generation">{gf.generation}</span>
+            <h3 class="gf-card-name">{gf.name}</h3>
+            <p class="gf-card-role">{gf.role}</p>
+            <p class="gf-card-detail">{gf.detail}</p>
+            <div class="gf-card-contact">
+              <a href={`tel:${gf.phoneTel.replace('tel:', '')}`} class="gf-card-link">
+                <Icon name="Phone" size={14} strokeWidth={2.2} />
+                {gf.phone}
+              </a>
+              <a href={`mailto:${gf.email}`} class="gf-card-link">
+                <Icon name="Mail" size={14} strokeWidth={2.2} />
+                {gf.email}
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="final-cta ink-grid">
+    <div class="container-rd relative">
+      <div class="text-center max-w-3xl mx-auto">
+        <span class="eyebrow eyebrow-light">115 Jahre Erfahrung</span>
+        <h2 class="heading-xl mt-4 text-balance" style="color:#fff">
+          Lernen Sie uns
+          <span class="accent-brand"> persönlich kennen.</span>
+        </h2>
+        <p class="lead-on-dark mt-5 text-pretty">
+          Stenzelring 9, Hamburg-Wilhelmsburg. Wir freuen uns auf Ihren Besuch.
+        </p>
+        <div class="mt-9 flex flex-wrap items-center justify-center gap-3">
+          <a href={telLink} class="btn btn-primary btn-lg">
+            <Icon name="Phone" size={17} strokeWidth={2.2} />
+            {site.phoneDisplay}
+          </a>
+          <a href="/kontakt" class="btn btn-on-dark btn-lg">
+            Kontakt &amp; Anfahrt
+            <Icon name="ArrowRight" size={17} strokeWidth={2.2} />
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .ueber-image-frame {
+    position: relative;
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    aspect-ratio: 4 / 5;
+    border: 1px solid rgb(255 255 255 / 0.08);
+    box-shadow:
+      0 24px 60px -20px rgb(0 0 0 / 0.5),
+      inset 0 1px 0 rgb(255 255 255 / 0.08);
+  }
+  .ueber-image-frame img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  .ueber-image-vignette {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 30%, rgb(0 0 0 / 0.7) 100%);
+    pointer-events: none;
+  }
+  .ueber-image-badge {
+    position: absolute;
+    bottom: 1.25rem;
+    left: 1.25rem;
+    background: rgb(255 255 255 / 0.96);
+    backdrop-filter: blur(12px);
+    padding: 0.85rem 1.1rem;
+    border-radius: 12px;
+    border-left: 3px solid rgb(var(--rgb-brand));
+  }
+  .ueber-image-badge-year {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 800;
+    line-height: 1;
+    color: rgb(var(--rgb-brand));
+  }
+  .ueber-image-badge-label {
+    display: block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgb(var(--rgb-ink-soft));
+    margin-top: 0.25rem;
+  }
+
+  .prose-card {
+    padding: 2rem 1.85rem;
+    background: linear-gradient(135deg, #fff 0%, rgb(var(--rgb-paper)) 100%);
+    border: 1px solid rgb(var(--rgb-line));
+    border-radius: var(--r-lg);
+  }
+
+  .ueber-timeline {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 50rem;
+    margin-left: auto; margin-right: auto;
+  }
+  .ueber-timeline-item {
+    display: grid;
+    grid-template-columns: 96px 1fr;
+    gap: 1.25rem;
+    padding: 1.5rem 1.7rem;
+    background: #fff;
+    border: 1px solid rgb(var(--rgb-line));
+    border-radius: var(--r-lg);
+    transition: transform 0.25s ease, border-color 0.25s ease;
+  }
+  .ueber-timeline-item:hover {
+    transform: translateX(3px);
+    border-color: rgb(var(--rgb-brand) / 0.4);
+  }
+  .ueber-timeline-year {
+    font-family: var(--font-display);
+    font-size: 2.3rem;
+    font-weight: 800;
+    color: rgb(var(--rgb-brand));
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .ueber-timeline-body { display: flex; flex-direction: column; gap: 0.35rem; }
+  .ueber-timeline-title {
+    font-family: var(--font-headline);
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: rgb(var(--rgb-ink));
+    letter-spacing: -0.012em;
+  }
+  .ueber-timeline-text {
+    color: rgb(var(--rgb-ink-soft));
+    font-size: 0.94rem;
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  .gf-card {
+    padding: 2rem 1.85rem;
+    background: linear-gradient(135deg, #fff 0%, rgb(var(--rgb-paper)) 100%);
+    border: 1px solid rgb(var(--rgb-line));
+    border-radius: var(--r-lg);
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+  .gf-card:hover {
+    transform: translateY(-3px);
+    border-color: rgb(var(--rgb-brand) / 0.4);
+    box-shadow: 0 16px 40px -16px rgb(23 23 23 / 0.18);
+  }
+  .gf-card-generation {
+    display: inline-block;
+    padding: 0.3rem 0.7rem;
+    background: rgb(var(--rgb-brand-soft));
+    color: rgb(var(--rgb-brand-deep));
+    border-radius: 999px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .gf-card-name {
+    font-family: var(--font-headline);
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: rgb(var(--rgb-ink));
+    letter-spacing: -0.014em;
+    margin: 0 0 0.35rem;
+  }
+  .gf-card-role {
+    font-size: 1rem;
+    font-weight: 700;
+    color: rgb(var(--rgb-brand));
+    margin: 0 0 0.35rem;
+  }
+  .gf-card-detail {
+    font-size: 0.92rem;
+    color: rgb(var(--rgb-ink-soft));
+    line-height: 1.55;
+    margin: 0 0 1.25rem;
+  }
+  .gf-card-contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+  }
+  .gf-card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.55rem 0.95rem;
+    background: rgb(var(--rgb-brand) / 0.06);
+    color: rgb(var(--rgb-brand-deep));
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    transition: background 0.2s ease;
+  }
+  .gf-card-link:hover { background: rgb(var(--rgb-brand) / 0.14); }
+</style>

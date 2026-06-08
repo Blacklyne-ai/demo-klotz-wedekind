@@ -1,0 +1,115 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { site } from '../data/site';
+---
+
+<Layout
+  title={`AGB - ${site.name}`}
+  description="Allgemeine Geschäftsbedingungen der Klotz + Wedekind Karosserie- und Nutzfahrzeugtechnik GmbH."
+  current="agb"
+>
+
+  <section class="subpage-hero ink-grid">
+    <div class="container-rd relative pt-32 md:pt-36 pb-10 md:pb-14">
+      <div class="max-w-3xl">
+        <span class="eyebrow eyebrow-light">Rechtliches</span>
+        <h1 class="heading-display mt-4 text-balance" style="color:#fff">AGB</h1>
+        <p class="lead-on-dark mt-5 text-pretty">
+          Allgemeine Geschäftsbedingungen für Reparaturen und Fahrzeugbau-Aufträge.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-narrow">
+      <article class="legal-doc">
+        <h2 class="legal-h2">Geltungsbereich</h2>
+        <p>
+          Diese Allgemeinen Geschäftsbedingungen gelten für alle Reparatur- und Fahrzeugbau-Aufträge,
+          die mit der {site.legalName} (im Folgenden „Klotz + Wedekind") geschlossen werden, soweit
+          nicht im Einzelfall etwas anderes ausdrücklich vereinbart wurde.
+        </p>
+
+        <h2 class="legal-h2">Auftragserteilung</h2>
+        <p>
+          Der Auftrag soll schriftlich erteilt werden. Mündliche Aufträge bedürfen der schriftlichen
+          Bestätigung. Bei nicht vorhersehbaren Mehrarbeiten ist der Auftraggeber umgehend zu
+          informieren; bei größeren Mehrkosten ist die Zustimmung des Auftraggebers einzuholen.
+        </p>
+
+        <h2 class="legal-h2">Preise und Zahlung</h2>
+        <p>
+          Maßgeblich ist die zum Zeitpunkt des Vertragsabschlusses gültige Preisliste zuzüglich der
+          gesetzlichen Umsatzsteuer. Die Rechnung ist ohne Abzug fällig nach Abnahme des Fahrzeugs,
+          spätestens jedoch 14 Tage nach Rechnungsstellung.
+        </p>
+
+        <h2 class="legal-h2">Pfandrecht</h2>
+        <p>
+          An den in unseren Besitz gelangten Gegenständen steht uns wegen unserer Forderungen aus dem
+          Auftrag ein vertragliches Pfandrecht zu.
+        </p>
+
+        <h2 class="legal-h2">Gewährleistung und Haftung</h2>
+        <p>
+          Es gelten die gesetzlichen Gewährleistungsvorschriften. Mängel sind unverzüglich nach
+          Feststellung schriftlich anzuzeigen. Bei berechtigten Beanstandungen erfolgt Nachbesserung
+          oder Neulieferung; bei Fehlschlagen kann der Auftraggeber Rücktritt oder Minderung verlangen.
+        </p>
+
+        <h2 class="legal-h2">Abnahme und Lieferzeit</h2>
+        <p>
+          Vereinbarte Liefer- und Fertigstellungstermine sind Annäherungswerte; unverschuldete
+          Verzögerungen verlängern die Frist angemessen. Verbindliche Liefertermine bedürfen der
+          ausdrücklichen schriftlichen Vereinbarung.
+        </p>
+
+        <h2 class="legal-h2">Eigentumsvorbehalt</h2>
+        <p>
+          Eingebaute Ersatzteile bleiben bis zur vollständigen Bezahlung Eigentum von Klotz + Wedekind,
+          soweit dies rechtlich möglich ist.
+        </p>
+
+        <h2 class="legal-h2">Gerichtsstand</h2>
+        <p>
+          Für alle Streitigkeiten aus dem Vertragsverhältnis ist - soweit gesetzlich zulässig -
+          Hamburg Gerichtsstand. Es gilt das Recht der Bundesrepublik Deutschland.
+        </p>
+
+        <hr class="legal-hr" />
+        <p class="text-muted text-sm">
+          Stand: Mai 2018. Aktuelle Fassung auf Anfrage. Die ausführlichen AGB für Reparatur und
+          Fahrzeugbau stellen wir Ihnen auf Wunsch gerne zur Verfügung.
+        </p>
+      </article>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .legal-doc {
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+    background: linear-gradient(135deg, #fff 0%, rgb(var(--rgb-paper)) 100%);
+    border: 1px solid rgb(var(--rgb-line));
+    border-radius: var(--r-lg);
+    color: rgb(var(--rgb-ink-soft));
+    line-height: 1.7;
+  }
+  .legal-h2 {
+    font-family: var(--font-headline);
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: rgb(var(--rgb-ink));
+    letter-spacing: -0.014em;
+    margin: 2rem 0 0.65rem;
+  }
+  .legal-h2:first-child { margin-top: 0; }
+  .legal-doc p { margin: 0.55rem 0; }
+  .legal-hr {
+    border: 0;
+    border-top: 1px solid rgb(var(--rgb-line));
+    margin: 2rem 0 1.25rem;
+  }
+</style>

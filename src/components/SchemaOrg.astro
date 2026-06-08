@@ -1,0 +1,77 @@
+---
+import { site } from '../data/site';
+import { services } from '../data/services';
+
+interface Props { schema?: object | null; }
+const { schema = null } = Astro.props;
+
+const business = {
+  '@context': 'https://schema.org',
+  '@type': ['AutomotiveBusiness', 'AutoBodyShop', 'AutoRepair', 'LocalBusiness'],
+  '@id': site.url + '#business',
+  name: site.name,
+  legalName: site.legalName,
+  description: site.description,
+  url: site.url,
+  telephone: site.phoneIntl,
+  email: site.email,
+  image: site.url + '/images/hero-fleet.jpg',
+  logo: site.url + '/logo.png',
+  priceRange: '€€',
+  currenciesAccepted: 'EUR',
+  paymentAccepted: ['Cash', 'Debit Card', 'Credit Card', 'Invoice'],
+  slogan: site.tagline,
+  foundingDate: '1909',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: site.address.street,
+    addressLocality: site.address.city,
+    postalCode: site.address.postcode,
+    addressCountry: 'DE',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: site.address.lat,
+    longitude: site.address.lng,
+  },
+  hasMap: site.googleMapsUrl,
+  areaServed: [
+    { '@type': 'Place', name: 'Hamburg' },
+    { '@type': 'Place', name: 'Hamburg-Wilhelmsburg' },
+    { '@type': 'Place', name: 'Norddeutschland' },
+  ],
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '07:00',
+      closes: '18:00',
+    },
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Saturday'],
+      opens: '07:00',
+      closes: '13:00',
+    },
+  ],
+  knowsAbout: [
+    'Karosseriebau', 'Fahrzeugbau', 'Nutzfahrzeug-Service', 'Lackiererei',
+    'Unfallinstandsetzung', 'Rahmenrichtstand', 'GTÜ-Stützpunkt', 'HU-Abnahme',
+    'SP-Abnahme §29 StVZO', 'Fahrtschreiberprüfung §57b', 'Mechatronik',
+    'Hydraulik', 'Wohnmobil-Service', 'Caravan-Reparatur',
+  ],
+  makesOffer: services.map((s) => ({
+    '@type': 'Offer',
+    itemOffered: { '@type': 'Service', name: s.title, description: s.short },
+  })),
+  employee: site.geschaeftsfuehrung.map((gf) => ({
+    '@type': 'Person',
+    name: gf.name,
+    jobTitle: gf.role,
+    email: gf.email,
+    telephone: gf.phone,
+  })),
+};
+---
+<script type="application/ld+json" set:html={JSON.stringify(business)} />
+{schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}

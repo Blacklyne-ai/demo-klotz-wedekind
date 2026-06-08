@@ -1,0 +1,285 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import { site, telLink, mailLink } from '../data/site';
+---
+
+<Layout
+  title={`Kontakt - ${site.name} Hamburg-Wilhelmsburg`}
+  description="Klotz + Wedekind in Hamburg-Wilhelmsburg, Stenzelring 9. Telefon 040 - 734 83 - 0, info@klotz-wedekind.de. Mo - Fr 07:00 - 18:00 Uhr · Sa 07:00 - 13:00 Uhr."
+  current="kontakt"
+>
+
+  <!-- Hero -->
+  <section class="subpage-hero ink-grid">
+    <div class="container-rd relative pt-32 md:pt-40 pb-12 md:pb-16">
+      <div class="max-w-3xl">
+        <span class="eyebrow eyebrow-light">Direkt zum Stenzelring</span>
+        <h1 class="heading-display mt-4 text-balance" style="color:#fff">
+          Sprechen Sie
+          <span class="accent-brand"> uns an.</span>
+        </h1>
+        <p class="lead-on-dark mt-5 max-w-2xl text-pretty">
+          Rufen Sie an, schreiben Sie eine E-Mail oder kommen Sie persönlich vorbei. Wir kümmern uns
+          schnell um Ihr Anliegen.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kontakt-Hauptblock -->
+  <section class="section">
+    <div class="container-rd">
+      <div class="grid lg:grid-cols-[0.95fr_1.05fr] gap-8 lg:gap-10 items-stretch">
+        <div class="contact-panel">
+          <h2 class="heading-md mb-1">Kontakt-Wege</h2>
+          <p class="text-ink-700 text-[0.94rem] mb-6">
+            Statt Kontaktformular: direkter Draht. Wir sind erreichbar - mit echten Menschen am anderen Ende.
+          </p>
+
+          <div class="contact-tile-grid">
+            <a href={telLink} class="contact-tile">
+              <span class="contact-tile-icon"><Icon name="Phone" size={18} strokeWidth={2.2} /></span>
+              <div>
+                <span class="contact-tile-label">Zentrale</span>
+                <strong class="contact-tile-value">{site.phoneDisplay}</strong>
+              </div>
+            </a>
+            <a href={mailLink} class="contact-tile">
+              <span class="contact-tile-icon"><Icon name="Mail" size={18} strokeWidth={2.2} /></span>
+              <div>
+                <span class="contact-tile-label">E-Mail</span>
+                <strong class="contact-tile-value">{site.email}</strong>
+              </div>
+            </a>
+            <a href={`mailto:${site.emailBewerbung}`} class="contact-tile">
+              <span class="contact-tile-icon"><Icon name="UserPlus" size={18} strokeWidth={2.2} /></span>
+              <div>
+                <span class="contact-tile-label">Bewerbungen</span>
+                <strong class="contact-tile-value">{site.emailBewerbung}</strong>
+              </div>
+            </a>
+            <a href={`mailto:${site.emailRechnungen}`} class="contact-tile">
+              <span class="contact-tile-icon"><Icon name="FileText" size={18} strokeWidth={2.2} /></span>
+              <div>
+                <span class="contact-tile-label">E-Rechnungen</span>
+                <strong class="contact-tile-value">{site.emailRechnungen}</strong>
+              </div>
+            </a>
+            <a href={site.googleDirectionsUrl} target="_blank" rel="noopener" class="contact-tile">
+              <span class="contact-tile-icon"><Icon name="Navigation" size={18} strokeWidth={2.2} /></span>
+              <div>
+                <span class="contact-tile-label">Anfahrt</span>
+                <strong class="contact-tile-value">Route berechnen</strong>
+              </div>
+            </a>
+            <div class="contact-tile contact-tile-static">
+              <span class="contact-tile-icon"><Icon name="Printer" size={18} strokeWidth={2.2} /></span>
+              <div>
+                <span class="contact-tile-label">Fax</span>
+                <strong class="contact-tile-value">{site.fax}</strong>
+              </div>
+            </div>
+          </div>
+
+          <h3 class="heading-md mt-8 mb-3">Anschrift</h3>
+          <address class="not-italic text-ink-700 leading-relaxed">
+            <strong class="block text-ink font-extrabold mb-1">{site.legalName}</strong>
+            {site.address.street}<br />
+            {site.address.postcode} {site.address.city}<br />
+            <span class="text-muted text-sm">{site.address.district}</span>
+          </address>
+
+          <h3 class="heading-md mt-8 mb-3">Öffnungszeiten</h3>
+          <ul class="hours-list">
+            {site.hours.map((h) => (
+              <li class="hours-row">
+                <span class="hours-day">{h.day}</span>
+                <strong class="hours-time">{h.open} - {h.close} Uhr</strong>
+              </li>
+            ))}
+            <li class="hours-row hours-row-note">
+              <span class="hours-day">Sonntag</span>
+              <span class="hours-note">geschlossen</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="map-frame">
+          <iframe
+            src={site.googleMapsEmbed}
+            width="600"
+            height="650"
+            style="border:0;"
+            allowfullscreen={false}
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title={`Standort ${site.name}`}
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Anfahrt-Hinweise -->
+  <section class="section section-paper-deep">
+    <div class="container-rd">
+      <div class="text-center max-w-3xl mx-auto mb-10">
+        <span class="eyebrow">Anfahrt</span>
+        <h2 class="heading-xl mt-4 text-balance">
+          Zentral in
+          <span class="accent-brand"> Wilhelmsburg.</span>
+        </h2>
+        <p class="lead mt-5 text-pretty">
+          Im Dreieck zwischen A1, A7 und Hamburger Hafen - günstig erreichbar mit Nutzfahrzeugen aller Größen.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
+        <div class="anfahrt-card">
+          <span class="anfahrt-icon"><Icon name="ArrowDownToLine" size={22} strokeWidth={2} /></span>
+          <strong class="anfahrt-title">Von A1</strong>
+          <p class="anfahrt-text">Abfahrt Stillhorn - Richtung Wilhelmsburg / Reiherstieg.</p>
+        </div>
+        <div class="anfahrt-card">
+          <span class="anfahrt-icon"><Icon name="ArrowDownToLine" size={22} strokeWidth={2} /></span>
+          <strong class="anfahrt-title">Von A7</strong>
+          <p class="anfahrt-text">Über Elbtunnel - dann Richtung Hafen / Wilhelmsburg.</p>
+        </div>
+        <div class="anfahrt-card">
+          <span class="anfahrt-icon"><Icon name="Anchor" size={22} strokeWidth={2} /></span>
+          <strong class="anfahrt-title">Hafen</strong>
+          <p class="anfahrt-text">Direkt aus dem Hamburger Hafen über die Reichsstraße erreichbar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .contact-panel {
+    background: linear-gradient(135deg, #fff 0%, rgb(var(--rgb-paper)) 100%);
+    border: 1px solid rgb(var(--rgb-line));
+    border-radius: var(--r-lg);
+    padding: clamp(1.75rem, 3vw, 2.5rem);
+  }
+  .contact-tile-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.7rem;
+  }
+  .contact-tile {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.85rem 1rem;
+    background: rgb(var(--rgb-paper-50));
+    border: 1px solid rgb(var(--rgb-line));
+    border-radius: 10px;
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  }
+  .contact-tile:hover:not(.contact-tile-static) {
+    transform: translateY(-2px);
+    border-color: rgb(var(--rgb-brand) / 0.4);
+    background: #fff;
+  }
+  .contact-tile-icon {
+    width: 38px; height: 38px;
+    border-radius: 9px;
+    background: rgb(var(--rgb-brand) / 0.1);
+    color: rgb(var(--rgb-brand));
+    display: inline-flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .contact-tile-label {
+    display: block;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgb(var(--rgb-muted));
+    margin-bottom: 1px;
+  }
+  .contact-tile-value {
+    display: block;
+    font-family: var(--font-headline);
+    font-size: 0.92rem;
+    font-weight: 800;
+    color: rgb(var(--rgb-ink));
+    letter-spacing: -0.008em;
+    line-height: 1.15;
+    word-break: break-all;
+  }
+
+  .map-frame {
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    border: 1px solid rgb(var(--rgb-line));
+    box-shadow: 0 12px 36px -16px rgb(23 23 23 / 0.18);
+    min-height: 500px;
+  }
+  .map-frame iframe { width: 100%; height: 100%; min-height: 500px; display: block; }
+
+  .hours-list { list-style: none; padding: 0; margin: 0; }
+  .hours-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.65rem 0;
+    border-bottom: 1px solid rgb(var(--rgb-line));
+  }
+  .hours-row:last-child { border-bottom: 0; }
+  .hours-day {
+    font-weight: 600;
+    color: rgb(var(--rgb-ink-soft));
+    font-size: 0.94rem;
+  }
+  .hours-time {
+    font-family: var(--font-headline);
+    font-weight: 800;
+    color: rgb(var(--rgb-ink));
+    letter-spacing: -0.008em;
+  }
+  .hours-note {
+    font-size: 0.86rem;
+    color: rgb(var(--rgb-muted));
+    font-style: italic;
+  }
+
+  .anfahrt-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: 1.5rem 1.4rem;
+    background: #fff;
+    border: 1px solid rgb(var(--rgb-line));
+    border-radius: var(--r-lg);
+    transition: transform 0.25s ease, border-color 0.25s ease;
+  }
+  .anfahrt-card:hover {
+    transform: translateY(-3px);
+    border-color: rgb(var(--rgb-brand) / 0.36);
+  }
+  .anfahrt-icon {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    background: rgb(var(--rgb-brand) / 0.1);
+    color: rgb(var(--rgb-brand));
+    display: inline-flex; align-items: center; justify-content: center;
+    margin-bottom: 0.35rem;
+  }
+  .anfahrt-title {
+    font-family: var(--font-headline);
+    font-weight: 800;
+    font-size: 1.05rem;
+    color: rgb(var(--rgb-ink));
+    letter-spacing: -0.012em;
+  }
+  .anfahrt-text {
+    color: rgb(var(--rgb-ink-soft));
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 0;
+  }
+</style>

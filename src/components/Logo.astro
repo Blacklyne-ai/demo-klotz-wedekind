@@ -1,0 +1,67 @@
+---
+// Klotz + Wedekind Logo - Original PNG mit Schriftzug
+// "Klotz + Wedekind / Karosserie- und Nutzfahrzeugtechnik GmbH / seit 1909"
+// Aspect ca. 5:1 (logo-schriftzug.png).
+// variant="dark"  -> fuer helle BGs (Header)
+// variant="light" -> fuer dunkle BGs (Footer) -> Pille zum sauberen Lesen
+interface Props {
+  variant?: 'dark' | 'light';
+  size?: 'sm' | 'md' | 'lg';
+  class?: string;
+}
+const {
+  variant = 'dark',
+  size = 'md',
+  class: className = '',
+} = Astro.props;
+
+const heights = { sm: 30, md: 40, lg: 56 };
+const h = heights[size];
+const w = Math.round(h * (250 / 50));
+---
+
+<span class={`brand-logo ${variant === 'light' ? 'brand-logo-on-dark' : ''} ${className}`} aria-label="Klotz + Wedekind">
+  <img
+    src="/logo.png"
+    alt="Klotz + Wedekind"
+    width={w}
+    height={h}
+    class="brand-logo-img"
+    style={`height: ${h}px; width: auto;`}
+    loading="eager"
+    decoding="async"
+  />
+</span>
+
+<style>
+  .brand-logo {
+    display: inline-flex;
+    align-items: center;
+    line-height: 1;
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), filter 0.3s ease;
+  }
+  .brand-logo:hover {
+    transform: translateY(-1px);
+    filter: drop-shadow(0 4px 16px rgb(214 32 39 / 0.25));
+  }
+  /* Auf dunklem BG: Logo hat weissen Hintergrund - Pille hilft beim Lesen. */
+  .brand-logo-on-dark {
+    background: rgb(255 255 255 / 0.96);
+    padding: 0.5rem 0.85rem;
+    border-radius: 10px;
+    box-shadow:
+      0 6px 18px -6px rgb(0 0 0 / 0.4),
+      inset 0 1px 0 0 rgb(255 255 255 / 0.5);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+  .brand-logo-on-dark:hover {
+    box-shadow:
+      0 10px 24px -8px rgb(214 32 39 / 0.4),
+      inset 0 1px 0 0 rgb(255 255 255 / 0.5);
+  }
+  .brand-logo-img {
+    display: block;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+</style>

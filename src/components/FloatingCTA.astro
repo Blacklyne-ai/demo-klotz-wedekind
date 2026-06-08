@@ -1,0 +1,55 @@
+---
+import { telLink, site } from '../data/site';
+import Icon from './Icon.astro';
+---
+
+<a
+  href={telLink}
+  class="floating-cta xl:hidden"
+  aria-label={`Anrufen ${site.phoneDisplay}`}
+>
+  <span class="floating-cta-icon" aria-hidden="true">
+    <Icon name="Phone" size={14} strokeWidth={2.4} />
+  </span>
+  <span class="floating-cta-label">Anrufen <strong>{site.phoneDisplay}</strong></span>
+</a>
+
+<style>
+  .floating-cta {
+    position: fixed;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 40;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.55rem 1.05rem 0.55rem 0.4rem;
+    background: linear-gradient(135deg, rgb(214 32 39) 0%, rgb(168 22 28) 100%);
+    color: #fff;
+    border-radius: 999px;
+    box-shadow:
+      0 6px 22px -6px rgb(214 32 39 / 0.6),
+      0 2px 6px -1px rgb(0 0 0 / 0.2),
+      inset 0 1px 0 0 rgb(255 255 255 / 0.22);
+    font-family: var(--font-sans);
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 0.005em;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: transform 0.2s ease, box-shadow 0.25s ease;
+  }
+  .floating-cta:active { transform: translateX(-50%) translateY(1px); }
+  .floating-cta-icon {
+    width: 30px; height: 30px;
+    border-radius: 999px;
+    background: rgb(255 255 255 / 0.22);
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+  .floating-cta-label strong {
+    margin-left: 0.25rem;
+    font-weight: 800;
+    letter-spacing: 0.01em;
+  }
+</style>

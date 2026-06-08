@@ -1,0 +1,769 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import { site, telLink, mailLink } from '../data/site';
+import { services, heritageHighlights } from '../data/services';
+---
+
+<Layout
+  title={`${site.name} - Karosserie & Nutzfahrzeugtechnik Hamburg seit 1909`}
+  description={site.description}
+  current="home"
+>
+
+  <!-- ════════ HERO ════════ -->
+  <section class="hero-section">
+    <div class="ghost-watermark" aria-hidden="true">1909</div>
+
+    <div class="container-rd relative pt-28 md:pt-36 pb-12 md:pb-20">
+      <div class="grid lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-14 items-center">
+        <div class="relative z-10">
+          <span class="eyebrow">Karosserie · Fahrzeugbau · Nutzfahrzeuge · Hamburg-Wilhelmsburg · seit 1909</span>
+
+          <h1 class="heading-display mt-5 text-balance">
+            Wenn Maßarbeit gefordert und die Zeit knapp ist,
+            <span class="accent-brand"> müssen Profis ans Werk.</span>
+          </h1>
+
+          <p class="lead mt-6 max-w-2xl text-pretty">
+            Karosserie- &amp; Fahrzeugbau, Nutzfahrzeug-Service, Lackiererei, Reparatur und Unfallinstandsetzung.
+            Damit Ihr Fuhrpark nicht still steht.
+          </p>
+
+          <div class="mt-8 flex flex-wrap items-center gap-3">
+            <a href={telLink} class="btn btn-primary btn-lg">
+              <Icon name="Phone" size={17} strokeWidth={2.2} />
+              {site.phoneDisplay}
+            </a>
+            <a href="/leistungen" class="btn btn-outline btn-lg">
+              Zu unseren Leistungen
+              <Icon name="ArrowRight" size={17} strokeWidth={2.2} />
+            </a>
+          </div>
+
+          <ul class="trust-strip mt-10">
+            {site.trustStrip.map((label, i) => (
+              <>
+                <li class="trust-strip-item">
+                  {i === 0 && <Icon name="Clock" size={13} strokeWidth={2.2} class="trust-strip-icon" />}
+                  {i === 1 && <Icon name="Users" size={13} strokeWidth={2.2} class="trust-strip-icon" />}
+                  {i === 2 && <Icon name="ShieldCheck" size={13} strokeWidth={2.2} class="trust-strip-icon" />}
+                  {i === 3 && <Icon name="Ruler" size={13} strokeWidth={2.2} class="trust-strip-icon" />}
+                  {i === 4 && <Icon name="MapPin" size={13} strokeWidth={2.2} class="trust-strip-icon" />}
+                  {label}
+                </li>
+                {i < site.trustStrip.length - 1 && <li class="trust-strip-sep" aria-hidden="true">·</li>}
+              </>
+            ))}
+          </ul>
+        </div>
+
+        <div class="relative z-10">
+          <div class="hero-photo-frame">
+            <img
+              src="/images/hero-fleet.jpg"
+              alt="Klotz + Wedekind - Nutzfahrzeug-Fuhrpark vor der Werkstatt in Hamburg-Wilhelmsburg"
+              width="980" height="1200"
+              loading="eager"
+              fetchpriority="high"
+              decoding="async"
+            />
+            <div class="hero-photo-vignette"></div>
+
+            <!-- Floating Trust-Card oben rechts: 115 Jahre -->
+            <div class="hero-trust-overlay hero-trust-overlay-top">
+              <span class="hero-trust-overlay-icon">
+                <Icon name="Award" size={18} strokeWidth={2.2} />
+              </span>
+              <span class="hero-trust-overlay-content">
+                <span class="hero-trust-overlay-label">Heritage</span>
+                <span class="hero-trust-overlay-title">Seit 1909 · 115 Jahre</span>
+                <span class="hero-trust-overlay-sub">3 Generationen Familie Wedekind</span>
+              </span>
+            </div>
+
+            <!-- Floating Geschaeftsfuehrung-Card unten links -->
+            <div class="hero-trust-overlay hero-trust-overlay-bottom">
+              <span class="hero-trust-overlay-icon">
+                <Icon name="Users" size={18} strokeWidth={2.2} />
+              </span>
+              <span class="hero-trust-overlay-content">
+                <span class="hero-trust-overlay-label">Geschäftsführung</span>
+                <span class="hero-trust-overlay-title">Jörg Wedekind &amp; Anja Mädel</span>
+                <span class="hero-trust-overlay-sub">3. Generation</span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ HERITAGE-TIMELINE ════════ -->
+  <section class="section section-paper-deep heritage-section">
+    <div class="container-rd">
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <span class="eyebrow">Drei Generationen · seit 1909</span>
+        <h2 class="heading-xl mt-4 text-balance">
+          Drei Generationen.
+          <span class="accent-brand"> Eine Leidenschaft.</span>
+        </h2>
+        <p class="lead mt-5 text-pretty">
+          Seit 1909 - von der Stellmacherei zum modernen Karosserie- und Nutzfahrzeugtechnik-Betrieb.
+          Geleitet von der Familie Wedekind in dritter Generation.
+        </p>
+      </div>
+
+      <div class="heritage-grid">
+        <div class="heritage-image">
+          <img
+            src="/images/oldtimer-lkw.jpg"
+            alt="Klotz + Wedekind Oldtimer-LKW als Symbol für die Heritage seit 1909"
+            width="900" height="700"
+            loading="lazy"
+            decoding="async"
+          />
+          <div class="heritage-image-vignette"></div>
+          <div class="heritage-image-badge">
+            <span class="heritage-image-badge-year">1909</span>
+            <span class="heritage-image-badge-label">Hermann Klotz · Stellmacherei</span>
+          </div>
+        </div>
+
+        <ol class="heritage-list">
+          {site.heritage.map((h) => (
+            <li class="heritage-item">
+              <span class="heritage-year">{h.year}</span>
+              <div class="heritage-body">
+                <strong class="heritage-title">{h.title}</strong>
+                <p class="heritage-text">{h.body}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ 6 LEISTUNGEN (DARK) ════════ -->
+  <section class="section ink-grid">
+    <div class="container-rd">
+      <div class="max-w-3xl mb-14">
+        <span class="eyebrow eyebrow-light">Sechs Bereiche · ein Ansprechpartner</span>
+        <h2 class="heading-xl mt-4 text-balance" style="color:#fff">
+          Sechs Bereiche -
+          <span class="accent-brand"> ein Ansprechpartner.</span>
+        </h2>
+        <p class="lead-on-dark mt-5 text-pretty">
+          Sie haben nur einen Ansprechpartner: Klotz + Wedekind kümmert sich um Ihre Belange in allen Bereichen.
+          Vom Karosseriebau bis zur HU-Abnahme - alles unter einem Dach.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
+        {services.map((s) => (
+          <a href={s.href} class="svc-tile group">
+            <span class="svc-tile-icon">
+              <Icon name={s.iconName} size={26} strokeWidth={1.9} />
+            </span>
+            <span class="svc-tile-cat">{s.cat}</span>
+            <h3 class="svc-tile-title">{s.title}</h3>
+            <p class="svc-tile-text">{s.short}</p>
+            <span class="svc-tile-link">
+              Mehr erfahren
+              <Icon name="ArrowRight" size={14} strokeWidth={2.2} />
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ ALLES AUS EINER HAND ════════ -->
+  <section class="section">
+    <div class="container-rd">
+      <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-16 items-center">
+        <div>
+          <span class="eyebrow">Alles aus einer Hand</span>
+          <h2 class="heading-xl mt-4 text-balance">
+            Ihr Fuhrpark. Ein Ansprechpartner.
+            <span class="accent-brand"> Alles aus einer Hand.</span>
+          </h2>
+          <p class="lead mt-5 text-pretty">
+            Einen Fuhrpark immer perfekt am Laufen zu halten, fordert oft viel Zeit und Kapazitäten.
+            Verschiedene Lieferanten und Ansprechpartner verkomplizieren die Abwicklung. Klotz + Wedekind
+            sorgt mit seinem umfassenden Angebot für Ihre Entlastung.
+          </p>
+          <p class="lead mt-4 text-pretty">
+            Wir kümmern uns ganzheitlich um Ihre Fahrzeuge, damit Sie Ihre Ressourcen besser - nämlich an
+            Ihrem Kunden - einsetzen können.
+          </p>
+
+          <div class="usp-stats">
+            {site.stats.map((stat) => (
+              <div class="usp-stat">
+                <span class="usp-stat-value">{stat.value}</span>
+                <span class="usp-stat-label">{stat.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          {heritageHighlights.map((h) => (
+            <div class="info-card">
+              <span class="info-card-icon">
+                <Icon name={h.icon} size={22} strokeWidth={2} />
+              </span>
+              <div class="flex-1">
+                <strong class="block text-ink text-[1.05rem] font-extrabold mb-0.5" style="letter-spacing:-0.012em">{h.title}</strong>
+                <span class="text-ink-soft text-sm leading-relaxed">{h.text}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ DAS TEAM ════════ -->
+  <section class="section section-paper-deep">
+    <div class="container-rd">
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <span class="eyebrow">Das Team</span>
+        <h2 class="heading-xl mt-4 text-balance">
+          Vier Meister. Ein Team.
+          <span class="accent-brand"> Kein Problem zu groß.</span>
+        </h2>
+        <p class="lead mt-5 text-pretty">
+          Geschäftsführung in dritter Generation - dazu Meister mit jahrzehntelanger Spezial-Erfahrung
+          in Karosserie, Hydraulik, Mechatronik und Bremsen.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <article class="team-card">
+          <span class="team-card-num">01</span>
+          <span class="team-card-badge">Geschäftsführer</span>
+          <h3 class="team-card-name">Jörg Wedekind</h3>
+          <p class="team-card-role">Werkstattleitung · Vertrieb</p>
+          <p class="team-card-detail">Nutzfahrzeug-Aufbauten · Krane · Lackierung · Wohnmobil &amp; Caravan</p>
+          <a href="tel:+494073483210" class="team-card-link">
+            <Icon name="Phone" size={14} strokeWidth={2.2} />
+            040 - 734 83 - 210
+          </a>
+        </article>
+
+        <article class="team-card">
+          <span class="team-card-num">02</span>
+          <span class="team-card-badge">Meister</span>
+          <h3 class="team-card-name">Markus Wähling</h3>
+          <p class="team-card-role">Karosserie · Hydraulik</p>
+          <p class="team-card-detail">Karosserie- und Hydraulikreparaturen für LKW und Anhänger.</p>
+          <a href="tel:+494073483235" class="team-card-link">
+            <Icon name="Phone" size={14} strokeWidth={2.2} />
+            040 - 734 83 - 235
+          </a>
+        </article>
+
+        <article class="team-card">
+          <span class="team-card-num">03</span>
+          <span class="team-card-badge">Meister</span>
+          <h3 class="team-card-name">Dennis Engellenner</h3>
+          <p class="team-card-role">Bremsen · Mechanik · Elektrik</p>
+          <p class="team-card-detail">Bremsen, Mechanik und Elektrik-Reparaturen für Nutzfahrzeuge.</p>
+          <a href="tel:+494073483285" class="team-card-link">
+            <Icon name="Phone" size={14} strokeWidth={2.2} />
+            040 - 734 83 - 285
+          </a>
+        </article>
+
+        <article class="team-card">
+          <span class="team-card-num">04</span>
+          <span class="team-card-badge">Geschäftsführung</span>
+          <h3 class="team-card-name">Anja Mädel</h3>
+          <p class="team-card-role">Buchhaltung · Geschäftsführung</p>
+          <p class="team-card-detail">Buchhaltung und elektronischer Rechnungsempfang. Ansprechpartnerin für Bewerbungen.</p>
+          <a href="tel:+494073483150" class="team-card-link">
+            <Icon name="Phone" size={14} strokeWidth={2.2} />
+            040 - 734 83 - 150
+          </a>
+        </article>
+      </div>
+
+      <div class="mt-10 text-center">
+        <a href="/ansprechpartner" class="btn btn-outline btn-lg">
+          Alle Ansprechpartner ansehen
+          <Icon name="ArrowRight" size={17} strokeWidth={2.2} />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ STANDORT + KONTAKT ════════ -->
+  <section class="section">
+    <div class="container-rd">
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <span class="eyebrow">Standort &amp; Anfahrt</span>
+        <h2 class="heading-xl mt-4 text-balance">
+          Stenzelring 9, Hamburg-Wilhelmsburg.
+        </h2>
+        <p class="lead mt-5 text-pretty">
+          Zentral im Dreieck zwischen A1, A7 und Hamburger Hafen.
+          Mo - Fr 07:00 - 18:00 Uhr · Sa 07:00 - 13:00 Uhr.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-[0.9fr_1.1fr] gap-8 items-stretch">
+        <div class="contact-panel">
+          <h3 class="heading-md mb-1">Kontakt direkt</h3>
+          <p class="text-ink-700 text-[0.94rem] mb-6">
+            Sie erreichen uns persönlich - rufen Sie an oder schreiben Sie uns. Wir kümmern uns sofort.
+          </p>
+
+          <div class="contact-tile-grid">
+            <a href={telLink} class="contact-tile">
+              <span class="contact-tile-icon"><Icon name="Phone" size={18} strokeWidth={2.2} /></span>
+              <div>
+                <span class="contact-tile-label">Zentrale</span>
+                <strong class="contact-tile-value">{site.phoneDisplay}</strong>
+              </div>
+            </a>
+            <a href={mailLink} class="contact-tile">
+              <span class="contact-tile-icon"><Icon name="Mail" size={18} strokeWidth={2.2} /></span>
+              <div>
+                <span class="contact-tile-label">E-Mail</span>
+                <strong class="contact-tile-value">{site.email}</strong>
+              </div>
+            </a>
+            <a href={site.googleDirectionsUrl} target="_blank" rel="noopener" class="contact-tile">
+              <span class="contact-tile-icon"><Icon name="Navigation" size={18} strokeWidth={2.2} /></span>
+              <div>
+                <span class="contact-tile-label">Anfahrt</span>
+                <strong class="contact-tile-value">Route berechnen</strong>
+              </div>
+            </a>
+            <div class="contact-tile contact-tile-static">
+              <span class="contact-tile-icon"><Icon name="Clock" size={18} strokeWidth={2.2} /></span>
+              <div>
+                <span class="contact-tile-label">Geöffnet</span>
+                <strong class="contact-tile-value">Mo - Fr 07-18 · Sa 07-13</strong>
+              </div>
+            </div>
+          </div>
+
+          <address class="not-italic mt-6 pt-6 border-t border-line text-ink-700 leading-relaxed">
+            <strong class="block text-ink font-extrabold mb-1">{site.legalName}</strong>
+            {site.address.street}<br />
+            {site.address.postcode} {site.address.city}<br />
+            <span class="text-muted text-sm">{site.address.district}</span>
+          </address>
+        </div>
+
+        <div class="map-frame">
+          <iframe
+            src={site.googleMapsEmbed}
+            width="600"
+            height="450"
+            style="border:0;"
+            allowfullscreen={false}
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title={`Standort ${site.name}`}
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ FINAL CTA ════════ -->
+  <section class="final-cta ink-grid">
+    <div class="container-rd relative">
+      <div class="text-center max-w-3xl mx-auto">
+        <span class="eyebrow eyebrow-light">Damit Ihr Fuhrpark nicht still steht</span>
+        <h2 class="heading-xl mt-4 text-balance" style="color:#fff">
+          Damit Ihr Fahrzeug
+          <span class="accent-brand"> nicht still steht.</span>
+        </h2>
+        <p class="lead-on-dark mt-5 text-pretty">
+          Jetzt anrufen oder direkt vorbeikommen. Stenzelring 9, Hamburg-Wilhelmsburg.
+          Mo - Fr ab 07:00 Uhr.
+        </p>
+
+        <div class="mt-9 flex flex-wrap items-center justify-center gap-3">
+          <a href={telLink} class="btn btn-primary btn-lg">
+            <Icon name="Phone" size={17} strokeWidth={2.2} />
+            {site.phoneDisplay}
+          </a>
+          <a href={mailLink} class="btn btn-on-dark btn-lg">
+            <Icon name="Mail" size={17} strokeWidth={2.2} />
+            E-Mail schreiben
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  /* Trust-Strip */
+  .trust-strip {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 0.7rem;
+    font-size: 0.82rem;
+    color: rgb(var(--rgb-ink-700));
+  }
+  .trust-strip-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: 600;
+  }
+  .trust-strip-icon { color: rgb(var(--rgb-brand)); }
+  .trust-strip-sep { color: rgb(var(--rgb-muted-light)); }
+
+  /* Heritage-Timeline */
+  .heritage-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    align-items: start;
+  }
+  @media (min-width: 1024px) {
+    .heritage-grid {
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 3.5rem;
+    }
+  }
+
+  .heritage-image {
+    position: relative;
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    aspect-ratio: 4 / 5;
+    box-shadow:
+      0 1px 2px rgb(23 23 23 / 0.05),
+      0 24px 56px -20px rgb(23 23 23 / 0.3);
+  }
+  .heritage-image img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  .heritage-image-vignette {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 0%, transparent 50%, rgb(0 0 0 / 0.55) 100%);
+    pointer-events: none;
+  }
+  .heritage-image-badge {
+    position: absolute;
+    bottom: 1.25rem;
+    left: 1.25rem;
+    background: rgb(255 255 255 / 0.96);
+    backdrop-filter: blur(12px);
+    padding: 0.8rem 1.1rem;
+    border-radius: 12px;
+    border-left: 3px solid rgb(var(--rgb-brand));
+    box-shadow: 0 10px 28px -8px rgb(0 0 0 / 0.5);
+  }
+  .heritage-image-badge-year {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 800;
+    line-height: 1;
+    color: rgb(var(--rgb-brand));
+    letter-spacing: -0.02em;
+  }
+  .heritage-image-badge-label {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgb(var(--rgb-ink-soft));
+    margin-top: 0.2rem;
+  }
+
+  .heritage-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+  .heritage-item {
+    display: grid;
+    grid-template-columns: 84px 1fr;
+    gap: 1.1rem;
+    align-items: start;
+    padding: 1.25rem 1.4rem;
+    background:
+      linear-gradient(135deg, #fff 0%, rgb(var(--rgb-paper)) 100%);
+    border: 1px solid rgb(var(--rgb-line));
+    border-radius: var(--r-lg);
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+  .heritage-item:hover {
+    transform: translateY(-2px);
+    border-color: rgb(var(--rgb-brand) / 0.4);
+    box-shadow: 0 12px 28px -10px rgb(23 23 23 / 0.16);
+  }
+  .heritage-year {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1;
+    color: rgb(var(--rgb-brand));
+    letter-spacing: -0.018em;
+  }
+  .heritage-body { display: flex; flex-direction: column; gap: 0.35rem; }
+  .heritage-title {
+    font-family: var(--font-headline);
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: rgb(var(--rgb-ink));
+    letter-spacing: -0.01em;
+  }
+  .heritage-text {
+    color: rgb(var(--rgb-ink-soft));
+    font-size: 0.94rem;
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  /* USP-Stats */
+  .usp-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgb(var(--rgb-line));
+  }
+  @media (min-width: 640px) {
+    .usp-stats { grid-template-columns: repeat(4, 1fr); }
+  }
+  .usp-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .usp-stat-value {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 3vw, 2.1rem);
+    font-weight: 800;
+    color: rgb(var(--rgb-brand));
+    line-height: 1;
+    letter-spacing: -0.018em;
+  }
+  .usp-stat-label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: rgb(var(--rgb-muted));
+    letter-spacing: 0.04em;
+  }
+
+  /* Svc-tile-link */
+  :global(.svc-tile-link) {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.85rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgb(var(--rgb-brand-soft));
+    transition: gap 0.25s ease, color 0.2s ease;
+  }
+  :global(.svc-tile:hover .svc-tile-link) {
+    gap: 0.6rem;
+    color: #fff;
+  }
+
+  /* Info-Card icon */
+  :global(.info-card-icon) {
+    width: 44px; height: 44px;
+    border-radius: var(--r-md);
+    background: linear-gradient(135deg, rgb(var(--rgb-brand) / 0.16), rgb(var(--rgb-accent) / 0.10));
+    border: 1px solid rgb(var(--rgb-brand) / 0.22);
+    color: rgb(var(--rgb-brand));
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  :global(.info-card) {
+    flex-direction: row !important;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem 1.4rem;
+  }
+
+  /* Team-Card */
+  .team-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    padding: 1.7rem 1.5rem 1.5rem;
+    background: #fff;
+    border: 1px solid rgb(var(--rgb-line));
+    border-radius: var(--r-lg);
+    transition: transform 0.3s ease, border-color 0.25s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+  }
+  .team-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, rgb(var(--rgb-brand)), rgb(var(--rgb-accent)));
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+  }
+  .team-card:hover {
+    transform: translateY(-3px);
+    border-color: rgb(var(--rgb-brand) / 0.36);
+    box-shadow: 0 18px 40px -16px rgb(23 23 23 / 0.18);
+  }
+  .team-card:hover::before { transform: scaleX(1); }
+  .team-card-num {
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    color: rgb(var(--rgb-brand));
+    line-height: 1;
+  }
+  .team-card-badge {
+    display: inline-flex;
+    align-self: flex-start;
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+    background: rgb(var(--rgb-brand-soft));
+    color: rgb(var(--rgb-brand-deep));
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 0.35rem;
+  }
+  .team-card-name {
+    font-family: var(--font-headline);
+    font-weight: 800;
+    font-size: 1.25rem;
+    line-height: 1.1;
+    color: rgb(var(--rgb-ink));
+    letter-spacing: -0.012em;
+  }
+  .team-card-role {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: rgb(var(--rgb-ink-soft));
+    margin: 0.1rem 0 0.35rem;
+  }
+  .team-card-detail {
+    font-size: 0.84rem;
+    line-height: 1.5;
+    color: rgb(var(--rgb-muted));
+    margin: 0;
+    flex: 1;
+  }
+  .team-card-link {
+    margin-top: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.55rem 0.85rem;
+    border-radius: 8px;
+    background: rgb(var(--rgb-brand) / 0.06);
+    color: rgb(var(--rgb-brand-deep));
+    font-weight: 700;
+    font-size: 0.85rem;
+    transition: background 0.2s ease, transform 0.2s ease;
+    align-self: flex-start;
+  }
+  .team-card-link:hover {
+    background: rgb(var(--rgb-brand) / 0.12);
+    transform: translateX(2px);
+  }
+
+  /* Kontakt-Panel + Tiles */
+  .contact-panel {
+    background: linear-gradient(135deg, #fff 0%, rgb(var(--rgb-paper)) 100%);
+    border: 1px solid rgb(var(--rgb-line));
+    border-radius: var(--r-lg);
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+  }
+  .contact-tile-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0.7rem;
+  }
+  .contact-tile {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.85rem 1rem;
+    background: rgb(var(--rgb-paper-50));
+    border: 1px solid rgb(var(--rgb-line));
+    border-radius: 10px;
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  }
+  .contact-tile:hover:not(.contact-tile-static) {
+    transform: translateY(-2px);
+    border-color: rgb(var(--rgb-brand) / 0.4);
+    background: #fff;
+  }
+  .contact-tile-icon {
+    width: 38px; height: 38px;
+    border-radius: 9px;
+    background: rgb(var(--rgb-brand) / 0.1);
+    color: rgb(var(--rgb-brand));
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .contact-tile-label {
+    display: block;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgb(var(--rgb-muted));
+    margin-bottom: 1px;
+  }
+  .contact-tile-value {
+    display: block;
+    font-family: var(--font-headline);
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: rgb(var(--rgb-ink));
+    letter-spacing: -0.008em;
+    line-height: 1.15;
+  }
+
+  .map-frame {
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    border: 1px solid rgb(var(--rgb-line));
+    box-shadow: 0 12px 36px -16px rgb(23 23 23 / 0.18);
+    min-height: 380px;
+  }
+  .map-frame iframe { width: 100%; height: 100%; min-height: 380px; display: block; }
+
+  /* Heritage section padding */
+  .heritage-section { padding-top: clamp(4rem, 7vw, 5.5rem); padding-bottom: clamp(4rem, 7vw, 5.5rem); }
+</style>

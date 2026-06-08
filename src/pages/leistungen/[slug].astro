@@ -1,0 +1,409 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Icon from '../../components/Icon.astro';
+import { site, telLink, mailLink } from '../../data/site';
+import { services } from '../../data/services';
+
+export function getStaticPaths() {
+  return services.map((service) => ({
+    params: { slug: service.slug },
+    props: { service },
+  }));
+}
+
+const { service } = Astro.props;
+
+// Find adjacent services for cross-link
+const idx = services.findIndex((s) => s.slug === service.slug);
+const next = services[(idx + 1) % services.length];
+const otherServices = services.filter((s) => s.slug !== service.slug);
+---
+
+<Layout
+  title={`${service.title} - ${site.name} Hamburg`}
+  description={service.short}
+  current={service.slug}
+>
+
+  <!-- ════════ SUBPAGE-HERO ════════ -->
+  <section class="subpage-hero ink-grid">
+    <div class="container-rd relative pt-32 md:pt-40 pb-12 md:pb-16">
+      <div class="grid lg:grid-cols-[1.2fr_0.8fr] gap-10 items-center">
+        <div>
+          <span class="eyebrow eyebrow-light">{service.cat}</span>
+          <h1 class="heading-display mt-4 text-balance" style="color:#fff">
+            {service.title}
+          </h1>
+          <p class="lead-on-dark mt-5 max-w-2xl text-pretty">
+            {service.hero}
+          </p>
+          {service.quote && (
+            <blockquote class="service-quote mt-7">
+              {service.quote}
+            </blockquote>
+          )}
+
+          <div class="mt-9 flex flex-wrap items-center gap-3">
+            <a href={telLink} class="btn btn-primary btn-lg">
+              <Icon name="Phone" size={17} strokeWidth={2.2} />
+              Jetzt anrufen
+            </a>
+            <a href={mailLink} class="btn btn-on-dark btn-lg">
+              <Icon name="Mail" size={17} strokeWidth={2.2} />
+              Anfrage schreiben
+            </a>
+          </div>
+        </div>
+
+        <div class="hidden lg:flex items-center justify-center">
+          <div class="service-hero-icon-badge">
+            <Icon name={service.iconName} size={120} strokeWidth={1.2} />
+            <span class="service-hero-icon-label">{service.title}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ LEISTUNGS-BULLETS ════════ -->
+  <section class="section">
+    <div class="container-rd">
+      <div class="grid lg:grid-cols-[0.9fr_1.1fr] gap-12 lg:gap-16">
+        <div>
+          <span class="eyebrow">Was wir für Sie tun</span>
+          <h2 class="heading-xl mt-4 text-balance">
+            Unsere Leistungen im
+            <span class="accent-brand"> Detail.</span>
+          </h2>
+          <p class="lead mt-5 text-pretty">
+            Drei Generationen Erfahrung. Meisterbetrieb. Alles aus einer Hand - vom ersten Gespräch bis zur Auslieferung.
+          </p>
+
+          <div class="mt-8 service-perks">
+            <div class="service-perk">
+              <span class="service-perk-icon"><Icon name="Award" size={18} strokeWidth={2} /></span>
+              <span class="service-perk-text">Meisterbetrieb seit 1909</span>
+            </div>
+            <div class="service-perk">
+              <span class="service-perk-icon"><Icon name="ShieldCheck" size={18} strokeWidth={2} /></span>
+              <span class="service-perk-text">GTÜ-Stützpunkt im Haus</span>
+            </div>
+            <div class="service-perk">
+              <span class="service-perk-icon"><Icon name="Truck" size={18} strokeWidth={2} /></span>
+              <span class="service-perk-text">3,5 t bis 40 t · LKW, Anhänger, Auflieger</span>
+            </div>
+          </div>
+        </div>
+
+        <ul class="bullet-card-grid">
+          {service.bullets.map((b) => (
+            <li class="bullet-card">
+              <span class="bullet-card-check">
+                <Icon name="Check" size={15} strokeWidth={2.6} />
+              </span>
+              <span class="bullet-card-text">{b}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ HERITAGE-BAND ════════ -->
+  <section class="section section-paper-deep">
+    <div class="container-rd">
+      <div class="grid md:grid-cols-3 gap-6 md:gap-8 items-stretch">
+        <div class="heritage-band-card">
+          <span class="heritage-band-year">1909</span>
+          <strong class="heritage-band-title">Gegründet</strong>
+          <p class="heritage-band-text">Hermann Klotz - Stellmacherei in Hamburg-Veddel.</p>
+        </div>
+        <div class="heritage-band-card heritage-band-card-accent">
+          <span class="heritage-band-year">115+</span>
+          <strong class="heritage-band-title">Jahre</strong>
+          <p class="heritage-band-text">Drei Generationen Familie Wedekind. Heritage im modernen Nutzfahrzeug-Handwerk.</p>
+        </div>
+        <div class="heritage-band-card">
+          <span class="heritage-band-year">2017</span>
+          <strong class="heritage-band-title">Aktuell</strong>
+          <p class="heritage-band-text">Klotz + Wedekind GmbH. Jörg Wedekind &amp; Anja Mädel.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ WEITERE LEISTUNGEN ════════ -->
+  <section class="section">
+    <div class="container-rd">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="eyebrow">Alles aus einer Hand</span>
+        <h2 class="heading-xl mt-4 text-balance">
+          Weitere Leistungsbereiche.
+        </h2>
+        <p class="lead mt-5 text-pretty">
+          Sie haben nur einen Ansprechpartner: Klotz + Wedekind kümmert sich um Ihre Belange in allen Bereichen.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {otherServices.map((s) => (
+          <a href={s.href} class="cross-link-card">
+            <span class="cross-link-icon">
+              <Icon name={s.iconName} size={20} strokeWidth={2} />
+            </span>
+            <div class="flex-1">
+              <strong class="cross-link-title">{s.title}</strong>
+              <span class="cross-link-cat">{s.cat}</span>
+            </div>
+            <Icon name="ArrowRight" size={16} strokeWidth={2.2} />
+          </a>
+        ))}
+      </div>
+
+      <div class="mt-10 text-center">
+        <a href="/leistungen" class="btn btn-outline btn-lg">
+          Zur Leistungs-Übersicht
+          <Icon name="ArrowRight" size={17} strokeWidth={2.2} />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ FINAL CTA ════════ -->
+  <section class="final-cta ink-grid">
+    <div class="container-rd relative">
+      <div class="text-center max-w-3xl mx-auto">
+        <span class="eyebrow eyebrow-light">Damit Ihr Fuhrpark nicht still steht</span>
+        <h2 class="heading-xl mt-4 text-balance" style="color:#fff">
+          Maßarbeit für Ihren
+          <span class="accent-brand"> {service.title.toLowerCase().includes('wohnmobil') ? 'Caravan.' : 'LKW.'}</span>
+        </h2>
+        <p class="lead-on-dark mt-5 text-pretty">
+          Jetzt unverbindlich anrufen. Wir besprechen die Details und planen den Termin.
+          Mo - Fr 07:00 - 18:00 Uhr · Sa 07:00 - 13:00 Uhr.
+        </p>
+
+        <div class="mt-9 flex flex-wrap items-center justify-center gap-3">
+          <a href={telLink} class="btn btn-primary btn-lg">
+            <Icon name="Phone" size={17} strokeWidth={2.2} />
+            {site.phoneDisplay}
+          </a>
+          <a href={mailLink} class="btn btn-on-dark btn-lg">
+            <Icon name="Mail" size={17} strokeWidth={2.2} />
+            E-Mail schreiben
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .service-quote {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+    line-height: 1.3;
+    font-style: italic;
+    font-weight: 700;
+    color: rgb(var(--rgb-brand-soft));
+    margin: 0;
+    padding-left: 1.25rem;
+    border-left: 3px solid rgb(var(--rgb-brand));
+  }
+
+  .service-hero-icon-badge {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at 30% 30%, rgb(214 32 39 / 0.18), transparent 60%),
+      linear-gradient(135deg, rgb(255 255 255 / 0.04), rgb(255 255 255 / 0.01));
+    border: 1px solid rgb(255 255 255 / 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: rgb(var(--rgb-brand-soft));
+    backdrop-filter: blur(8px);
+    box-shadow:
+      0 24px 60px -20px rgb(214 32 39 / 0.4),
+      inset 0 1px 0 rgb(255 255 255 / 0.1);
+  }
+  .service-hero-icon-label {
+    font-family: var(--font-sans);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgb(255 255 255 / 0.6);
+    margin-top: 1rem;
+  }
+
+  .service-perks {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+  .service-perk {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.7rem 1rem;
+    background: rgb(var(--rgb-paper-50));
+    border: 1px solid rgb(var(--rgb-line));
+    border-radius: 10px;
+  }
+  .service-perk-icon {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    background: rgb(var(--rgb-brand) / 0.1);
+    color: rgb(var(--rgb-brand));
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .service-perk-text {
+    font-weight: 700;
+    font-size: 0.92rem;
+    color: rgb(var(--rgb-ink-soft));
+  }
+
+  /* Bullet-Cards */
+  .bullet-card-grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.55rem;
+  }
+  @media (min-width: 640px) {
+    .bullet-card-grid { grid-template-columns: 1fr 1fr; }
+  }
+  .bullet-card {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.95rem 1.1rem;
+    background:
+      linear-gradient(135deg, #fff 0%, rgb(var(--rgb-paper)) 100%);
+    border: 1px solid rgb(var(--rgb-line));
+    border-radius: 10px;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .bullet-card:hover {
+    transform: translateX(3px);
+    border-color: rgb(var(--rgb-brand) / 0.4);
+    box-shadow: 0 6px 18px -6px rgb(23 23 23 / 0.1);
+  }
+  .bullet-card-check {
+    width: 26px; height: 26px;
+    border-radius: 8px;
+    background: rgb(var(--rgb-brand) / 0.12);
+    color: rgb(var(--rgb-brand));
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .bullet-card-text {
+    font-weight: 600;
+    font-size: 0.92rem;
+    color: rgb(var(--rgb-ink-soft));
+    line-height: 1.4;
+  }
+
+  /* Heritage-Band */
+  .heritage-band-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: 1.75rem 1.5rem;
+    background: #fff;
+    border: 1px solid rgb(var(--rgb-line));
+    border-radius: var(--r-lg);
+    transition: transform 0.25s ease, border-color 0.25s ease;
+  }
+  .heritage-band-card:hover {
+    transform: translateY(-3px);
+    border-color: rgb(var(--rgb-brand) / 0.3);
+  }
+  .heritage-band-card-accent {
+    background: linear-gradient(135deg, rgb(var(--rgb-brand) / 0.96), rgb(var(--rgb-brand-deep)));
+    border-color: rgb(var(--rgb-brand));
+    color: #fff;
+  }
+  .heritage-band-card-accent .heritage-band-year { color: #fff; }
+  .heritage-band-card-accent .heritage-band-title { color: #fff; }
+  .heritage-band-card-accent .heritage-band-text { color: rgb(255 255 255 / 0.85); }
+
+  .heritage-band-year {
+    font-family: var(--font-display);
+    font-size: 2.6rem;
+    font-weight: 800;
+    line-height: 1;
+    color: rgb(var(--rgb-brand));
+    letter-spacing: -0.02em;
+  }
+  .heritage-band-title {
+    font-family: var(--font-headline);
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: rgb(var(--rgb-ink));
+    letter-spacing: -0.012em;
+  }
+  .heritage-band-text {
+    color: rgb(var(--rgb-ink-soft));
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* Cross-Link-Card */
+  .cross-link-card {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    padding: 1.1rem 1.25rem;
+    background: #fff;
+    border: 1px solid rgb(var(--rgb-line));
+    border-radius: 12px;
+    color: rgb(var(--rgb-ink-soft));
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+  .cross-link-card:hover {
+    transform: translateY(-2px);
+    border-color: rgb(var(--rgb-brand) / 0.4);
+    box-shadow: 0 12px 24px -10px rgb(23 23 23 / 0.14);
+  }
+  .cross-link-icon {
+    width: 40px; height: 40px;
+    border-radius: 9px;
+    background: rgb(var(--rgb-brand) / 0.08);
+    color: rgb(var(--rgb-brand));
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .cross-link-title {
+    display: block;
+    font-family: var(--font-headline);
+    font-weight: 800;
+    font-size: 0.96rem;
+    color: rgb(var(--rgb-ink));
+    line-height: 1.15;
+  }
+  .cross-link-cat {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgb(var(--rgb-brand));
+    margin-top: 0.25rem;
+  }
+</style>

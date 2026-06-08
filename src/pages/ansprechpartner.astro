@@ -1,0 +1,321 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import { site, telLink, mailLink } from '../data/site';
+
+const team = [
+  {
+    num: '01',
+    badge: 'Geschäftsführer',
+    name: 'Jörg Wedekind',
+    role: 'Werkstattleitung · Vertrieb',
+    detail: 'Nutzfahrzeug-Aufbauten aller Art · Krane · Lackierung · Wohnmobil & Caravan',
+    email: 'jw@klotz-wedekind.de',
+    phone: '040 - 734 83 - 210',
+    phoneTel: 'tel:+494073483210',
+    generation: '3. Generation',
+  },
+  {
+    num: '02',
+    badge: 'Meister',
+    name: 'Markus Wähling',
+    role: 'Karosserie · Hydraulikreparaturen',
+    detail: 'Karosserie- und Hydraulikreparaturen an LKW, Anhängern und Aufliegern.',
+    email: 'mw@klotz-wedekind.de',
+    phone: '040 - 734 83 - 235',
+    phoneTel: 'tel:+494073483235',
+  },
+  {
+    num: '03',
+    badge: 'Meister',
+    name: 'Dennis Engellenner',
+    role: 'Bremsen · Mechanik · Elektrik',
+    detail: 'Bremsen, Mechanik, Elektrik und Reparaturen an Nutzfahrzeugen.',
+    email: 'de@klotz-wedekind.de',
+    phone: '040 - 734 83 - 285',
+    phoneTel: 'tel:+494073483285',
+  },
+  {
+    num: '04',
+    badge: 'Lager · Verkauf',
+    name: 'Klaus Stelzer',
+    role: 'Lager · Verkauf',
+    detail: 'Ersatzteile, Lager-Verwaltung und Verkauf direkt am Standort.',
+    email: 'ks@klotz-wedekind.de',
+    phone: '040 - 734 83 - 251',
+    phoneTel: 'tel:+494073483251',
+  },
+  {
+    num: '05',
+    badge: 'Geschäftsführung',
+    name: 'Anja Mädel',
+    role: 'Buchhaltung · Elektronischer Rechnungsempfang',
+    detail: 'Geschäftsführung, Buchhaltung und Ansprechpartnerin für Bewerbungen. E-Rechnungen: rechnungen@klotz-wedekind.de',
+    email: 'am@klotz-wedekind.de',
+    phone: '040 - 734 83 - 150',
+    phoneTel: 'tel:+494073483150',
+    generation: '3. Generation',
+  },
+];
+---
+
+<Layout
+  title={`Ansprechpartner - ${site.name}`}
+  description="Geschäftsführung, Meister und Lager: Jörg Wedekind, Anja Mädel, Markus Wähling, Dennis Engellenner und Klaus Stelzer. Mit direkten Durchwahlen."
+  current="ansprechpartner"
+>
+
+  <!-- Hero -->
+  <section class="subpage-hero ink-grid">
+    <div class="container-rd relative pt-32 md:pt-40 pb-12 md:pb-16">
+      <div class="max-w-3xl">
+        <span class="eyebrow eyebrow-light">Direkt sprechen · Direkte Durchwahlen</span>
+        <h1 class="heading-display mt-4 text-balance" style="color:#fff">
+          Ihre Ansprechpartner
+          <span class="accent-brand"> persönlich.</span>
+        </h1>
+        <p class="lead-on-dark mt-5 max-w-2xl text-pretty">
+          Geschäftsführung, Meister, Lager - hier finden Sie alle direkten Durchwahlen. Kein Hotline-Karussell.
+          Sie sprechen direkt mit der Person, die Ihr Anliegen bearbeitet.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team-Grid -->
+  <section class="section">
+    <div class="container-rd">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {team.map((t) => (
+          <article class="contact-card">
+            <span class="contact-card-num">{t.num}</span>
+            <span class="contact-card-badge">{t.badge}</span>
+            <h3 class="contact-card-name">{t.name}</h3>
+            <p class="contact-card-role">{t.role}</p>
+            {t.generation && <span class="contact-card-gen">{t.generation}</span>}
+            <p class="contact-card-detail">{t.detail}</p>
+            <div class="contact-card-actions">
+              <a href={t.phoneTel} class="contact-card-link">
+                <Icon name="Phone" size={14} strokeWidth={2.2} />
+                {t.phone}
+              </a>
+              <a href={`mailto:${t.email}`} class="contact-card-link">
+                <Icon name="Mail" size={14} strokeWidth={2.2} />
+                {t.email}
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Allgemeine Kontakte -->
+  <section class="section section-paper-deep">
+    <div class="container-rd">
+      <div class="text-center max-w-3xl mx-auto mb-10">
+        <span class="eyebrow">Allgemein</span>
+        <h2 class="heading-xl mt-4 text-balance">
+          Sie wissen nicht, wer der richtige
+          <span class="accent-brand"> Ansprechpartner ist?</span>
+        </h2>
+        <p class="lead mt-5 text-pretty">
+          Rufen Sie einfach unsere Zentrale an. Wir leiten Sie sofort an die zuständige Person weiter.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
+        <a href={telLink} class="tile-card">
+          <span class="tile-card-icon"><Icon name="Phone" size={22} strokeWidth={2} /></span>
+          <span class="tile-card-label">Zentrale</span>
+          <strong class="tile-card-value">{site.phoneDisplay}</strong>
+        </a>
+        <a href={mailLink} class="tile-card">
+          <span class="tile-card-icon"><Icon name="Mail" size={22} strokeWidth={2} /></span>
+          <span class="tile-card-label">Allgemein</span>
+          <strong class="tile-card-value">{site.email}</strong>
+        </a>
+        <a href={`mailto:${site.emailBewerbung}`} class="tile-card">
+          <span class="tile-card-icon"><Icon name="UserPlus" size={22} strokeWidth={2} /></span>
+          <span class="tile-card-label">Bewerbungen</span>
+          <strong class="tile-card-value">{site.emailBewerbung}</strong>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="final-cta ink-grid">
+    <div class="container-rd relative">
+      <div class="text-center max-w-3xl mx-auto">
+        <span class="eyebrow eyebrow-light">Persönlich vor Ort</span>
+        <h2 class="heading-xl mt-4 text-balance" style="color:#fff">
+          Kommen Sie
+          <span class="accent-brand"> vorbei.</span>
+        </h2>
+        <p class="lead-on-dark mt-5 text-pretty">
+          Stenzelring 9, Hamburg-Wilhelmsburg. Mo - Fr 07:00 - 18:00 Uhr · Sa 07:00 - 13:00 Uhr.
+        </p>
+        <div class="mt-9 flex flex-wrap items-center justify-center gap-3">
+          <a href={site.googleDirectionsUrl} target="_blank" rel="noopener" class="btn btn-primary btn-lg">
+            <Icon name="Navigation" size={17} strokeWidth={2.2} />
+            Route berechnen
+          </a>
+          <a href={telLink} class="btn btn-on-dark btn-lg">
+            <Icon name="Phone" size={17} strokeWidth={2.2} />
+            {site.phoneDisplay}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .contact-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    padding: 1.85rem 1.65rem;
+    background: linear-gradient(135deg, #fff 0%, rgb(var(--rgb-paper)) 100%);
+    border: 1px solid rgb(var(--rgb-line));
+    border-radius: var(--r-lg);
+    transition: transform 0.3s ease, border-color 0.25s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+  }
+  .contact-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, rgb(var(--rgb-brand)), rgb(var(--rgb-accent)));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+  }
+  .contact-card:hover {
+    transform: translateY(-3px);
+    border-color: rgb(var(--rgb-brand) / 0.36);
+    box-shadow: 0 18px 40px -16px rgb(23 23 23 / 0.18);
+  }
+  .contact-card:hover::before { transform: scaleX(1); }
+  .contact-card-num {
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    color: rgb(var(--rgb-brand));
+  }
+  .contact-card-badge {
+    align-self: flex-start;
+    padding: 0.25rem 0.65rem;
+    border-radius: 999px;
+    background: rgb(var(--rgb-brand-soft));
+    color: rgb(var(--rgb-brand-deep));
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin: 0.4rem 0;
+  }
+  .contact-card-name {
+    font-family: var(--font-headline);
+    font-weight: 800;
+    font-size: 1.3rem;
+    line-height: 1.1;
+    color: rgb(var(--rgb-ink));
+    letter-spacing: -0.012em;
+    margin: 0;
+  }
+  .contact-card-role {
+    font-size: 0.94rem;
+    font-weight: 700;
+    color: rgb(var(--rgb-brand-deep));
+    margin: 0.1rem 0 0.2rem;
+  }
+  .contact-card-gen {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgb(var(--rgb-accent));
+    margin-bottom: 0.4rem;
+  }
+  .contact-card-detail {
+    font-size: 0.86rem;
+    line-height: 1.55;
+    color: rgb(var(--rgb-muted));
+    margin: 0.35rem 0 1.2rem;
+    flex: 1;
+  }
+  .contact-card-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+  .contact-card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.55rem 0.9rem;
+    background: rgb(var(--rgb-brand) / 0.07);
+    border-radius: 8px;
+    color: rgb(var(--rgb-brand-deep));
+    font-weight: 700;
+    font-size: 0.85rem;
+    transition: background 0.2s ease, transform 0.2s ease;
+    word-break: break-all;
+  }
+  .contact-card-link:hover {
+    background: rgb(var(--rgb-brand) / 0.14);
+    transform: translateX(2px);
+  }
+
+  /* Tile-Card */
+  .tile-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.4rem;
+    padding: 1.85rem 1.5rem;
+    background: #fff;
+    border: 1px solid rgb(var(--rgb-line));
+    border-radius: var(--r-lg);
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+  .tile-card:hover {
+    transform: translateY(-3px);
+    border-color: rgb(var(--rgb-brand) / 0.4);
+    box-shadow: 0 14px 36px -14px rgb(23 23 23 / 0.16);
+  }
+  .tile-card-icon {
+    width: 52px; height: 52px;
+    border-radius: var(--r-md);
+    background: linear-gradient(135deg, rgb(var(--rgb-brand) / 0.16), rgb(var(--rgb-accent) / 0.08));
+    color: rgb(var(--rgb-brand));
+    border: 1px solid rgb(var(--rgb-brand) / 0.22);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+  }
+  .tile-card-label {
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgb(var(--rgb-muted));
+  }
+  .tile-card-value {
+    font-family: var(--font-headline);
+    font-weight: 800;
+    font-size: 1.05rem;
+    color: rgb(var(--rgb-ink));
+    letter-spacing: -0.008em;
+    word-break: break-all;
+  }
+</style>
