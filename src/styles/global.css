@@ -1130,3 +1130,116 @@
 ::-webkit-scrollbar-thumb:hover { background: rgb(var(--rgb-brand)); }
 ::-webkit-scrollbar-corner { background: rgb(var(--rgb-paper)); }
 html { scrollbar-color: rgb(var(--rgb-paper-200)) rgb(var(--rgb-paper)); }
+
+/* ════════════════════════════════════════════════════════════════
+   SUBPAGE HERO mit echtem Bild
+   Global: wird auf [slug], partner, ueber-uns, jobs genutzt.
+   ════════════════════════════════════════════════════════════════ */
+.subpage-hero-img {
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+  isolation: isolate;
+  min-height: clamp(28rem, 50vh, 38rem);
+  background: rgb(var(--rgb-anthracite));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.subpage-hero-img-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+.subpage-hero-img-bg img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+}
+.subpage-hero-img-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(110deg, rgb(13 13 13 / 0.92) 0%, rgb(13 13 13 / 0.78) 45%, rgb(13 13 13 / 0.55) 75%, rgb(13 13 13 / 0.70) 100%),
+    linear-gradient(180deg, rgb(13 13 13 / 0.30) 0%, transparent 30%, transparent 70%, rgb(13 13 13 / 0.55) 100%);
+  pointer-events: none;
+}
+.subpage-hero-img > .container-rd { position: relative; z-index: 2; }
+
+/* Eyebrow-Icon */
+.eyebrow-icon {
+  width: 22px; height: 22px;
+  border-radius: 6px;
+  background: rgb(214 32 39 / 0.95);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hero-Meta-Card auf dunklem Hero-Hintergrund */
+.hero-meta-card {
+  padding: 1.85rem;
+  background: rgb(255 255 255 / 0.06);
+  border: 1px solid rgb(255 255 255 / 0.14);
+  border-radius: 18px;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  box-shadow:
+    0 24px 60px -20px rgb(0 0 0 / 0.5),
+    inset 0 1px 0 rgb(255 255 255 / 0.1);
+}
+.hero-meta-card-eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgb(255 255 255 / 0.7);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+.hero-meta-card-title {
+  font-family: var(--font-headline);
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.014em;
+  margin: 0 0 0.55rem;
+}
+.hero-meta-card-body {
+  color: rgb(255 255 255 / 0.82);
+  font-size: 0.94rem;
+  line-height: 1.55;
+  margin: 0 0 1.25rem;
+}
+.hero-meta-card-list {
+  list-style: none;
+  padding: 0; margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+.hero-meta-card-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: rgb(255 255 255 / 0.94);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.hero-meta-check {
+  width: 22px; height: 22px;
+  border-radius: 6px;
+  background: rgb(214 32 39);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
