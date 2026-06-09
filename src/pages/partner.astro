@@ -34,12 +34,8 @@ const verbaende = [
 >
 
   <!-- Hero mit Werkstatt-Bild -->
-  <section class="subpage-hero-img">
-    <div class="subpage-hero-img-bg">
-      <img src="/images/werkstatt.jpg" alt="Klotz + Wedekind Werkstatt mit Nutzfahrzeugen" loading="eager" />
-      <div class="subpage-hero-img-overlay"></div>
-    </div>
-    <div class="container-rd relative pt-32 md:pt-44 pb-14 md:pb-20">
+  <section class="subpage-hero-img" style="--hero-bg: url('/images/werkstatt.jpg')">
+    <div class="container-rd relative pt-32 md:pt-40 pb-14 md:pb-20">
       <div class="max-w-3xl relative z-10">
         <span class="eyebrow eyebrow-light">
           <span class="eyebrow-icon"><Icon name="ShieldCheck" size={14} strokeWidth={2.2} /></span>
@@ -248,26 +244,23 @@ const verbaende = [
     box-shadow: 0 16px 36px -14px rgb(23 23 23 / 0.18);
   }
   .partner-logo-img-wrap {
-    height: 70px;
+    height: 90px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0.4rem;
-    background: rgb(var(--rgb-paper-50));
+    padding: 0.85rem;
+    background: #fff;
     border-radius: 10px;
+    border: 1px solid rgb(var(--rgb-line));
   }
   .partner-logo-img-wrap img {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
-    filter: grayscale(1) contrast(1.05);
-    opacity: 0.78;
-    transition: filter 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+    transition: transform 0.3s ease;
   }
   .partner-logo-card:hover .partner-logo-img-wrap img {
-    filter: grayscale(0) contrast(1);
-    opacity: 1;
-    transform: scale(1.04);
+    transform: scale(1.05);
   }
   .partner-logo-meta {
     display: flex;
@@ -331,11 +324,12 @@ const verbaende = [
     border-color: rgb(var(--rgb-brand) / 0.3);
   }
   .cert-img-wrap {
-    height: 86px;
+    height: 110px;
     display: flex; align-items: center; justify-content: center;
-    background: rgb(var(--rgb-paper-50));
+    background: #fff;
+    border: 1px solid rgb(var(--rgb-line));
     border-radius: 10px;
-    padding: 0.55rem;
+    padding: 1rem;
   }
   .cert-img-wrap img { max-width: 100%; max-height: 100%; object-fit: contain; }
   .cert-name {
