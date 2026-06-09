@@ -4,17 +4,26 @@ import Icon from '../components/Icon.astro';
 import { site, telLink, mailLink } from '../data/site';
 
 const partner = [
-  { name: 'Al-Ko',         desc: 'Servicepartner für PKW-Anhänger sowie Wohnmobile und Caravan.' },
-  { name: 'Bär Cargolift', desc: 'Neubau, Wartung, Reparatur und Service sowie UVV-Prüfungen für Ladebordwände.' },
-  { name: 'Dhollandia',    desc: 'Neubau, Wartung, Reparatur, Service und UVV-Abnahmen für Hubsysteme.' },
-  { name: 'Fischer Fahrzeugwerke', desc: 'Vertriebs- und Wartungspartner für Vertriebs- und Servicefahrzeuge.' },
-  { name: 'Gigant',        desc: 'Servicepartner für Reparatur und Wartung an Anhängern und Aufliegern.' },
-  { name: 'Hiab',          desc: 'Neubau, Reparatur und Wartung sowie UVV-Prüfungen für Krane.' },
-  { name: 'Hyva',          desc: 'Neubau, Reparatur, Wartung, Service und UVV-Abnahmen für Hydrauliksysteme.' },
-  { name: 'Lamberet',      desc: 'Servicepartner für Kühlfahrzeug-Neubau und Service.' },
-  { name: 'Meiller Liftsystems', desc: 'Servicepartner für Wartung, Reparatur und UVV-Prüfungen.' },
-  { name: 'Palfinger Tail Lifts GmbH', desc: 'Neubau, Wartung, Reparatur, Service und UVV-Abnahmen.' },
-  { name: 'Sörensen',      desc: 'Neubau, Wartung, Reparatur, Service und UVV-Prüfungen.' },
+  { name: 'Al-Ko',                    logo: '/logos/alko.png',       url: 'https://www.al-ko.com',          desc: 'Servicepartner für PKW-Anhänger sowie Wohnmobile und Caravan.' },
+  { name: 'Bär Cargolift',            logo: '/logos/baer.gif',       url: 'https://www.baer-cargolift.de',  desc: 'Neubau, Wartung, Reparatur, Service und UVV-Prüfungen für Ladebordwände.' },
+  { name: 'Carat Holding',            logo: '/logos/carat.png',      url: 'https://www.carat-gruppe.de',    desc: 'Verbundpartner für Ersatzteile und Werkstattausrüstung.' },
+  { name: 'Carrier Transicold',       logo: '/logos/carrier.png',    url: 'https://www.carrier.com',         desc: 'Kühltechnik für Transport und Logistik.' },
+  { name: 'Dhollandia',               logo: '/logos/dhollandia.gif', url: 'https://www.dhollandia.com',      desc: 'Neubau, Wartung, Reparatur, Service und UVV-Abnahmen für Hubsysteme.' },
+  { name: 'Fischer Fahrzeugwerke',    logo: '/logos/fischer.jpg',    url: 'https://www.fischer-fahrzeugwerke.com', desc: 'Vertriebs- und Wartungspartner für Vertriebs- und Servicefahrzeuge.' },
+  { name: 'Gigant',                   logo: '/logos/gigant.jpg',     url: 'https://www.gigant-group.com',    desc: 'Servicepartner für Reparatur und Wartung an Anhängern und Aufliegern.' },
+  { name: 'Hiab',                     logo: '/logos/hiab.gif',       url: 'https://www.hiab.com',            desc: 'Neubau, Reparatur und Wartung sowie UVV-Prüfungen für Krane.' },
+  { name: 'Hyva',                     logo: '/logos/hyva.jpeg',      url: 'https://www.hyva.com',            desc: 'Neubau, Reparatur, Wartung, Service und UVV-Abnahmen für Hydrauliksysteme.' },
+  { name: 'Kessebohrer',              logo: '/logos/kb-logo.png',    url: 'https://www.kaessbohrer.com',     desc: 'Partner für Auflieger und Sondertransporte.' },
+  { name: 'Lamberet',                 logo: '/logos/lamberet.gif',   url: 'https://www.lamberet.com',        desc: 'Servicepartner für Kühlfahrzeug-Neubau und Service.' },
+  { name: 'Meiller Liftsystems',      logo: '/logos/meiller.gif',    url: 'https://www.meiller.com',         desc: 'Servicepartner für Wartung, Reparatur und UVV-Prüfungen.' },
+  { name: 'Palfinger Tail Lifts',     logo: '/logos/palfinger.png',  url: 'https://www.palfinger.com',       desc: 'Neubau, Wartung, Reparatur, Service und UVV-Abnahmen.' },
+  { name: 'Sörensen Hydraulik',       logo: '/logos/soerensen.png',  url: 'https://www.soerensen-hydraulik.de', desc: 'Neubau, Wartung, Reparatur, Service und UVV-Prüfungen.' },
+  { name: 'WABCO',                    logo: '/logos/wabco.gif',      url: 'https://www.wabco.com',           desc: 'Bremsen- und Sicherheitstechnologie für Nutzfahrzeuge.' },
+];
+
+const verbaende = [
+  { name: 'ZKF Karosserie',  logo: '/logos/zkf-karosserie.png',   desc: 'Zentralverband Karosserie- und Fahrzeugtechnik' },
+  { name: 'ZKF Fahrzeugbau', logo: '/logos/zkf-fahrzeugbau.png',  desc: 'Mitglied im Fachbetrieb-Verzeichnis' },
 ];
 ---
 
@@ -24,43 +33,119 @@ const partner = [
   current="partner"
 >
 
-  <!-- Hero -->
-  <section class="subpage-hero ink-grid">
-    <div class="container-rd relative pt-32 md:pt-40 pb-12 md:pb-16">
-      <div class="max-w-3xl">
-        <span class="eyebrow eyebrow-light">Service-Partnerschaften · UVV-Prüfungen</span>
+  <!-- Hero mit Werkstatt-Bild -->
+  <section class="subpage-hero-img">
+    <div class="subpage-hero-img-bg">
+      <img src="/images/werkstatt.jpg" alt="Klotz + Wedekind Werkstatt mit Nutzfahrzeugen" loading="eager" />
+      <div class="subpage-hero-img-overlay"></div>
+    </div>
+    <div class="container-rd relative pt-32 md:pt-44 pb-14 md:pb-20">
+      <div class="max-w-3xl relative z-10">
+        <span class="eyebrow eyebrow-light">
+          <span class="eyebrow-icon"><Icon name="ShieldCheck" size={14} strokeWidth={2.2} /></span>
+          15 Marken · UVV-Prüfungen · Zertifiziert
+        </span>
         <h1 class="heading-display mt-4 text-balance" style="color:#fff">
           Servicepartner
           <span class="accent-brand"> der besten Marken.</span>
         </h1>
         <p class="lead-on-dark mt-5 max-w-2xl text-pretty">
-          Markenoffen und doch tief verzahnt: Wir sind anerkannte Servicepartner für die führenden
-          Hersteller im Nutzfahrzeug-Bereich. Krane, Ladebordwände, Kühlsysteme und Hydraulik.
+          Markenoffen und doch tief verzahnt: Anerkannter Servicepartner für die führenden
+          Hersteller im Nutzfahrzeug-Bereich. Krane, Ladebordwände, Kühlsysteme und Hydraulik -
+          mit dokumentierten UVV-Prüfungen im Haus.
         </p>
+        <div class="mt-8 flex flex-wrap items-center gap-3">
+          <a href={telLink} class="btn btn-primary btn-lg">
+            <Icon name="Phone" size={17} strokeWidth={2.2} />
+            UVV-Termin anfragen
+          </a>
+          <a href={mailLink} class="btn btn-on-dark btn-lg">
+            <Icon name="Mail" size={17} strokeWidth={2.2} />
+            E-Mail schreiben
+          </a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Partner-Grid -->
+  <!-- Partner-Logo-Grid -->
   <section class="section">
     <div class="container-rd">
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="eyebrow">15 Hersteller-Partnerschaften</span>
+        <h2 class="heading-xl mt-4 text-balance">
+          Anerkannter Servicebetrieb
+          <span class="accent-brand"> für die führenden Marken.</span>
+        </h2>
+      </div>
+
+      <div class="partner-logo-grid">
         {partner.map((p) => (
-          <article class="partner-card">
-            <div class="partner-card-mark">{p.name.split(' ')[0].charAt(0)}{p.name.split(' ').length > 1 ? p.name.split(' ')[1].charAt(0) : ''}</div>
-            <div class="flex-1">
-              <h3 class="partner-card-name">{p.name}</h3>
-              <p class="partner-card-desc">{p.desc}</p>
+          <a href={p.url} target="_blank" rel="noopener" class="partner-logo-card" aria-label={p.name}>
+            <div class="partner-logo-img-wrap">
+              <img src={p.logo} alt={`Logo ${p.name}`} loading="lazy" decoding="async" />
             </div>
-            <span class="partner-card-icon"><Icon name="ShieldCheck" size={20} strokeWidth={2} /></span>
-          </article>
+            <div class="partner-logo-meta">
+              <strong class="partner-logo-name">{p.name}</strong>
+              <span class="partner-logo-desc">{p.desc}</span>
+            </div>
+            <span class="partner-logo-arrow">
+              <Icon name="ExternalLink" size={13} strokeWidth={2.2} />
+            </span>
+          </a>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- UVV-Hinweis -->
+  <!-- Verbände + Zertifikate -->
   <section class="section section-paper-deep">
+    <div class="container-rd">
+      <div class="grid lg:grid-cols-[1fr_1fr] gap-10 items-center">
+        <div>
+          <span class="eyebrow">Mitgliedschaften &amp; Zertifikate</span>
+          <h2 class="heading-xl mt-4 text-balance">
+            ZKF-Fachbetrieb.
+            <span class="accent-brand"> Autolackier-Fachbetrieb.</span>
+          </h2>
+          <p class="lead mt-5 text-pretty">
+            Eingetragener Karosserie- und Fahrzeugbau-Fachbetrieb des Zentralverbands Karosserie- und
+            Fahrzeugtechnik. Zertifizierter Autolackier-Fachbetrieb mit Qualifikationsnachweis.
+          </p>
+          <p class="lead mt-4 text-pretty">
+            Die Zertifizierungen erneuern wir regelmäßig - Sie bekommen geprüfte Werkstattqualität
+            ohne Wenn und Aber.
+          </p>
+        </div>
+
+        <div class="cert-grid">
+          {verbaende.map((v) => (
+            <figure class="cert-card">
+              <div class="cert-img-wrap">
+                <img src={v.logo} alt={`Logo ${v.name}`} loading="lazy" />
+              </div>
+              <figcaption>
+                <strong class="cert-name">{v.name}</strong>
+                <span class="cert-desc">{v.desc}</span>
+              </figcaption>
+            </figure>
+          ))}
+          <figure class="cert-card cert-card-wide">
+            <div class="cert-img-wrap">
+              <img src="/logos/cert-autolackier.jpg" alt="Zertifizierter Autolackier-Fachbetrieb" loading="lazy" />
+            </div>
+            <figcaption>
+              <strong class="cert-name">Autolackier-Fachbetrieb</strong>
+              <span class="cert-desc">Geprüfte Qualifikation und Qualitätssicherung</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UVV-Hinweis -->
+  <section class="section">
     <div class="container-rd">
       <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-center">
         <div>
@@ -107,7 +192,7 @@ const partner = [
   </section>
 
   <!-- Final CTA -->
-  <section class="final-cta ink-grid">
+  <section class="final-cta">
     <div class="container-rd relative">
       <div class="text-center max-w-3xl mx-auto">
         <span class="eyebrow eyebrow-light">UVV oder Reparatur fällig?</span>
@@ -135,59 +220,135 @@ const partner = [
 </Layout>
 
 <style>
-  .partner-card {
-    display: flex;
-    align-items: center;
+  /* Partner-Logo-Grid */
+  .partner-logo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
-    padding: 1.5rem 1.5rem;
-    background: linear-gradient(135deg, #fff 0%, rgb(var(--rgb-paper)) 100%);
-    border: 1px solid rgb(var(--rgb-line));
-    border-radius: var(--r-lg);
-    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
   }
-  .partner-card:hover {
+  @media (min-width: 640px)  { .partner-logo-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (min-width: 1024px) { .partner-logo-grid { grid-template-columns: repeat(5, 1fr); } }
+
+  .partner-logo-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    padding: 1.5rem 1.25rem 1.35rem;
+    background: #fff;
+    border: 1px solid rgb(var(--rgb-line));
+    border-radius: 14px;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    color: rgb(var(--rgb-ink-soft));
+    overflow: hidden;
+  }
+  .partner-logo-card:hover {
     transform: translateY(-3px);
     border-color: rgb(var(--rgb-brand) / 0.36);
-    box-shadow: 0 14px 36px -14px rgb(23 23 23 / 0.16);
+    box-shadow: 0 16px 36px -14px rgb(23 23 23 / 0.18);
   }
-  .partner-card-mark {
-    width: 56px; height: 56px;
-    border-radius: 14px;
-    background: linear-gradient(135deg, rgb(var(--rgb-brand) / 0.92), rgb(var(--rgb-brand-deep)));
-    color: #fff;
-    display: inline-flex;
+  .partner-logo-img-wrap {
+    height: 70px;
+    display: flex;
     align-items: center;
     justify-content: center;
-    font-family: var(--font-headline);
-    font-weight: 800;
-    font-size: 1.2rem;
-    letter-spacing: -0.014em;
-    box-shadow: 0 6px 18px -4px rgb(var(--rgb-brand) / 0.5);
-    flex-shrink: 0;
+    padding: 0.4rem;
+    background: rgb(var(--rgb-paper-50));
+    border-radius: 10px;
   }
-  .partner-card-name {
+  .partner-logo-img-wrap img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: grayscale(1) contrast(1.05);
+    opacity: 0.78;
+    transition: filter 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+  }
+  .partner-logo-card:hover .partner-logo-img-wrap img {
+    filter: grayscale(0) contrast(1);
+    opacity: 1;
+    transform: scale(1.04);
+  }
+  .partner-logo-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    text-align: center;
+  }
+  .partner-logo-name {
     font-family: var(--font-headline);
     font-weight: 800;
-    font-size: 1.1rem;
+    font-size: 0.95rem;
     color: rgb(var(--rgb-ink));
-    letter-spacing: -0.012em;
-    margin: 0 0 0.25rem;
+    letter-spacing: -0.01em;
     line-height: 1.15;
   }
-  .partner-card-desc {
-    font-size: 0.86rem;
-    line-height: 1.5;
-    color: rgb(var(--rgb-ink-soft));
-    margin: 0;
+  .partner-logo-desc {
+    font-size: 0.74rem;
+    line-height: 1.4;
+    color: rgb(var(--rgb-muted));
   }
-  .partner-card-icon {
-    width: 36px; height: 36px;
-    border-radius: 9px;
+  .partner-logo-arrow {
+    position: absolute;
+    top: 0.65rem;
+    right: 0.65rem;
+    width: 22px; height: 22px;
+    border-radius: 6px;
     background: rgb(var(--rgb-brand) / 0.08);
     color: rgb(var(--rgb-brand));
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0;
+    opacity: 0;
+    transform: translateY(-2px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+  .partner-logo-card:hover .partner-logo-arrow {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Verbände / Zertifikate */
+  .cert-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .cert-card-wide { grid-column: 1 / -1; }
+  .cert-card {
+    margin: 0;
+    padding: 1.4rem 1.1rem 1.2rem;
+    background: #fff;
+    border: 1px solid rgb(var(--rgb-line));
+    border-radius: var(--r-lg);
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    transition: transform 0.25s ease, border-color 0.25s ease;
+  }
+  .cert-card:hover {
+    transform: translateY(-2px);
+    border-color: rgb(var(--rgb-brand) / 0.3);
+  }
+  .cert-img-wrap {
+    height: 86px;
+    display: flex; align-items: center; justify-content: center;
+    background: rgb(var(--rgb-paper-50));
+    border-radius: 10px;
+    padding: 0.55rem;
+  }
+  .cert-img-wrap img { max-width: 100%; max-height: 100%; object-fit: contain; }
+  .cert-name {
+    font-family: var(--font-headline);
+    font-weight: 800;
+    font-size: 0.96rem;
+    color: rgb(var(--rgb-ink));
+    letter-spacing: -0.01em;
+    display: block;
+  }
+  .cert-desc {
+    font-size: 0.78rem;
+    line-height: 1.45;
+    color: rgb(var(--rgb-muted));
   }
 </style>

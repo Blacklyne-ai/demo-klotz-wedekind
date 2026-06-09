@@ -12,6 +12,9 @@ export interface Service {
   hero: string;
   cat: string;
   href: string;
+  image: string;
+  imageAlt: string;
+  gallery?: string[];
   bullets: string[];
   quote?: string;
 }
@@ -23,6 +26,9 @@ export const services: Service[] = [
     iconName: 'Hammer',
     title: 'Karosserie & Fahrzeugbau',
     cat: 'Sonderanfertigung',
+    image: '/images/werkstatt.jpg',
+    imageAlt: 'Klotz + Wedekind Werkstatthalle mit Sprinter und LKW auf der Hebebühne',
+    gallery: ['/images/werkstatt.jpg', '/images/hero-fleet.jpg', '/images/oldtimer-lkw.jpg'],
     short: 'Tradition seit fast 110 Jahren mit Blick für die Zukunft. Sonderanfertigungen, Kranaufbauten, Kofferaufbauten und mehr.',
     hero: 'Tradition seit fast 110 Jahren mit Blick für die Zukunft! Profitieren Sie von unserer langjährigen Erfahrung und innovativen Lösungen, wenn es um die Umsetzung Ihrer Ideen und Wünsche geht.',
     quote: '„Geht nicht - gibt’s nicht."',
@@ -44,6 +50,9 @@ export const services: Service[] = [
     iconName: 'Settings',
     title: 'Nutzfahrzeug Service',
     cat: 'Wartung & Prüfung',
+    image: '/images/mechanic-truck.jpg',
+    imageAlt: 'Mechaniker bei der Bremsen-Reparatur an einem LKW',
+    gallery: ['/images/mechanic-truck.jpg', '/images/werkstatt.jpg'],
     short: 'HU-Abnahme als GTÜ-Stützpunkt, SP-Prüfungen, Mechatronik, Hydraulik - amtlich anerkannt.',
     hero: 'Wir führen für Sie Wartungs- und Servicearbeiten an LKW, Anhängern und Aufliegern, Chassis, Wechselbrücken und Containern durch. Damit Ihr Fuhrpark nicht still steht.',
     bullets: [
@@ -68,6 +77,9 @@ export const services: Service[] = [
     iconName: 'Wrench',
     title: 'Reparatur & Unfallinstandsetzung',
     cat: 'Schadensabwicklung',
+    image: '/images/verkehrsunfall.jpg',
+    imageAlt: 'Verkehrsunfall mit Transporter - Klotz + Wedekind Unfallinstandsetzung',
+    gallery: ['/images/verkehrsunfall.jpg', '/images/unfall-schaden.jpg', '/images/mechanic-truck.jpg'],
     short: 'Von 3,5 Tonner bis 40 Tonner - schnell wieder auf der Straße. Inkl. Gutachten und Versicherungsabwicklung.',
     hero: 'Egal, ob 3,5 Tonner, Transporter oder Autokran, ob 40 Tonner, Auflieger oder Anhänger - das TEAM Klotz + Wedekind sorgt dafür, dass Ihr Fahrzeug schnell wieder im neuen Glanz auf die Straße kommt.',
     quote: '„Das ist tägliches Geschäft aus Leidenschaft."',
@@ -90,6 +102,9 @@ export const services: Service[] = [
     iconName: 'Paintbrush2',
     title: 'Lackiererei',
     cat: '20 m Lackieranlage',
+    image: '/images/lackieren.jpg',
+    imageAlt: 'Lackierer beim Lackieren in der 20 m Lackieranlage von Klotz + Wedekind',
+    gallery: ['/images/lackieren.jpg', '/images/unfall-schaden.jpg'],
     short: '20 m Lackieranlage mit 4 m Durchfahrthöhe. Busse, LKW mit Auflieger, Sonderfahrzeuge, Wohnmobile.',
     hero: 'Die in 2017 neu in Betrieb genommene Lackieranlage mit einer Länge von über 20 Metern und einer Durchfahrthöhe von über 4 Metern bietet großzügig Platz für: Busse, LKW mit Anhänger oder Auflieger, Kran- und Sonderfahrzeuge, Wohnmobile.',
     quote: '„Nicht kleckern, sondern Klotz(en)."',
@@ -107,6 +122,9 @@ export const services: Service[] = [
     iconName: 'ArrowLeftRight',
     title: 'Rahmenrichtstand',
     cat: 'Hydraulische Präzision',
+    image: '/images/unfall-schaden.jpg',
+    imageAlt: 'Unfallschaden am Fahrzeug - Rahmenrichten bei Klotz + Wedekind',
+    gallery: ['/images/unfall-schaden.jpg', '/images/verkehrsunfall.jpg', '/images/mechanic-truck.jpg'],
     short: 'Spezialisierte Hydraulik-Power für präzise Rahmen-Reparaturen. Auch wenn es richtig schief gelaufen ist.',
     hero: 'Auch wenn’s mal so richtig schief gelaufen ist, biegt Klotz + Wedekind das für Sie wieder hin. Mit unserem hydraulischen Rahmenrichtstand und der Erfahrung aus drei Generationen Karosseriebau.',
     quote: '„Widerstand ist zwecklos!"',
@@ -125,6 +143,9 @@ export const services: Service[] = [
     iconName: 'Home',
     title: 'Wohnmobil & Caravan',
     cat: 'Alle Marken',
+    image: '/images/wohnmobil.jpg',
+    imageAlt: 'Wohnmobil bei Sonnenuntergang - Wohnmobil-Service bei Klotz + Wedekind',
+    gallery: ['/images/wohnmobil.jpg', '/images/lackieren.jpg'],
     short: 'Unfallinstandsetzung, HU/AU, Gasprüfung, GFK-Arbeiten, Dachbeschichtung - alle Wohnmobil-Marken.',
     hero: 'Umfassender Service rund um Ihr Wohnmobil oder Caravan - markenoffen, vom Standschaden bis zur kompletten Hagelschutz-Dachbeschichtung.',
     bullets: [

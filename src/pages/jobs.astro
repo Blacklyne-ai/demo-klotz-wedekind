@@ -5,74 +5,280 @@ import { site, telLink } from '../data/site';
 
 const ausbildung = [
   {
-    title: 'Kfz-Mechatroniker (m/w/d) - Nutzfahrzeuge',
-    body: 'Klassische Ausbildung zum Kfz-Mechatroniker mit Schwerpunkt Nutzfahrzeug-Technik. Mechanik, Elektrik, Hydraulik, Diagnose - alles im Werkstatt-Alltag bei den großen Brummern.',
+    slug: 'ausb-mechatroniker',
+    title: 'Kfz-Mechatroniker/in - Nutzfahrzeuge',
+    cat: 'Ausbildung · 3,5 Jahre',
     iconName: 'Settings',
+    intro: 'Klassische Ausbildung zum Kfz-Mechatroniker mit Schwerpunkt Nutzfahrzeug-Technik. Mechanik, Elektrik, Hydraulik, Diagnose - alles im Werkstatt-Alltag bei LKW und Transportern.',
+    aufgaben: [
+      'Wartungs- und Servicearbeiten an LKW und Anhängern',
+      'Diagnose mit moderner Werkstatt-Software',
+      'Hydraulik-Einbauten und Reparaturen',
+      'Bremsen-Service nach §29 StVZO',
+      'HU-Vorbereitung und Begleitung',
+    ],
+    voraussetzungen: [
+      'Sehr guter Hauptschulabschluss oder guter Realschulabschluss',
+      'Interesse an Mechanik, Elektrik und großen Fahrzeugen',
+      'Sorgfalt und Verantwortungsbewusstsein',
+      'Teamfähigkeit und Lernbereitschaft',
+    ],
   },
   {
-    title: 'Karosserie- & Fahrzeugbau (m/w/d) - Karosserietechnik',
-    body: 'Karosseriebau aus 115 Jahren Tradition. Sonderaufbauten, Kühlfahrzeuge, Pritschen - hier wird noch nach Maß gearbeitet.',
+    slug: 'ausb-karosseriebauer',
+    title: 'Karosserie- & Fahrzeugbauer/in - Karosserietechnik',
+    cat: 'Ausbildung · 3,5 Jahre',
     iconName: 'Hammer',
+    intro: 'Karosseriebau aus 115 Jahren Tradition. Sonderaufbauten, Kühlfahrzeuge, Pritschen, Krane - hier wird noch nach Maß gearbeitet, mit modernster Technik.',
+    aufgaben: [
+      'Aufbauten an LKW und Anhängern',
+      'Schweißarbeiten an Stahl und Aluminium',
+      'Sonderanfertigungen nach Kundenwunsch',
+      'Reparatur von Karosserie-Schäden',
+      'Rahmen-Richtarbeiten am Hydraulik-Stand',
+    ],
+    voraussetzungen: [
+      'Sehr guter Hauptschulabschluss oder guter Realschulabschluss',
+      'Handwerkliches Geschick',
+      'Räumliches Vorstellungsvermögen',
+      'Interesse an Konstruktion und Technik',
+    ],
   },
 ];
 
 const stellen = [
-  { title: 'Kfz-Mechatroniker (m/w/d) - Nutzfahrzeuge', iconName: 'Settings' },
-  { title: 'Karosseriebauer (m/w/d) - Nutzfahrzeuge',   iconName: 'Hammer' },
-  { title: 'Kfz-Elektriker (m/w/d) - Nutzfahrzeuge',    iconName: 'Cpu' },
-  { title: 'Hydrauliker (m/w/d) - Nutzfahrzeuge',       iconName: 'Zap' },
-  { title: 'Land- &amp; Baumaschinenmechaniker (m/w/d)', iconName: 'Wrench' },
+  {
+    slug: 'kfz-mechatroniker',
+    title: 'Kfz-Mechatroniker/in (m/w/d)',
+    cat: 'Vollzeit · Nutzfahrzeuge',
+    iconName: 'Settings',
+    intro: 'Sie sind Mechatroniker mit Erfahrung im Nutzfahrzeug-Bereich? Bei uns arbeiten Sie an LKW, Transportern, Anhängern und Aufliegern - vom Bremsen-Service bis zur Software-Diagnose.',
+    aufgaben: [
+      'Wartung und Reparatur an LKW, Transportern, Anhängern und Aufliegern',
+      'Bremsen-Service nach §29 StVZO',
+      'Mechatronik, Motor- und Getriebeinstandsetzung',
+      'Software- und Fehlerdiagnose',
+      'HU-Begleitung als GTÜ-Stützpunkt',
+    ],
+    voraussetzungen: [
+      'Abgeschlossene Ausbildung als Kfz-Mechatroniker oder vergleichbar',
+      'Erfahrung im Nutzfahrzeug-Bereich erwünscht',
+      'Führerschein Klasse B (Klasse C/CE von Vorteil)',
+      'Selbstständige und sorgfältige Arbeitsweise',
+    ],
+  },
+  {
+    slug: 'karosseriebauer',
+    title: 'Karosseriebauer/in (m/w/d)',
+    cat: 'Vollzeit · Nutzfahrzeuge',
+    iconName: 'Hammer',
+    intro: 'Sie sind Karosseriebauer mit Auge für saubere Arbeit? Bei uns ist Karosserie nicht nur Reparatur - hier entstehen auch echte Sonderanfertigungen für Spediteure und Fuhrpark-Manager.',
+    aufgaben: [
+      'Karosseriereparatur an LKW und Aufbauten',
+      'Schweißarbeiten Stahl und Aluminium',
+      'Unfallinstandsetzung mit Versicherungsabwicklung',
+      'Sonderaufbauten nach Kundenspezifikation',
+      'Rahmenrichten am hydraulischen Stand',
+    ],
+    voraussetzungen: [
+      'Abgeschlossene Ausbildung Karosserie- und Fahrzeugbauer oder vergleichbar',
+      'Sicheres Schweißen (MAG, MIG, WIG)',
+      'Erfahrung mit Nutzfahrzeugen von Vorteil',
+      'Saubere und präzise Arbeitsweise',
+    ],
+  },
+  {
+    slug: 'kfz-elektriker',
+    title: 'Kfz-Elektriker/in (m/w/d)',
+    cat: 'Vollzeit · Nutzfahrzeuge',
+    iconName: 'Cpu',
+    intro: 'Elektrik und Elektronik an Nutzfahrzeugen werden immer komplexer. Sie sind der Spezialist, der Bordnetze, Telematik und Beleuchtungs-Systeme zuverlässig zum Laufen bringt.',
+    aufgaben: [
+      'Elektrik- und Elektronik-Reparaturen an LKW und Aufbauten',
+      'Bordnetz-Erweiterungen und Sonder-Einbauten',
+      'Fehlerdiagnose mit Werkstatt-Tester',
+      'Telematik und Beleuchtungs-Systeme',
+      'Verkabelung von Krane und Ladebordwänden',
+    ],
+    voraussetzungen: [
+      'Abgeschlossene Ausbildung Kfz-Elektriker, Mechatroniker oder vergleichbar',
+      'Erfahrung mit Nutzfahrzeug-Elektrik wünschenswert',
+      'Strukturierte Fehlersuche',
+      'Lust auf Weiterbildung in neuer Fahrzeugtechnik',
+    ],
+  },
+  {
+    slug: 'hydrauliker',
+    title: 'Hydrauliker/in (m/w/d)',
+    cat: 'Vollzeit · Nutzfahrzeuge',
+    iconName: 'Zap',
+    intro: 'Krane von Hiab und Palfinger, Ladebordwände von Bär, Dhollandia oder Sörensen, Kippsysteme von Hyva - Hydraulik ist Ihre Welt? Dann passen Sie zu uns.',
+    aufgaben: [
+      'Reparatur und Wartung von Krane, Ladebordwänden und Kipper-Systemen',
+      'UVV-Prüfungen mit Dokumentation',
+      'Hydraulik-Schlauch und Pumpen-Service',
+      'Inbetriebnahme von Sonderaufbauten',
+      'Fehlersuche und Diagnose an Hydraulik-Systemen',
+    ],
+    voraussetzungen: [
+      'Abgeschlossene Ausbildung mit Hydraulik-Bezug (Industriemechaniker, Mechatroniker)',
+      'Erfahrung mit Krane, Ladebordwänden oder Kipper-Systemen',
+      'Schulungen von Hiab, Palfinger, Bär, Dhollandia o. ä. von Vorteil',
+      'Sicherheitsbewusste Arbeitsweise',
+    ],
+  },
+  {
+    slug: 'landmaschinen',
+    title: 'Land- und Baumaschinen-Mechaniker/in (m/w/d)',
+    cat: 'Vollzeit · Sonderfahrzeuge',
+    iconName: 'Wrench',
+    intro: 'Landmaschinen, Baumaschinen, Sonderfahrzeuge - Sie sind die Universalkraft, wenn es um große Geräte abseits der LKW geht. Bei uns kombiniert mit Karosserie- und Hydraulik-Know-how.',
+    aufgaben: [
+      'Reparatur und Wartung von Land- und Baumaschinen',
+      'Hydraulik- und Mechanik-Service',
+      'Schweißarbeiten und Reparatur-Aufbauten',
+      'Unterstützung bei Sondereinbauten',
+      'Vor-Ort-Einsätze bei Bedarf',
+    ],
+    voraussetzungen: [
+      'Abgeschlossene Ausbildung Land-/Baumaschinen-Mechaniker oder vergleichbar',
+      'Erfahrung mit Hydraulik und Dieselmotoren',
+      'Selbstständige Arbeitsweise',
+      'Führerschein Klasse B (C/CE wünschenswert)',
+    ],
+  },
+];
+
+const benefits = [
+  { icon: 'Award',    title: 'Heritage-Betrieb',     text: '115 Jahre Klotz + Wedekind. Familiengeführt in dritter Generation - kein anonymer Konzern.' },
+  { icon: 'Settings', title: 'Top-Werkzeug',         text: 'Modernste Werkstatt-Ausstattung, Diagnose-Tester aller großen Hersteller, 20 m Lackieranlage.' },
+  { icon: 'GraduationCap', title: 'Weiterbildung',   text: 'Regelmäßige Hersteller-Schulungen bei Hiab, Palfinger, Bär, Dhollandia, WABCO und Carrier.' },
+  { icon: 'Users',    title: 'Persönliches Team',    text: 'Kein Schichtarbeit-Karussell. Direkte Ansprechpartner, Anja Mädel ist persönlich für Sie da.' },
+  { icon: 'MapPin',   title: 'Hamburg-Wilhelmsburg', text: 'Verkehrsgünstig zwischen A1, A7 und Hafen. Mit dem Auto, ÖPNV oder Fahrrad gut erreichbar.' },
+  { icon: 'Coffee',   title: 'Solide Arbeitszeiten', text: 'Mo - Fr 07:00-18:00, Sa 07:00-13:00. Geregelte Pausen, faire Bezahlung, Tarif-Anlehnung.' },
 ];
 ---
 
 <Layout
-  title={`Jobs - ${site.name}`}
-  description="Stellenangebote und Ausbildungsplätze bei Klotz + Wedekind in Hamburg-Wilhelmsburg. Kfz-Mechatroniker, Karosseriebauer, Elektriker, Hydrauliker."
+  title={`Jobs - ${site.name} Hamburg-Wilhelmsburg`}
+  description="Stellenangebote und Ausbildungsplätze bei Klotz + Wedekind in Hamburg-Wilhelmsburg. Kfz-Mechatroniker, Karosseriebauer, Elektriker, Hydrauliker. Bewerbung an Anja Mädel."
   current="jobs"
 >
 
-  <!-- Hero -->
-  <section class="subpage-hero ink-grid">
-    <div class="container-rd relative pt-32 md:pt-40 pb-12 md:pb-16">
-      <div class="max-w-3xl">
-        <span class="eyebrow eyebrow-light">Team verstärken · Hamburg-Wilhelmsburg</span>
+  <!-- Hero mit Werkstatt-Bild -->
+  <section class="subpage-hero-img">
+    <div class="subpage-hero-img-bg">
+      <img src="/images/werkstatt.jpg" alt="Klotz + Wedekind Werkstatt in Hamburg-Wilhelmsburg" loading="eager" fetchpriority="high" />
+      <div class="subpage-hero-img-overlay"></div>
+    </div>
+    <div class="container-rd relative pt-32 md:pt-44 pb-14 md:pb-20">
+      <div class="max-w-3xl relative z-10">
+        <span class="eyebrow eyebrow-light">
+          <span class="eyebrow-icon"><Icon name="UserPlus" size={14} strokeWidth={2.2} /></span>
+          Wir verstärken unser Team in Wilhelmsburg
+        </span>
         <h1 class="heading-display mt-4 text-balance" style="color:#fff">
-          Werden Sie Teil
-          <span class="accent-brand"> unseres Teams.</span>
+          Werden Sie Teil der
+          <span class="accent-brand"> Klotz + Wedekind Familie.</span>
         </h1>
         <p class="lead-on-dark mt-5 max-w-2xl text-pretty">
           115 Jahre Tradition, drei Generationen Familie Wedekind, GTÜ-Stützpunkt und eine 20 m
-          Lackieranlage - bei uns arbeiten Sie am ganzen Spektrum moderner Nutzfahrzeug-Technik.
+          Lackieranlage. Sieben offene Stellen + zwei Ausbildungsplätze. Hier arbeiten Sie am ganzen
+          Spektrum moderner Nutzfahrzeug-Technik.
         </p>
+        <div class="mt-9 flex flex-wrap items-center gap-3">
+          <a href={`mailto:${site.emailBewerbung}?subject=${encodeURIComponent('Bewerbung Klotz+Wedekind')}`} class="btn btn-primary btn-lg">
+            <Icon name="Mail" size={17} strokeWidth={2.2} />
+            Jetzt bewerben
+          </a>
+          <a href="#stellen" class="btn btn-on-dark btn-lg">
+            Stellen ansehen
+            <Icon name="ArrowDown" size={17} strokeWidth={2.2} />
+          </a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Ausbildung -->
-  <section class="section">
+  <!-- Stats-Strip -->
+  <section class="section-sm">
     <div class="container-rd">
-      <div class="text-center max-w-3xl mx-auto mb-12">
-        <span class="eyebrow">Ausbildung · Bewerbung ab 01.01. für 01.08.</span>
+      <div class="jobs-stats">
+        <div class="jobs-stat">
+          <span class="jobs-stat-value">7</span>
+          <span class="jobs-stat-label">Offene Stellen</span>
+        </div>
+        <div class="jobs-stat">
+          <span class="jobs-stat-value">2</span>
+          <span class="jobs-stat-label">Ausbildungsplätze</span>
+        </div>
+        <div class="jobs-stat">
+          <span class="jobs-stat-value">115+</span>
+          <span class="jobs-stat-label">Jahre Tradition</span>
+        </div>
+        <div class="jobs-stat">
+          <span class="jobs-stat-value">3</span>
+          <span class="jobs-stat-label">Generationen Wedekind</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stellen-Details -->
+  <section id="stellen" class="section">
+    <div class="container-rd">
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <span class="eyebrow">Offene Stellen · alle (m/w/d)</span>
         <h2 class="heading-xl mt-4 text-balance">
-          Ausbildung
-          <span class="accent-brand"> bei Klotz + Wedekind.</span>
+          Wir suchen Verstärkung
+          <span class="accent-brand"> in fünf Bereichen.</span>
         </h2>
         <p class="lead mt-5 text-pretty">
-          Wir bilden in zwei Berufen aus - in einem Betrieb mit 115 Jahren Erfahrung und einem
-          Team aus Meistern, die ihr Wissen teilen.
+          Jede Stelle mit klarem Aufgabenprofil und persönlichem Ansprechpartner. Schnelle Rückmeldung,
+          ehrliche Gespräche - so machen wir das.
         </p>
       </div>
 
-      <div class="grid md:grid-cols-2 gap-6">
-        {ausbildung.map((a) => (
-          <article class="job-card">
-            <span class="job-card-icon"><Icon name={a.iconName} size={26} strokeWidth={1.9} /></span>
-            <span class="job-card-cat">Ausbildung</span>
-            <h3 class="job-card-title">{a.title}</h3>
-            <p class="job-card-body">{a.body}</p>
-            <div class="job-card-meta">
-              <Icon name="GraduationCap" size={15} strokeWidth={2} />
-              <span>Sehr gute Hauptschule oder gute Mittlere Reife</span>
+      <div class="job-list">
+        {stellen.map((s) => (
+          <article id={s.slug} class="job-detail-card">
+            <div class="job-detail-head">
+              <span class="job-detail-icon"><Icon name={s.iconName} size={26} strokeWidth={1.9} /></span>
+              <div>
+                <span class="job-detail-cat">{s.cat}</span>
+                <h3 class="job-detail-title">{s.title}</h3>
+              </div>
+            </div>
+            <p class="job-detail-intro">{s.intro}</p>
+
+            <div class="job-detail-grid">
+              <div class="job-detail-col">
+                <span class="job-detail-h">Ihre Aufgaben</span>
+                <ul class="job-detail-list">
+                  {s.aufgaben.map((a) => (
+                    <li><span class="job-detail-check"><Icon name="Check" size={12} strokeWidth={3} /></span>{a}</li>
+                  ))}
+                </ul>
+              </div>
+              <div class="job-detail-col">
+                <span class="job-detail-h">Ihr Profil</span>
+                <ul class="job-detail-list">
+                  {s.voraussetzungen.map((v) => (
+                    <li><span class="job-detail-dot"></span>{v}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <div class="job-detail-cta">
+              <a href={`mailto:${site.emailBewerbung}?subject=${encodeURIComponent('Bewerbung ' + s.title)}`} class="btn btn-primary">
+                <Icon name="Mail" size={15} strokeWidth={2.2} />
+                Auf diese Stelle bewerben
+              </a>
+              <a href={`tel:${site.geschaeftsfuehrung[1].phoneTel.replace('tel:', '')}`} class="btn btn-outline">
+                <Icon name="Phone" size={15} strokeWidth={2.2} />
+                Erst anrufen
+              </a>
             </div>
           </article>
         ))}
@@ -80,95 +286,138 @@ const stellen = [
     </div>
   </section>
 
-  <!-- Aktuelle Stellen -->
+  <!-- Ausbildung -->
   <section class="section section-paper-deep">
     <div class="container-rd">
       <div class="text-center max-w-3xl mx-auto mb-12">
-        <span class="eyebrow">Aktuelle Stellen · alle (m/w/d)</span>
+        <span class="eyebrow">Ausbildung · Bewerbung ab 01.01. für 01.08.</span>
         <h2 class="heading-xl mt-4 text-balance">
-          Wir suchen
-          <span class="accent-brand"> verstärkung.</span>
+          Starten Sie Ihre Karriere
+          <span class="accent-brand"> bei uns.</span>
         </h2>
+        <p class="lead mt-5 text-pretty">
+          Wir bilden in zwei Berufen aus - in einem Betrieb mit 115 Jahren Erfahrung und einem
+          Team aus Meistern, die ihr Wissen teilen. Mehr als „nur Schraube reindrehen".
+        </p>
       </div>
 
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {stellen.map((s) => (
-          <div class="stelle-card">
-            <span class="stelle-card-icon"><Icon name={s.iconName} size={20} strokeWidth={2} /></span>
-            <span class="stelle-card-title" set:html={s.title} />
-          </div>
+      <div class="job-list">
+        {ausbildung.map((a) => (
+          <article id={a.slug} class="job-detail-card job-detail-card-ausbildung">
+            <div class="job-detail-head">
+              <span class="job-detail-icon"><Icon name={a.iconName} size={26} strokeWidth={1.9} /></span>
+              <div>
+                <span class="job-detail-cat">{a.cat}</span>
+                <h3 class="job-detail-title">{a.title}</h3>
+              </div>
+            </div>
+            <p class="job-detail-intro">{a.intro}</p>
+
+            <div class="job-detail-grid">
+              <div class="job-detail-col">
+                <span class="job-detail-h">Das lernen Sie</span>
+                <ul class="job-detail-list">
+                  {a.aufgaben.map((x) => (
+                    <li><span class="job-detail-check"><Icon name="Check" size={12} strokeWidth={3} /></span>{x}</li>
+                  ))}
+                </ul>
+              </div>
+              <div class="job-detail-col">
+                <span class="job-detail-h">Voraussetzungen</span>
+                <ul class="job-detail-list">
+                  {a.voraussetzungen.map((v) => (
+                    <li><span class="job-detail-dot"></span>{v}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <div class="job-detail-cta">
+              <a href={`mailto:${site.emailBewerbung}?subject=${encodeURIComponent('Bewerbung Ausbildung ' + a.title)}`} class="btn btn-primary">
+                <Icon name="GraduationCap" size={15} strokeWidth={2.2} />
+                Ausbildungsplatz sichern
+              </a>
+            </div>
+          </article>
         ))}
       </div>
-
-      <p class="text-center text-muted text-sm mt-10">
-        Alle Stellen mit Schwerpunkt LKW-Bereich.
-      </p>
     </div>
   </section>
 
-  <!-- Bewerbung -->
+  <!-- Was wir bieten -->
   <section class="section">
     <div class="container-rd">
-      <div class="bewerbung-card">
-        <div>
-          <span class="eyebrow">Bewerbung</span>
-          <h2 class="heading-lg mt-4">
-            Ihre Bewerbung an
-            <span class="accent-brand"> Frau Anja Mädel.</span>
-          </h2>
-          <p class="lead mt-5 text-pretty">
-            Bewerbungen, Praktikumsanfragen und alle Fragen rund um Ausbildung beantwortet Anja Mädel.
-            Schicken Sie Ihre Unterlagen einfach per E-Mail oder Post.
-          </p>
-        </div>
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="eyebrow">Was Sie bei uns erwartet</span>
+        <h2 class="heading-xl mt-4 text-balance">
+          Sechs gute Gründe
+          <span class="accent-brand"> für Klotz + Wedekind.</span>
+        </h2>
+      </div>
 
-        <div class="bewerbung-contacts">
-          <a href={`mailto:${site.emailBewerbung}`} class="bewerbung-row">
-            <span class="bewerbung-icon"><Icon name="Mail" size={18} strokeWidth={2.2} /></span>
-            <div>
-              <span class="bewerbung-label">E-Mail</span>
-              <strong class="bewerbung-value">{site.emailBewerbung}</strong>
-            </div>
-          </a>
-          <a href="tel:+494073483150" class="bewerbung-row">
-            <span class="bewerbung-icon"><Icon name="Phone" size={18} strokeWidth={2.2} /></span>
-            <div>
-              <span class="bewerbung-label">Telefon Anja Mädel</span>
-              <strong class="bewerbung-value">040 - 734 83 - 150</strong>
-            </div>
-          </a>
-          <div class="bewerbung-row bewerbung-row-static">
-            <span class="bewerbung-icon"><Icon name="MapPin" size={18} strokeWidth={2.2} /></span>
-            <div>
-              <span class="bewerbung-label">Post</span>
-              <strong class="bewerbung-value">Stenzelring 9, 21107 Hamburg</strong>
-            </div>
+      <div class="benefit-grid">
+        {benefits.map((b) => (
+          <div class="benefit-card">
+            <span class="benefit-card-icon"><Icon name={b.icon} size={24} strokeWidth={1.9} /></span>
+            <strong class="benefit-card-title">{b.title}</strong>
+            <p class="benefit-card-text">{b.text}</p>
           </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Bewerbungs-Pfad -->
+  <section class="section section-paper-deep">
+    <div class="container-rd">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="eyebrow">So bewerben Sie sich</span>
+        <h2 class="heading-xl mt-4 text-balance">
+          Drei Schritte
+          <span class="accent-brand"> zum Vorstellungsgespräch.</span>
+        </h2>
+      </div>
+
+      <div class="apply-steps">
+        <div class="apply-step">
+          <span class="apply-step-num">01</span>
+          <strong class="apply-step-title">E-Mail an Anja Mädel</strong>
+          <p class="apply-step-text">Lebenslauf und kurzes Anschreiben an <a href={`mailto:${site.emailBewerbung}`}>{site.emailBewerbung}</a> - kein langes Anschreiben nötig.</p>
+        </div>
+        <div class="apply-step">
+          <span class="apply-step-num">02</span>
+          <strong class="apply-step-title">Kurz-Rückmeldung</strong>
+          <p class="apply-step-text">Innerhalb von 5 Werktagen melden wir uns. Telefonisch oder per E-Mail - je nachdem was Ihnen lieber ist.</p>
+        </div>
+        <div class="apply-step">
+          <span class="apply-step-num">03</span>
+          <strong class="apply-step-title">Probetag &amp; Vertrag</strong>
+          <p class="apply-step-text">Beim Vorstellungsgespräch lernen Sie die Werkstatt kennen. Ein Probetag macht das Ganze konkret - dann der Vertrag.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Final CTA -->
-  <section class="final-cta ink-grid">
+  <section class="final-cta">
     <div class="container-rd relative">
       <div class="text-center max-w-3xl mx-auto">
         <span class="eyebrow eyebrow-light">Werden Sie Teil der Geschichte</span>
         <h2 class="heading-xl mt-4 text-balance" style="color:#fff">
-          Drei Generationen.
-          <span class="accent-brand"> Ihr Platz?</span>
+          Wir freuen uns auf
+          <span class="accent-brand"> Ihre Bewerbung.</span>
         </h2>
         <p class="lead-on-dark mt-5 text-pretty">
-          Wir freuen uns auf Ihre Bewerbung. Per E-Mail an Anja Mädel oder ein Anruf vorher zum Kennenlernen.
+          Per E-Mail an Anja Mädel - sie meldet sich persönlich. Lieber erst telefonieren? Auch gut.
         </p>
         <div class="mt-9 flex flex-wrap items-center justify-center gap-3">
-          <a href={`mailto:${site.emailBewerbung}`} class="btn btn-primary btn-lg">
+          <a href={`mailto:${site.emailBewerbung}?subject=${encodeURIComponent('Bewerbung Klotz+Wedekind')}`} class="btn btn-primary btn-lg">
             <Icon name="Mail" size={17} strokeWidth={2.2} />
-            Jetzt bewerben
+            {site.emailBewerbung}
           </a>
-          <a href={telLink} class="btn btn-on-dark btn-lg">
+          <a href="tel:+494073483150" class="btn btn-on-dark btn-lg">
             <Icon name="Phone" size={17} strokeWidth={2.2} />
-            Erst anrufen
+            Anja Mädel · 040 - 734 83 - 150
           </a>
         </div>
       </div>
@@ -178,152 +427,264 @@ const stellen = [
 </Layout>
 
 <style>
-  .job-card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+  /* Stats-Strip */
+  .jobs-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: rgb(var(--rgb-line));
+    border: 1px solid rgb(var(--rgb-line));
+    border-radius: var(--r-lg);
+    overflow: hidden;
+  }
+  @media (min-width: 768px) {
+    .jobs-stats { grid-template-columns: repeat(4, 1fr); }
+  }
+  .jobs-stat {
+    padding: 1.65rem 1.4rem;
+    background: #fff;
+    text-align: center;
+  }
+  .jobs-stat-value {
+    display: block;
+    font-family: var(--font-display);
+    font-size: clamp(1.85rem, 3.2vw, 2.5rem);
+    font-weight: 800;
+    color: rgb(var(--rgb-brand));
+    line-height: 1;
+    letter-spacing: -0.022em;
+  }
+  .jobs-stat-label {
+    display: block;
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgb(var(--rgb-muted));
+    margin-top: 0.4rem;
+  }
+
+  /* Job-List */
+  .job-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .job-detail-card {
     padding: 2rem 1.85rem;
     background: linear-gradient(135deg, #fff 0%, rgb(var(--rgb-paper)) 100%);
     border: 1px solid rgb(var(--rgb-line));
     border-radius: var(--r-lg);
-    transition: transform 0.3s ease, border-color 0.25s ease, box-shadow 0.3s ease;
-    overflow: hidden;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
   }
-  .job-card:hover {
-    transform: translateY(-3px);
+  .job-detail-card:hover {
     border-color: rgb(var(--rgb-brand) / 0.36);
-    box-shadow: 0 16px 40px -16px rgb(23 23 23 / 0.18);
-  }
-  .job-card-icon {
-    width: 54px; height: 54px;
-    border-radius: var(--r-md);
-    background: linear-gradient(135deg, rgb(var(--rgb-brand) / 0.14), rgb(var(--rgb-accent) / 0.08));
-    border: 1px solid rgb(var(--rgb-brand) / 0.22);
-    color: rgb(var(--rgb-brand));
-    display: inline-flex; align-items: center; justify-content: center;
-    margin-bottom: 0.5rem;
-  }
-  .job-card-cat {
-    font-family: var(--font-sans);
-    font-size: 0.62rem;
-    font-weight: 700;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: rgb(var(--rgb-brand));
-  }
-  .job-card-title {
-    font-family: var(--font-headline);
-    font-weight: 800;
-    font-size: 1.2rem;
-    line-height: 1.2;
-    color: rgb(var(--rgb-ink));
-    letter-spacing: -0.012em;
-    margin: 0;
-  }
-  .job-card-body {
-    color: rgb(var(--rgb-ink-soft));
-    font-size: 0.94rem;
-    line-height: 1.55;
-    margin: 0.35rem 0 1rem;
-  }
-  .job-card-meta {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    padding: 0.6rem 0.85rem;
-    background: rgb(var(--rgb-brand) / 0.06);
-    border-radius: 8px;
-    color: rgb(var(--rgb-brand-deep));
-    font-size: 0.82rem;
-    font-weight: 600;
-    width: fit-content;
-  }
-
-  .stelle-card {
-    display: flex;
-    align-items: center;
-    gap: 0.9rem;
-    padding: 1.25rem 1.35rem;
-    background: #fff;
-    border: 1px solid rgb(var(--rgb-line));
-    border-radius: 12px;
-    transition: transform 0.2s ease, border-color 0.25s ease, box-shadow 0.25s ease;
-  }
-  .stelle-card:hover {
-    transform: translateY(-2px);
-    border-color: rgb(var(--rgb-brand) / 0.4);
-    box-shadow: 0 12px 28px -10px rgb(23 23 23 / 0.14);
-  }
-  .stelle-card-icon {
-    width: 40px; height: 40px;
-    border-radius: 9px;
-    background: rgb(var(--rgb-brand) / 0.08);
-    color: rgb(var(--rgb-brand));
-    display: inline-flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-  }
-  .stelle-card-title {
-    font-family: var(--font-headline);
-    font-weight: 800;
-    font-size: 0.95rem;
-    color: rgb(var(--rgb-ink));
-    letter-spacing: -0.008em;
-    line-height: 1.25;
-  }
-
-  .bewerbung-card {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    padding: 2.5rem 2.25rem;
-    background: linear-gradient(135deg, #fff 0%, rgb(var(--rgb-paper)) 100%);
-    border: 1px solid rgb(var(--rgb-line));
-    border-radius: var(--r-lg);
     box-shadow: 0 18px 44px -18px rgb(23 23 23 / 0.18);
   }
-  @media (min-width: 768px) {
-    .bewerbung-card { grid-template-columns: 1.05fr 0.95fr; gap: 3rem; }
-  }
-  .bewerbung-contacts { display: flex; flex-direction: column; gap: 0.65rem; }
-  .bewerbung-row {
+  .job-detail-head {
     display: flex;
-    align-items: center;
-    gap: 0.85rem;
-    padding: 1rem 1.1rem;
-    background: rgb(var(--rgb-paper-50));
-    border: 1px solid rgb(var(--rgb-line));
-    border-radius: 10px;
-    transition: transform 0.2s ease, border-color 0.2s ease;
+    align-items: flex-start;
+    gap: 1.1rem;
+    margin-bottom: 1rem;
   }
-  .bewerbung-row:hover:not(.bewerbung-row-static) {
-    transform: translateX(3px);
-    border-color: rgb(var(--rgb-brand) / 0.4);
-  }
-  .bewerbung-icon {
-    width: 42px; height: 42px;
-    border-radius: 10px;
-    background: rgb(var(--rgb-brand) / 0.1);
-    color: rgb(var(--rgb-brand));
-    display: inline-flex; align-items: center; justify-content: center;
+  .job-detail-icon {
+    width: 56px; height: 56px;
     flex-shrink: 0;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgb(var(--rgb-brand) / 0.14), rgb(var(--rgb-brand) / 0.04));
+    border: 1px solid rgb(var(--rgb-brand) / 0.22);
+    color: rgb(var(--rgb-brand));
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
-  .bewerbung-label {
+  .job-detail-cat {
     display: block;
-    font-size: 0.62rem;
+    font-family: var(--font-sans);
+    font-size: 0.66rem;
     font-weight: 700;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: rgb(var(--rgb-muted));
-    margin-bottom: 1px;
+    color: rgb(var(--rgb-brand));
+    margin-bottom: 0.3rem;
   }
-  .bewerbung-value {
+  .job-detail-title {
+    font-family: var(--font-headline);
+    font-weight: 800;
+    font-size: 1.4rem;
+    color: rgb(var(--rgb-ink));
+    letter-spacing: -0.012em;
+    margin: 0;
+    line-height: 1.15;
+  }
+  .job-detail-intro {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgb(var(--rgb-ink-soft));
+    margin: 0 0 1.5rem;
+  }
+  .job-detail-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding-top: 1.2rem;
+    padding-bottom: 1.4rem;
+    border-top: 1px solid rgb(var(--rgb-line));
+    border-bottom: 1px solid rgb(var(--rgb-line));
+    margin-bottom: 1.4rem;
+  }
+  @media (min-width: 768px) {
+    .job-detail-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+  }
+  .job-detail-h {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgb(var(--rgb-brand-deep));
+    margin-bottom: 0.85rem;
+  }
+  .job-detail-list {
+    list-style: none;
+    padding: 0; margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .job-detail-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7rem;
+    font-size: 0.92rem;
+    line-height: 1.5;
+    color: rgb(var(--rgb-ink-soft));
+  }
+  .job-detail-check {
+    width: 20px; height: 20px;
+    flex-shrink: 0;
+    border-radius: 5px;
+    background: rgb(var(--rgb-brand));
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.1rem;
+  }
+  .job-detail-dot {
+    width: 7px; height: 7px;
+    border-radius: 999px;
+    border: 1.5px solid rgb(var(--rgb-brand));
+    background: transparent;
+    margin-top: 0.5rem;
+    flex-shrink: 0;
+  }
+  .job-detail-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  .job-detail-card-ausbildung {
+    background: #fff;
+  }
+
+  /* Benefits */
+  .benefit-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  @media (min-width: 640px) { .benefit-grid { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1024px) { .benefit-grid { grid-template-columns: 1fr 1fr 1fr; } }
+  .benefit-card {
+    padding: 1.75rem 1.55rem;
+    background: linear-gradient(135deg, #fff 0%, rgb(var(--rgb-paper)) 100%);
+    border: 1px solid rgb(var(--rgb-line));
+    border-radius: var(--r-lg);
+    transition: transform 0.25s ease, border-color 0.25s ease;
+  }
+  .benefit-card:hover { transform: translateY(-2px); border-color: rgb(var(--rgb-brand) / 0.36); }
+  .benefit-card-icon {
+    width: 48px; height: 48px;
+    border-radius: 11px;
+    background: rgb(var(--rgb-brand) / 0.1);
+    color: rgb(var(--rgb-brand));
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.9rem;
+  }
+  .benefit-card-title {
     display: block;
     font-family: var(--font-headline);
-    font-size: 0.98rem;
     font-weight: 800;
+    font-size: 1.05rem;
     color: rgb(var(--rgb-ink));
-    letter-spacing: -0.008em;
+    letter-spacing: -0.012em;
+    margin-bottom: 0.4rem;
+  }
+  .benefit-card-text {
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: rgb(var(--rgb-ink-soft));
+    margin: 0;
+  }
+
+  /* Apply-Steps */
+  .apply-steps {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    max-width: 56rem;
+    margin: 0 auto;
+  }
+  @media (min-width: 768px) { .apply-steps { grid-template-columns: 1fr 1fr 1fr; } }
+  .apply-step {
+    position: relative;
+    padding: 1.85rem 1.65rem;
+    background: #fff;
+    border: 1px solid rgb(var(--rgb-line));
+    border-radius: var(--r-lg);
+    transition: transform 0.25s ease, border-color 0.25s ease;
+  }
+  .apply-step:hover { transform: translateY(-2px); border-color: rgb(var(--rgb-brand) / 0.36); }
+  .apply-step-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgb(var(--rgb-brand)), rgb(var(--rgb-brand-deep)));
+    color: #fff;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 0.95rem;
+    letter-spacing: -0.014em;
+    margin-bottom: 0.95rem;
+    box-shadow: 0 6px 18px -4px rgb(var(--rgb-brand) / 0.4);
+  }
+  .apply-step-title {
+    display: block;
+    font-family: var(--font-headline);
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: rgb(var(--rgb-ink));
+    letter-spacing: -0.012em;
+    margin-bottom: 0.5rem;
+  }
+  .apply-step-text {
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: rgb(var(--rgb-ink-soft));
+    margin: 0;
+  }
+  .apply-step-text a {
+    color: rgb(var(--rgb-brand-deep));
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
     word-break: break-all;
   }
 </style>

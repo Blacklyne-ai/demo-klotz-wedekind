@@ -10,45 +10,140 @@ import { site, telLink, mailLink } from '../data/site';
   current="ueber-uns"
 >
 
-  <!-- Hero -->
-  <section class="subpage-hero ink-grid">
-    <div class="container-rd relative pt-32 md:pt-40 pb-12 md:pb-16">
-      <div class="grid lg:grid-cols-[1.05fr_0.95fr] gap-10 items-center">
+  <!-- ════════ HERO mit Oldtimer-Bild im Hintergrund ════════ -->
+  <section class="subpage-hero-img">
+    <div class="subpage-hero-img-bg">
+      <img src="/images/oldtimer-lkw.jpg" alt="Klotz + Wedekind Oldtimer-LKW - Heritage seit 1909" loading="eager" fetchpriority="high" />
+      <div class="subpage-hero-img-overlay"></div>
+    </div>
+    <div class="container-rd relative pt-32 md:pt-44 pb-16 md:pb-24">
+      <div class="grid lg:grid-cols-[1.15fr_0.85fr] gap-10 lg:gap-14 items-center relative z-10">
         <div>
-          <span class="eyebrow eyebrow-light">115 Jahre · 3 Generationen · seit 1909</span>
+          <span class="eyebrow eyebrow-light">
+            <span class="eyebrow-icon"><Icon name="Award" size={14} strokeWidth={2.2} /></span>
+            115 Jahre · 3 Generationen · seit 1909
+          </span>
           <h1 class="heading-display mt-4 text-balance" style="color:#fff">
-            Alles
-            <span class="accent-brand"> aus einer Hand …</span>
+            Vom Kutschenbau
+            <span class="accent-brand"> zur Nutzfahrzeug&shy;technik.</span>
           </h1>
           <p class="lead-on-dark mt-5 max-w-2xl text-pretty">
-            Einen Fuhrpark immer perfekt am Laufen zu halten, fordert oft viel Zeit und Kapazitäten.
-            Klotz + Wedekind sorgt mit seinem umfassenden Angebot für Ihre Entlastung.
+            1909 als Stellmacherei in Hamburg-Veddel gegründet. Heute leitet die dritte Generation der
+            Familie Wedekind den Karosserie- und Nutzfahrzeugtechnik-Betrieb am Stenzelring -
+            mit allem was 115 Jahre Handwerk an Wissen tragen.
           </p>
+          <div class="mt-8 flex flex-wrap items-center gap-3">
+            <a href={telLink} class="btn btn-primary btn-lg">
+              <Icon name="Phone" size={17} strokeWidth={2.2} />
+              Persönlich sprechen
+            </a>
+            <a href="#zeitstrahl" class="btn btn-on-dark btn-lg">
+              Zur Geschichte
+              <Icon name="ArrowDown" size={17} strokeWidth={2.2} />
+            </a>
+          </div>
         </div>
 
-        <div class="ueber-image-frame">
-          <img
-            src="/images/oldtimer-lkw.jpg"
-            alt="Klotz + Wedekind - Heritage seit 1909"
-            width="800" height="900"
-            loading="eager"
-            decoding="async"
-          />
-          <div class="ueber-image-vignette"></div>
-          <div class="ueber-image-badge">
-            <span class="ueber-image-badge-year">1909</span>
-            <span class="ueber-image-badge-label">Gegründet von Hermann Klotz</span>
+        <div class="hidden lg:block relative z-10">
+          <div class="ueber-stats-card">
+            <div class="ueber-stat">
+              <span class="ueber-stat-value">1909</span>
+              <span class="ueber-stat-label">Gründungsjahr</span>
+            </div>
+            <div class="ueber-stat">
+              <span class="ueber-stat-value">115+</span>
+              <span class="ueber-stat-label">Jahre Tradition</span>
+            </div>
+            <div class="ueber-stat">
+              <span class="ueber-stat-value">3</span>
+              <span class="ueber-stat-label">Generationen Wedekind</span>
+            </div>
+            <div class="ueber-stat">
+              <span class="ueber-stat-value">6</span>
+              <span class="ueber-stat-label">Leistungsbereiche</span>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Vorteil + Vision -->
+  <!-- ════════ INTRO: Alles aus einer Hand ════════ -->
   <section class="section">
     <div class="container-rd">
-      <div class="grid lg:grid-cols-2 gap-8 lg:gap-12">
+      <div class="grid lg:grid-cols-[0.95fr_1.05fr] gap-10 lg:gap-14 items-center">
+        <div>
+          <span class="eyebrow">Alles aus einer Hand</span>
+          <h2 class="heading-xl mt-4 text-balance">
+            Ihr Fuhrpark - ein
+            <span class="accent-brand"> einziger Ansprechpartner.</span>
+          </h2>
+          <p class="lead mt-5 text-pretty">
+            Einen Fuhrpark immer perfekt am Laufen zu halten, fordert oft viel Zeit und Kapazitäten.
+            Verschiedene Lieferanten und Ansprechpartner verkomplizieren die Abwicklung. Klotz + Wedekind
+            sorgt mit seinem umfassenden Angebot für Ihre Entlastung.
+          </p>
+          <p class="lead mt-4 text-pretty">
+            Wir kümmern uns ganzheitlich um Ihre Fahrzeuge, damit Sie Ihre Ressourcen besser - nämlich an
+            Ihrem Kunden - einsetzen können.
+          </p>
+        </div>
+
+        <div class="ueber-image-stack">
+          <figure class="ueber-image-main">
+            <img src="/images/werkstatt.jpg" alt="Werkstatt von Klotz + Wedekind in Hamburg-Wilhelmsburg" loading="lazy" />
+          </figure>
+          <figure class="ueber-image-overlay">
+            <img src="/images/oldtimer-lkw.jpg" alt="Heritage seit 1909" loading="lazy" />
+            <figcaption>
+              <span class="ueber-image-overlay-year">1909</span>
+              <span class="ueber-image-overlay-label">Stellmacherei Hermann Klotz</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ ZEITSTRAHL ════════ -->
+  <section id="zeitstrahl" class="section section-paper-deep">
+    <div class="container-rd">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="eyebrow">Unsere Geschichte</span>
+        <h2 class="heading-xl mt-4 text-balance">
+          115 Jahre.
+          <span class="accent-brand"> Drei Generationen.</span>
+        </h2>
+        <p class="lead mt-5 text-pretty">
+          Vom Kutschen-Reparateur Hermann Klotz in Veddel zur modernen Nutzfahrzeug-Werkstatt am
+          Stenzelring. Eine Familiengeschichte in fünf Kapiteln.
+        </p>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-line" aria-hidden="true"></div>
+        {site.heritage.map((h, i) => (
+          <article class={`timeline-entry timeline-entry-${i % 2 === 0 ? 'left' : 'right'}`}>
+            <div class="timeline-marker">
+              <span class="timeline-marker-dot"></span>
+            </div>
+            <div class="timeline-card">
+              <span class="timeline-year">{h.year}</span>
+              <strong class="timeline-title">{h.title}</strong>
+              <p class="timeline-text">{h.body}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ VORTEIL + VISION ════════ -->
+  <section class="section">
+    <div class="container-rd">
+      <div class="grid lg:grid-cols-2 gap-6 lg:gap-8">
         <article class="prose-card">
+          <span class="prose-card-num">01</span>
           <span class="eyebrow">Der Vorteil</span>
           <h2 class="heading-lg mt-4">Ein Ansprechpartner. <span class="accent-brand">Alle Bereiche.</span></h2>
           <p class="lead mt-5">
@@ -59,6 +154,7 @@ import { site, telLink, mailLink } from '../data/site';
         </article>
 
         <article class="prose-card">
+          <span class="prose-card-num">02</span>
           <span class="eyebrow">Unsere Vision</span>
           <h2 class="heading-lg mt-4">Ein professioneller <span class="accent-brand">Partner.</span></h2>
           <p class="lead mt-5">
@@ -71,55 +167,30 @@ import { site, telLink, mailLink } from '../data/site';
     </div>
   </section>
 
-  <!-- Heritage-Timeline -->
+  <!-- ════════ DAS HEUTIGE TEAM ════════ -->
   <section class="section section-paper-deep">
     <div class="container-rd">
-      <div class="text-center max-w-3xl mx-auto mb-14">
-        <span class="eyebrow">Unsere Geschichte</span>
-        <h2 class="heading-xl mt-4 text-balance">
-          Von der Stellmacherei zur
-          <span class="accent-brand"> Nutzfahrzeugtechnik.</span>
-        </h2>
-        <p class="lead mt-5 text-pretty">
-          Drei Generationen Familie Wedekind. Vom Kutschen-Reparateur in Veddel zum modernen
-          Karosserie- und Nutzfahrzeugtechnik-Betrieb am Stenzelring.
-        </p>
-      </div>
-
-      <ol class="ueber-timeline">
-        {site.heritage.map((h) => (
-          <li class="ueber-timeline-item">
-            <span class="ueber-timeline-year">{h.year}</span>
-            <div class="ueber-timeline-body">
-              <strong class="ueber-timeline-title">{h.title}</strong>
-              <p class="ueber-timeline-text">{h.body}</p>
-            </div>
-          </li>
-        ))}
-      </ol>
-    </div>
-  </section>
-
-  <!-- Geschaeftsfuehrung -->
-  <section class="section">
-    <div class="container-rd">
       <div class="text-center max-w-3xl mx-auto mb-12">
-        <span class="eyebrow">Geschäftsführung · 3. Generation</span>
+        <span class="eyebrow">3. Generation Wedekind</span>
         <h2 class="heading-xl mt-4 text-balance">
           Familie Wedekind.
           <span class="accent-brand"> Heute.</span>
         </h2>
+        <p class="lead mt-5 text-pretty">
+          Geschäftsführung in dritter Generation - persönlich erreichbar, mit klaren Zuständigkeiten.
+        </p>
       </div>
 
-      <div class="grid md:grid-cols-2 gap-6">
-        {site.geschaeftsfuehrung.map((gf) => (
+      <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        {site.geschaeftsfuehrung.map((gf, i) => (
           <article class="gf-card">
+            <span class="gf-card-num">{String(i + 1).padStart(2, '0')}</span>
             <span class="gf-card-generation">{gf.generation}</span>
             <h3 class="gf-card-name">{gf.name}</h3>
             <p class="gf-card-role">{gf.role}</p>
             <p class="gf-card-detail">{gf.detail}</p>
             <div class="gf-card-contact">
-              <a href={`tel:${gf.phoneTel.replace('tel:', '')}`} class="gf-card-link">
+              <a href={gf.phoneTel} class="gf-card-link">
                 <Icon name="Phone" size={14} strokeWidth={2.2} />
                 {gf.phone}
               </a>
@@ -134,17 +205,63 @@ import { site, telLink, mailLink } from '../data/site';
     </div>
   </section>
 
-  <!-- Final CTA -->
-  <section class="final-cta ink-grid">
+  <!-- ════════ WERTE & KOMPETENZ ════════ -->
+  <section class="section">
+    <div class="container-rd">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="eyebrow">Was Sie bei uns bekommen</span>
+        <h2 class="heading-xl mt-4 text-balance">
+          Werkstatt-Standard
+          <span class="accent-brand"> aus Hamburg.</span>
+        </h2>
+      </div>
+
+      <div class="values-grid">
+        <div class="value-card">
+          <span class="value-card-icon"><Icon name="Award" size={26} strokeWidth={1.9} /></span>
+          <strong class="value-card-title">Heritage seit 1909</strong>
+          <p class="value-card-text">115 Jahre Erfahrung in Karosseriebau und Fahrzeugtechnik. Wissen, das von Generation zu Generation weitergereicht wird.</p>
+        </div>
+        <div class="value-card">
+          <span class="value-card-icon"><Icon name="ShieldCheck" size={26} strokeWidth={1.9} /></span>
+          <strong class="value-card-title">GTÜ-Stützpunkt</strong>
+          <p class="value-card-text">Amtlich anerkannte HU-Abnahme nach §29 StVZO direkt im Haus. Termine ohne externen Werkstattwechsel.</p>
+        </div>
+        <div class="value-card">
+          <span class="value-card-icon"><Icon name="Ruler" size={26} strokeWidth={1.9} /></span>
+          <strong class="value-card-title">20 m Lackieranlage</strong>
+          <p class="value-card-text">2017 neu in Betrieb - mit 4 m Durchfahrthöhe großzügig dimensioniert für LKW, Busse, Aufleger und Wohnmobile.</p>
+        </div>
+        <div class="value-card">
+          <span class="value-card-icon"><Icon name="Users" size={26} strokeWidth={1.9} /></span>
+          <strong class="value-card-title">Familiengeführt</strong>
+          <p class="value-card-text">Dritte Generation Familie Wedekind. Sie sprechen direkt mit der Geschäftsführung - kein anonymes Call-Center.</p>
+        </div>
+        <div class="value-card">
+          <span class="value-card-icon"><Icon name="Truck" size={26} strokeWidth={1.9} /></span>
+          <strong class="value-card-title">3,5 t bis 40 t</strong>
+          <p class="value-card-text">Transporter, Sprinter, Auflieger, Wechselbrücken, Wohnmobile - alle Fahrzeugklassen unter einem Dach.</p>
+        </div>
+        <div class="value-card">
+          <span class="value-card-icon"><Icon name="MapPin" size={26} strokeWidth={1.9} /></span>
+          <strong class="value-card-title">Wilhelmsburg Hamburg</strong>
+          <p class="value-card-text">Zentral im Dreieck zwischen A1, A7 und Hamburger Hafen. Verkehrsgünstig für Spediteure und Fuhrpark-Manager.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ FINAL CTA ════════ -->
+  <section class="final-cta">
     <div class="container-rd relative">
       <div class="text-center max-w-3xl mx-auto">
-        <span class="eyebrow eyebrow-light">115 Jahre Erfahrung</span>
+        <span class="eyebrow eyebrow-light">Persönlich kennenlernen</span>
         <h2 class="heading-xl mt-4 text-balance" style="color:#fff">
-          Lernen Sie uns
-          <span class="accent-brand"> persönlich kennen.</span>
+          Kommen Sie
+          <span class="accent-brand"> vorbei.</span>
         </h2>
         <p class="lead-on-dark mt-5 text-pretty">
-          Stenzelring 9, Hamburg-Wilhelmsburg. Wir freuen uns auf Ihren Besuch.
+          Stenzelring 9, Hamburg-Wilhelmsburg. Wir freuen uns auf Ihren Besuch und das persönliche Gespräch.
         </p>
         <div class="mt-9 flex flex-wrap items-center justify-center gap-3">
           <a href={telLink} class="btn btn-primary btn-lg">
@@ -163,110 +280,217 @@ import { site, telLink, mailLink } from '../data/site';
 </Layout>
 
 <style>
-  .ueber-image-frame {
-    position: relative;
-    border-radius: var(--r-lg);
+  /* Hero-Stats-Card */
+  .ueber-stats-card {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    padding: 0;
+    background: rgb(255 255 255 / 0.05);
+    border: 1px solid rgb(255 255 255 / 0.12);
+    border-radius: 18px;
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
     overflow: hidden;
-    aspect-ratio: 4 / 5;
-    border: 1px solid rgb(255 255 255 / 0.08);
-    box-shadow:
-      0 24px 60px -20px rgb(0 0 0 / 0.5),
-      inset 0 1px 0 rgb(255 255 255 / 0.08);
+    box-shadow: 0 24px 60px -20px rgb(0 0 0 / 0.5);
   }
-  .ueber-image-frame img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    object-position: center;
+  .ueber-stat {
+    padding: 1.65rem 1.35rem;
+    text-align: left;
+    border-bottom: 1px solid rgb(255 255 255 / 0.08);
   }
-  .ueber-image-vignette {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, transparent 30%, rgb(0 0 0 / 0.7) 100%);
-    pointer-events: none;
-  }
-  .ueber-image-badge {
-    position: absolute;
-    bottom: 1.25rem;
-    left: 1.25rem;
-    background: rgb(255 255 255 / 0.96);
-    backdrop-filter: blur(12px);
-    padding: 0.85rem 1.1rem;
-    border-radius: 12px;
-    border-left: 3px solid rgb(var(--rgb-brand));
-  }
-  .ueber-image-badge-year {
+  .ueber-stat:nth-child(odd) { border-right: 1px solid rgb(255 255 255 / 0.08); }
+  .ueber-stat:nth-last-child(-n+2) { border-bottom: none; }
+  .ueber-stat-value {
     display: block;
     font-family: var(--font-display);
-    font-size: 1.6rem;
+    font-size: clamp(2rem, 3.5vw, 2.6rem);
     font-weight: 800;
+    color: #fff;
+    letter-spacing: -0.022em;
     line-height: 1;
-    color: rgb(var(--rgb-brand));
   }
-  .ueber-image-badge-label {
+  .ueber-stat-label {
     display: block;
-    font-size: 0.68rem;
+    font-size: 0.72rem;
     font-weight: 700;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgb(255 255 255 / 0.65);
+    margin-top: 0.4rem;
+  }
+
+  /* Image-Stack im Intro */
+  .ueber-image-stack {
+    position: relative;
+    padding-bottom: 4rem;
+  }
+  .ueber-image-main {
+    margin: 0;
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    box-shadow:
+      0 24px 60px -20px rgb(23 23 23 / 0.3);
+    aspect-ratio: 4 / 3;
+  }
+  .ueber-image-main img { width: 100%; height: 100%; object-fit: cover; }
+  .ueber-image-overlay {
+    position: absolute;
+    bottom: 0; right: 0;
+    margin: 0;
+    width: 55%;
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    border: 6px solid rgb(var(--rgb-paper));
+    box-shadow:
+      0 28px 60px -20px rgb(0 0 0 / 0.5);
+    aspect-ratio: 5 / 4;
+  }
+  .ueber-image-overlay img { width: 100%; height: 100%; object-fit: cover; }
+  .ueber-image-overlay figcaption {
+    position: absolute;
+    bottom: 0.6rem; left: 0.7rem; right: 0.7rem;
+    padding: 0.55rem 0.8rem;
+    background: rgb(255 255 255 / 0.94);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    border-left: 3px solid rgb(var(--rgb-brand));
+  }
+  .ueber-image-overlay-year {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: rgb(var(--rgb-brand));
+    line-height: 1;
+    letter-spacing: -0.018em;
+  }
+  .ueber-image-overlay-label {
+    display: block;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     color: rgb(var(--rgb-ink-soft));
-    margin-top: 0.25rem;
+    margin-top: 0.15rem;
   }
 
-  .prose-card {
-    padding: 2rem 1.85rem;
-    background: linear-gradient(135deg, #fff 0%, rgb(var(--rgb-paper)) 100%);
-    border: 1px solid rgb(var(--rgb-line));
-    border-radius: var(--r-lg);
+  /* Zeitstrahl */
+  .timeline {
+    position: relative;
+    max-width: 56rem;
+    margin: 0 auto;
+    padding: 1rem 0;
   }
-
-  .ueber-timeline {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    max-width: 50rem;
-    margin-left: auto; margin-right: auto;
+  .timeline-line {
+    position: absolute;
+    top: 0; bottom: 0;
+    left: 28px;
+    width: 2px;
+    background: linear-gradient(180deg,
+      rgb(var(--rgb-brand) / 0.1) 0%,
+      rgb(var(--rgb-brand) / 0.5) 12%,
+      rgb(var(--rgb-brand) / 0.5) 88%,
+      rgb(var(--rgb-brand) / 0.1) 100%);
   }
-  .ueber-timeline-item {
+  @media (min-width: 768px) {
+    .timeline-line { left: 50%; transform: translateX(-50%); }
+  }
+  .timeline-entry {
+    position: relative;
     display: grid;
-    grid-template-columns: 96px 1fr;
+    grid-template-columns: 70px 1fr;
     gap: 1.25rem;
-    padding: 1.5rem 1.7rem;
+    margin-bottom: 1.5rem;
+  }
+  @media (min-width: 768px) {
+    .timeline-entry {
+      grid-template-columns: 1fr 70px 1fr;
+      gap: 0;
+    }
+    .timeline-entry-left .timeline-card    { grid-column: 1; margin-right: 1.25rem; text-align: right; }
+    .timeline-entry-left .timeline-marker  { grid-column: 2; }
+    .timeline-entry-right .timeline-card   { grid-column: 3; margin-left: 1.25rem; }
+    .timeline-entry-right .timeline-marker { grid-column: 2; }
+    .timeline-entry-right > div:first-child:not(.timeline-marker) { display: none; }
+  }
+  .timeline-marker {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 1.5rem;
+  }
+  .timeline-marker-dot {
+    width: 18px; height: 18px;
+    border-radius: 999px;
+    background: rgb(var(--rgb-brand));
+    border: 4px solid rgb(var(--rgb-paper-50));
+    box-shadow:
+      0 0 0 4px rgb(var(--rgb-brand) / 0.18),
+      0 6px 18px -4px rgb(var(--rgb-brand) / 0.4);
+  }
+  .timeline-card {
     background: #fff;
     border: 1px solid rgb(var(--rgb-line));
     border-radius: var(--r-lg);
-    transition: transform 0.25s ease, border-color 0.25s ease;
+    padding: 1.4rem 1.5rem 1.35rem;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
   }
-  .ueber-timeline-item:hover {
-    transform: translateX(3px);
+  .timeline-card:hover {
+    transform: translateY(-2px);
     border-color: rgb(var(--rgb-brand) / 0.4);
+    box-shadow: 0 14px 36px -14px rgb(23 23 23 / 0.16);
   }
-  .ueber-timeline-year {
+  .timeline-year {
+    display: inline-block;
     font-family: var(--font-display);
-    font-size: 2.3rem;
+    font-size: 1.85rem;
     font-weight: 800;
     color: rgb(var(--rgb-brand));
     line-height: 1;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.022em;
+    margin-bottom: 0.4rem;
   }
-  .ueber-timeline-body { display: flex; flex-direction: column; gap: 0.35rem; }
-  .ueber-timeline-title {
+  .timeline-title {
+    display: block;
     font-family: var(--font-headline);
     font-size: 1.1rem;
     font-weight: 800;
     color: rgb(var(--rgb-ink));
     letter-spacing: -0.012em;
+    margin-bottom: 0.45rem;
   }
-  .ueber-timeline-text {
-    color: rgb(var(--rgb-ink-soft));
-    font-size: 0.94rem;
+  .timeline-text {
+    font-size: 0.92rem;
     line-height: 1.55;
+    color: rgb(var(--rgb-ink-soft));
     margin: 0;
   }
 
+  /* Prose-Card */
+  .prose-card {
+    position: relative;
+    padding: 2.2rem 2rem;
+    background: linear-gradient(135deg, #fff 0%, rgb(var(--rgb-paper)) 100%);
+    border: 1px solid rgb(var(--rgb-line));
+    border-radius: var(--r-lg);
+    overflow: hidden;
+  }
+  .prose-card-num {
+    position: absolute;
+    top: 1.2rem; right: 1.4rem;
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: rgb(var(--rgb-brand) / 0.12);
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+
+  /* GF-Card */
   .gf-card {
+    position: relative;
     padding: 2rem 1.85rem;
     background: linear-gradient(135deg, #fff 0%, rgb(var(--rgb-paper)) 100%);
     border: 1px solid rgb(var(--rgb-line));
@@ -278,17 +502,26 @@ import { site, telLink, mailLink } from '../data/site';
     border-color: rgb(var(--rgb-brand) / 0.4);
     box-shadow: 0 16px 40px -16px rgb(23 23 23 / 0.18);
   }
+  .gf-card-num {
+    position: absolute;
+    top: 1.2rem; right: 1.4rem;
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 800;
+    color: rgb(var(--rgb-brand));
+    letter-spacing: 0.08em;
+  }
   .gf-card-generation {
     display: inline-block;
     padding: 0.3rem 0.7rem;
     background: rgb(var(--rgb-brand-soft));
     color: rgb(var(--rgb-brand-deep));
     border-radius: 999px;
-    font-size: 0.65rem;
+    font-size: 0.6rem;
     font-weight: 700;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    margin-bottom: 1rem;
+    margin-bottom: 0.85rem;
   }
   .gf-card-name {
     font-family: var(--font-headline);
@@ -310,11 +543,7 @@ import { site, telLink, mailLink } from '../data/site';
     line-height: 1.55;
     margin: 0 0 1.25rem;
   }
-  .gf-card-contact {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.55rem;
-  }
+  .gf-card-contact { display: flex; flex-wrap: wrap; gap: 0.55rem; }
   .gf-card-link {
     display: inline-flex;
     align-items: center;
@@ -328,4 +557,51 @@ import { site, telLink, mailLink } from '../data/site';
     transition: background 0.2s ease;
   }
   .gf-card-link:hover { background: rgb(var(--rgb-brand) / 0.14); }
+
+  /* Werte-Grid */
+  .values-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  @media (min-width: 640px)  { .values-grid { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1024px) { .values-grid { grid-template-columns: 1fr 1fr 1fr; } }
+  .value-card {
+    padding: 1.85rem 1.7rem;
+    background: linear-gradient(135deg, #fff 0%, rgb(var(--rgb-paper)) 100%);
+    border: 1px solid rgb(var(--rgb-line));
+    border-radius: var(--r-lg);
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+  .value-card:hover {
+    transform: translateY(-3px);
+    border-color: rgb(var(--rgb-brand) / 0.4);
+    box-shadow: 0 14px 36px -14px rgb(23 23 23 / 0.16);
+  }
+  .value-card-icon {
+    width: 52px; height: 52px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgb(var(--rgb-brand) / 0.12), rgb(var(--rgb-brand) / 0.04));
+    border: 1px solid rgb(var(--rgb-brand) / 0.22);
+    color: rgb(var(--rgb-brand));
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+  .value-card-title {
+    display: block;
+    font-family: var(--font-headline);
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: rgb(var(--rgb-ink));
+    letter-spacing: -0.012em;
+    margin-bottom: 0.5rem;
+  }
+  .value-card-text {
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: rgb(var(--rgb-ink-soft));
+    margin: 0;
+  }
 </style>
