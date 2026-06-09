@@ -11,8 +11,9 @@
    - Brand-Rot (Klotz+Wedekind-Schriftzug + Rahmen):  #D62027
    - Anthrazit (zentrales "+" + Untertitel):           #171717
    - Paper (warmes Cream passend zum Industrie-Rot):   #FAF7F2
-   - Accent (Bronze fuer Heritage-Akzente):            #B8924A
+   - Accent (Weiß als sekundärer Akzent in Dark BGs):  #FFFFFF
    Heritage: gegruendet 1909 - 115+ Jahre Tradition.
+   Markenfarben: nur Schwarz, Rot, Weiß (kein Gelb/Bronze).
    ════════════════════════════════════════════════════════════════ */
 
 :root {
@@ -34,9 +35,9 @@
   --rgb-brand-deep: 168 22 28;      /* #A8161C  Hover, Gradient-Tiefe */
   --rgb-brand-soft: 248 229 230;    /* #F8E5E6  Subtle wash, Soft-Highlight */
 
-  /* Accent Bronze - Heritage-Akzent fuer 1909er-Details */
-  --rgb-accent:      184 146 74;    /* #B8924A  Heritage-Bronze, Year-Badge */
-  --rgb-accent-deep: 148 116 56;    /* #947438  hover */
+  /* Accent Weiß - sekundärer Akzent in dunklen Sections (nur 3 Markenfarben) */
+  --rgb-accent:      255 255 255;   /* #FFFFFF  Highlight in dark sections */
+  --rgb-accent-deep: 226 226 226;   /* #E2E2E2  subtle Highlight */
 
   /* Anthracite (dunkle Sections - Heritage + Final CTA) */
   --rgb-anthracite:      23 23 23;      /* #171717  dark BG */
@@ -180,21 +181,6 @@
   }
   .btn-primary > * { position: relative; z-index: 1; }
 
-  .btn-yellow {
-    position: relative;
-    overflow: hidden;
-    isolation: isolate;
-    background: linear-gradient(135deg, rgb(var(--rgb-accent)) 0%, rgb(var(--rgb-accent-deep)) 100%);
-    color: rgb(var(--rgb-ink));
-    box-shadow:
-      0 4px 14px -4px rgb(var(--rgb-accent) / 0.45),
-      inset 0 1px 0 0 rgb(255 255 255 / 0.3);
-  }
-  .btn-yellow:hover {
-    transform: translateY(-1px);
-    filter: saturate(1.05);
-  }
-
   .btn-ink {
     background: rgb(var(--rgb-ink));
     color: rgb(var(--rgb-paper));
@@ -256,14 +242,14 @@
   }
   .eyebrow.no-line::before { display: none; }
   .eyebrow-light { color: rgb(255 255 255 / 0.7); }
-  .eyebrow-yellow { color: rgb(var(--rgb-accent-deep)); }
+  .eyebrow-white { color: rgb(255 255 255 / 0.92); }
 
   /* ════════ HEADINGS ════════ */
   .heading-display {
     font-family: var(--font-headline);
-    font-size: clamp(2.6rem, 6.8vw, 5.8rem);
+    font-size: clamp(2.1rem, 4.4vw, 4rem);
     font-weight: 800;
-    line-height: 0.98;
+    line-height: 1.02;
     letter-spacing: -0.022em;
     text-transform: none;
   }
@@ -288,7 +274,7 @@
     letter-spacing: -0.012em;
   }
   .accent-brand   { color: rgb(var(--rgb-brand)); }
-  .accent-yellow  { color: rgb(var(--rgb-accent)); }
+  .accent-white   { color: #fff; }
 
   .text-balance { text-wrap: balance; }
   .text-pretty  { text-wrap: pretty; }
@@ -559,9 +545,9 @@
     color: var(--angebot-icon-color, #fff);
   }
   .angebot-card.is-yellow {
-    --angebot-glow: rgb(184 146 74 / 0.22);
-    --angebot-deco: rgb(184 146 74 / 0.16);
-    --angebot-border: rgb(184 146 74 / 0.6);
+    --angebot-glow: rgb(255 255 255 / 0.22);
+    --angebot-deco: rgb(255 255 255 / 0.16);
+    --angebot-border: rgb(255 255 255 / 0.6);
     --angebot-icon-bg: linear-gradient(135deg, rgb(var(--rgb-accent)), rgb(var(--rgb-accent-deep)));
     --angebot-icon-color: rgb(var(--rgb-ink));
   }
@@ -886,13 +872,15 @@
 .subpage-hero p { color: rgb(255 255 255 / 0.85); }
 
 /* ════════════════════════════════════════════════════════════════
-   FINAL CTA (Brand-Rot)
+   FINAL CTA - Hero-Bild mit dunklem Overlay (statt pures Rot)
    ════════════════════════════════════════════════════════════════ */
 .final-cta {
   position: relative;
   padding: clamp(5rem, 9vw, 8rem) 0;
   overflow: hidden;
-  background: linear-gradient(135deg, rgb(var(--rgb-brand)) 0%, rgb(var(--rgb-brand-deep)) 60%, #B01F0A 100%);
+  background:
+    linear-gradient(135deg, rgb(13 13 13 / 0.88) 0%, rgb(23 23 23 / 0.78) 50%, rgb(13 13 13 / 0.92) 100%),
+    url('/images/hero-fleet.jpg') center / cover no-repeat;
   color: #fff;
 }
 .final-cta::before {
@@ -900,8 +888,8 @@
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 80% 50% at 20% 100%, rgb(184 146 74 / 0.22), transparent 60%),
-    radial-gradient(ellipse 60% 40% at 100% 0%, rgb(0 0 0 / 0.25), transparent 60%);
+    radial-gradient(ellipse 70% 50% at 50% 100%, rgb(214 32 39 / 0.18), transparent 65%),
+    radial-gradient(ellipse 60% 40% at 100% 0%, rgb(0 0 0 / 0.35), transparent 60%);
   pointer-events: none;
 }
 .final-cta-grid {

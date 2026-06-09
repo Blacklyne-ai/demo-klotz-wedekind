@@ -85,7 +85,7 @@ const team = [
   <!-- Team-Grid -->
   <section class="section">
     <div class="container-rd">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="team-flex-grid">
         {team.map((t) => (
           <article class="contact-card">
             <span class="contact-card-num">{t.num}</span>
@@ -173,6 +173,30 @@ const team = [
 </Layout>
 
 <style>
+  /* 5 Personen symmetrisch: flex-wrap mit zentriertem Last-Row */
+  .team-flex-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.25rem;
+  }
+  .team-flex-grid > .contact-card {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+  @media (min-width: 640px) {
+    .team-flex-grid > .contact-card {
+      flex: 1 1 calc(50% - 0.625rem);
+      max-width: calc(50% - 0.625rem);
+    }
+  }
+  @media (min-width: 1024px) {
+    .team-flex-grid > .contact-card {
+      flex: 1 1 calc(33.333% - 0.834rem);
+      max-width: calc(33.333% - 0.834rem);
+    }
+  }
+
   .contact-card {
     position: relative;
     display: flex;

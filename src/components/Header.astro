@@ -31,7 +31,7 @@ const { current = '' } = Astro.props;
   <div class="container-rd pt-3 md:pt-4">
     <div
       id="nav-shell"
-      class="flex items-center justify-between gap-3 pl-2.5 pr-2 md:pl-4 md:pr-3 py-1 md:py-2 transition-all duration-300"
+      class="flex items-center justify-between gap-3 pl-3 pr-1.5 md:pl-4 md:pr-3 py-0.5 md:py-2 transition-all duration-300"
     >
       <a href="/" class="flex-shrink-0 header-logo" aria-label={`${site.name} - Startseite`}>
         <Logo variant="dark" size="md" />
@@ -229,25 +229,31 @@ const { current = '' } = Astro.props;
   .btn-call > span:last-child { position: relative; z-index: 1; }
 
   /* Mobile-Logo schmaler, damit die Pille kompakt bleibt (Memory: mobile_header_pill) */
+  .header-logo {
+    display: inline-flex;
+    align-items: center;
+    line-height: 0;
+  }
   .header-logo :global(.brand-logo-img) {
-    height: 30px !important;
+    height: 26px !important;
   }
   @media (min-width: 768px) {
     .header-logo :global(.brand-logo-img) {
-      height: 42px !important;
+      height: 40px !important;
     }
   }
 
-  /* Burger-Button kompakt, mittig in der Pille */
+  /* Burger-Button kompakt, exakt mittig in der Pille */
   .burger-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 34px;
-    height: 34px;
+    width: 36px;
+    height: 36px;
     padding: 0;
     border-radius: 999px;
     transition: background 0.2s ease;
+    flex-shrink: 0;
   }
   .burger-btn:hover { background: rgb(var(--rgb-brand) / 0.08); }
   @media (min-width: 768px) {
