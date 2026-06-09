@@ -44,20 +44,22 @@ const w = Math.round(h * (250 / 50));
     transform: translateY(-1px);
     filter: drop-shadow(0 4px 16px rgb(214 32 39 / 0.25));
   }
-  /* Auf dunklem BG: Logo hat weissen Hintergrund - Pille hilft beim Lesen. */
+  /* Auf dunklem BG: Logo ist freigestellt, aber schwarze "+" + Untertitel
+     brauchen helle Card als Background. Subtiles Cream statt pure-white,
+     damit es sich edler ins Footer-Anthrazit einfügt. */
   .brand-logo-on-dark {
-    background: rgb(255 255 255 / 0.96);
-    padding: 0.5rem 0.85rem;
+    background: rgb(var(--rgb-paper));
+    padding: 0.55rem 0.9rem;
     border-radius: 10px;
     box-shadow:
-      0 6px 18px -6px rgb(0 0 0 / 0.4),
-      inset 0 1px 0 0 rgb(255 255 255 / 0.5);
+      0 8px 22px -8px rgb(0 0 0 / 0.5),
+      inset 0 1px 0 0 rgb(255 255 255 / 0.4);
     transition: box-shadow 0.3s ease, transform 0.3s ease;
   }
   .brand-logo-on-dark:hover {
     box-shadow:
-      0 10px 24px -8px rgb(214 32 39 / 0.4),
-      inset 0 1px 0 0 rgb(255 255 255 / 0.5);
+      0 12px 28px -10px rgb(214 32 39 / 0.45),
+      inset 0 1px 0 0 rgb(255 255 255 / 0.4);
   }
   .brand-logo-img {
     display: block;
